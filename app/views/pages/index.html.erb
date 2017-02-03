@@ -1,1 +1,14 @@
 Spotify Helper!
+<br>
+<br>
+<table>
+<th>Track name</th><th>Artist</th>
+<% @playlist.tracks.each do |track| %>
+
+<tr>
+<td><%= track.name %></td>
+<td><%= track.artists.map(&:name).join(', ') %></td>
+</tr>
+
+<% end %>
+</table>
