@@ -1,0 +1,24 @@
+i# top-most EditorConfig file
+root = true
+
+[*]
+# all files should end with a new line
+end_of_line = lf
+insert_final_newline = true
+
+# 2 space indentation
+indent_style = space
+indent_size = 2
+
+# trim trailing white spaces
+trim_trailing_whitespace = true
+
+max_line_length = 80
+
+spaces_around_operators = true
+
+[*.js]
+indent_size = 4
+
+spaces_around_brackets = inside
+
