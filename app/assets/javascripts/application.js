@@ -13,4 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require sh-app
+//= require_tree ./spotify_helper/common
+//= require_tree ./spotify_helper
+//= require sh-exec
