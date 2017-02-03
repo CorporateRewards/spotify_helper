@@ -6,8 +6,8 @@ services:
       - .:/app
     ports:
       - '3000:3000'
-    command: sleep infinity
-    # command: >
-      # sh -c 'bundle && 
-      # rake tmp:clear tmp:pids:clear tmp:create && 
-      # bundle exec rails server --bind 0.0.0.0'
+    # command: sleep infinity
+    command: >
+      sh -c 'bundle && 
+      rake tmp:clear tmp:pids:clear tmp:create && 
+      bundle exec rails server --bind 0.0.0.0'
