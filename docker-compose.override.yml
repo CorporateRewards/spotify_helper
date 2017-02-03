@@ -1,0 +1,20 @@
+version: '2'
+services:
+  lb:
+    image: dockercloud/haproxy:1.6.2
+    links:
+      - app
+    environment:
+      - DOCKER_TLS_VERIFY
+      - DOCKER_HOST
+      - DOCKER_CERT_PATH
+    volumes:
+      - $DOCKER_CERT_PATH:$DOCKER_CERT_PATH
+    ports:
+      - 80:80
+
+  db:
+    ports:
+      - 3306:3306
+
+

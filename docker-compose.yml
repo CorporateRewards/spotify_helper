@@ -4,10 +4,23 @@ services:
     image: corporaterewards/spotify_helper:latest
     volumes:
       - .:/app
-    ports:
-      - '3000:3000'
-    # command: sleep infinity
+    expose:
+      - 3000
     command: >
-      sh -c 'bundle && 
-      rake tmp:clear tmp:pids:clear tmp:create && 
-      bundle exec rails server --bind 0.0.0.0'
+      sh -c '
+        bundle install --jobs 5 && 
+        rake tmp:clear tmp:pids:clear tmp:create && 
+        bundle exec rails server --bind 0.0.0.0
+        # sleep infinity
+      '
+    environment:
+      - SPOTIFY_HELPER_DATABASE_HOST=db
+      - SPOTIFY_HELPER_DATABASE_USER=root
+      - SPOTIFY_HELPER_DATABASE_PASSWORD
+    links:
+      - db
+  db:
+    image: mysql:8.0.0
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+
