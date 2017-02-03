@@ -21,5 +21,10 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  database: spotify_helper_production
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  host: <%= ENV['SPOTIFY_HELPER_DATABASE_HOST'] %>
+  username: <%= ENV['SPOTIFY_HELPER_DATABASE_USER'] %>
+  password: <%= ENV['SPOTIFY_HELPER_DATABASE_PASSWORD'] %>
