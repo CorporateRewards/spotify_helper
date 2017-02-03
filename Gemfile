@@ -20,6 +20,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'rspotify', require: true
 gem 'figaro'
+gem 'haml'
 
 group :development, :test do
   gem 'byebug', platform: :mri
