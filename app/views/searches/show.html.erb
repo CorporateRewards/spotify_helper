@@ -6,6 +6,7 @@
 		  <tr>
 		    <td><%= track.name %></td>
 			<td><%= track.artists.map(&:name).join(', ') %></td>
+			<td><a class="btn btn-default" role="button">Add</a></td>
 		  </tr>
 		<% end %>
 	</table>

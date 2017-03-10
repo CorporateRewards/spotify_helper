@@ -1,3 +1,7 @@
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+
 	<form class="form-horizontal">
 	  <div class="form-group">
 	    <label for="search" class="col-sm-2 control-label">Search</label>
@@ -7,8 +11,11 @@
 	  </div>
 	</form>
 
-  <div id="results"></div>
 
+  <div id="results"></div>
+</div> 
+
+<div class="col-md-8">
 		<table class="table">
 		<th>Track name</th><th>Artist</th>
 		<% @playlist.tracks.each do |track| %>
@@ -20,8 +27,11 @@
 
 		<% end %>
 		</table>
+</div>
 
-        
+
+</div>
+</div> 
 
 
 
