@@ -14,4 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
-//= require_tree .
+//= require tuneUp-app
+//= require_tree ./tuneUp/common
+//= require_tree ./tuneUp
+//= require tuneUp-exec
+
