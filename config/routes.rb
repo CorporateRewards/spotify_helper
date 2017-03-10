@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   root to: 'pages#index'
   resource :search, only: [:show]
   resource :tracks, only: :create
+  get 'sign_in', to: 'pages#sign_in'
+  get '/auth/spotify/callback', to: 'pages#spotify'
 end
