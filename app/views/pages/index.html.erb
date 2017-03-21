@@ -1,37 +1,32 @@
 <div class="container">
-<div class="row">
-<div class="col-md-4">
+  <div class="col-md-8">
+  	<table class="table">
+  	  <th>Track name</th><th>Artist</th>
+  	    <% @playlist.tracks.each do |track| %>
+  		    <tr>
+  		      <td><%= track.name %></td>
+  		      <td><%= track.artists.map(&:name).join(', ') %></td>
+  		    </tr>
+        <% end %>
+ 		</table>
+  </div>
 
-	<form class="form-horizontal">
-	  <div class="form-group">
-	    <label for="search" class="col-sm-2 control-label">Search</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="search" placeholder="Title/Artist/Album">
-      </div>
-	  </div>
-	</form>
-
-
-  <div id="results"></div>
-</div> 
-
-<div class="col-md-8">
-		<table class="table">
-		<th>Track name</th><th>Artist</th>
-		<% @playlist.tracks.each do |track| %>
-
-		<tr>
-		<td><%= track.name %></td>
-		<td><%= track.artists.map(&:name).join(', ') %></td>
-		</tr>
-
-		<% end %>
-		</table>
+  <div class="row">
+    <div class="col-md-4">
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label for="search" class="col-sm-2 control-label">Search</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="search" placeholder="Title/Artist/Album">
+          </div>
+        </div>
+      </form>
+    <div id="results">
+      
+    </div>
+  </div> 
 </div>
 
-
-</div>
-</div> 
 
 
 
