@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   resource :search, only: [:show]
   resource :tracks, only: [:create, :destroy]
   get 'sign_in', to: 'pages#sign_in'
-  get '/auth/spotify/callback', to: 'pages#index'
+  get '/auth/spotify/callback', to: 'pages#spotify'
 end

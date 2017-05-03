@@ -7,6 +7,7 @@ class PagesController < ApplicationController
   def spotify
  	session[:sp_user] = request.env['omniauth.auth']
   	@spotify_user = spotify_user
+    redirect_to root_url
   end
 
 
