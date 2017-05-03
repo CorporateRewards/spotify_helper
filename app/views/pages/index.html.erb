@@ -6,7 +6,9 @@
   		    <tr>
   		      <td><%= track.name %></td>
   		      <td><%= track.artists.map(&:name).join(', ') %></td>
-            <td><%= link_to "remove",tracks_path(uid: track.id),class:"btn btn-default", method: :delete %></td>
+            <td><%= link_to "remove",tracks_path(uid: track.id),class:"btn btn-default", method: :delete %>
+            <%= link_to "TuneUP",tracks_path(uid: track.id),class:"btn btn-default"  %>
+            <%= link_to "TuneDOWN",tracks_path(uid: track.id),class:"btn btn-default"  %></td>
   		    </tr>
         <% end %>
  		</table>
