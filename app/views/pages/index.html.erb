@@ -1,14 +1,16 @@
+<h2>Current Spotify Playlist</h2>
+
 <div class="container">
   <div class="col-md-8">
   	<table class="table">
-  	  <th>Track name</th><th>Artist</th><th>Actions</th>
+  	  <th>Track name</th><th>Artist</th><th>Vote</th><th>Actions</th>
   	    <% @playlist.tracks.each do |track| %>
   		    <tr>
   		      <td><%= track.name %></td>
   		      <td><%= track.artists.map(&:name).join(', ') %></td>
-            <td><%= link_to "remove",tracks_path(uid: track.id),class:"btn btn-default", method: :delete %>
-            <%= link_to "TuneUP",tracks_path(uid: track.id),class:"btn btn-default"  %>
-            <%= link_to "TuneDOWN",tracks_path(uid: track.id),class:"btn btn-default"  %></td>
+            <td><%= link_to "TuneUP",new_tracks_votes_path(uid: track.id, vote: 1),class:"btn btn-default"  %>
+            <%= link_to "TuneDOWN",new_tracks_votes_path(uid: track.id, vote: 0),class:"btn btn-default"  %></td>
+            <td><%= link_to "remove",tracks_path(uid: track.id),class:"btn btn-default", method: :delete %></td>
   		    </tr>
         <% end %>
  		</table>

@@ -1,0 +1,38 @@
+<h2>Tracks in the database/votes</h2>
+
+<div class="container">
+  <div class="col-md-8">
+    <table class="table">
+      <th>Track name</th><th>Artist</th><th>UPvotes</th><th>DOWNvotes</th><th>Vote</th><th>Actions</th>
+        <% @playlist.each do |track| %>
+          <tr>
+            <td><%= track.name %></td>
+            <td><%= track.artist %></td>
+            <td><%= track.votes.where(:vote => true).count %></td>
+            <td><%= track.votes.where(:vote => false).count %></td>
+            <td><%= link_to "TuneUP",new_tracks_votes_path(dbid: track.id, vote: 1),class:"btn btn-default"  %>
+            <%= link_to "TuneDOWN",new_tracks_votes_path(dbid: track.id, vote: 0),class:"btn btn-default"  %></td>
+            <td><%= link_to "remove",tracks_votes_path(dbid: track.id),class:"btn btn-default", method: :delete %></td>
+          </tr>
+        <% end %>
+    </table>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label for="search" class="col-sm-2 control-label">Search</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="search" placeholder="Title/Artist/Album">
+          </div>
+        </div>
+      </form>
+    <div id="results">
+      
+    </div>
+  </div> 
+</div>
+
+
+
