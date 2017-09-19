@@ -2,6 +2,22 @@
 
 <div class="container">
   <div class="col-md-8">
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label for="search" class="col-sm-2 control-label">Search</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="search" placeholder="Title/Artist/Album">
+          </div>
+        </div>
+      </form>
+
+      
+    <div id="results">
+      
+    </div>
+
+
+
   	<table class="table">
   	  <th>Track name</th><th>Artist</th><th>Vote</th><th>Actions</th>
   	    <% @playlist.tracks.each do |track| %>
@@ -16,19 +32,15 @@
  		</table>
   </div>
 
+
+
   <div class="row">
     <div class="col-md-4">
-      <form class="form-horizontal">
-        <div class="form-group">
-          <label for="search" class="col-sm-2 control-label">Search</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="search" placeholder="Title/Artist/Album">
-          </div>
-        </div>
-      </form>
-    <div id="results">
-      
-    </div>
+
+
+
+
+
   </div> 
 </div>
 
