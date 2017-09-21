@@ -2,6 +2,11 @@ body {
   padding-top: 70px;
   padding-bottom: 30px;
 }
+.nav, .navbar, .navbar-inverse, .navbar-nav > .active > a, .navbar-nav > li > a, .navbar-brand {
+  background-color: #F38A0C !important;
+  border-color: #F38A0C;
+  color: #ffffff !important;
+}
 
 .theme-dropdown .dropdown-menu {
   position: static;
@@ -15,4 +20,8 @@ body {
 
 .theme-showcase .navbar .container {
   width: auto;
+}
+
+.vote-btn {
+  display: inherit;
 }
