@@ -17,6 +17,31 @@ body {
 
 }
 
+.search_container {
+
+  position: absolute;
+  top:110px;
+
+}
+
+label {
+  position: relative;
+  width:100%;
+}
+label:before {
+  position: absolute;
+  right: 10px;
+  top: 0;
+  bottom: 0;
+  content: '';
+  width: 20px;
+  background: url('search-icon.svg') left center no-repeat / contain;
+  opacity:0.5;
+}
+input {
+  padding: 10px 30px;
+}
+
 .nav, .navbar, .navbar-inverse, .navbar-nav > .active > a, .navbar-nav > li > a, .navbar-brand {
     background: red; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(#ff931e, #fbaf3a); /* For Safari 5.1 to 6.0 */
