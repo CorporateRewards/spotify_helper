@@ -2,10 +2,29 @@ body {
   padding-top: 70px;
   padding-bottom: 30px;
 }
+
+.logo {
+
+    width: 131px;
+    position: relative;
+    bottom: 61%;
+
+}
+
+#search {
+
+  border-radius: 0px 25px 25px 0px;
+
+}
+
 .nav, .navbar, .navbar-inverse, .navbar-nav > .active > a, .navbar-nav > li > a, .navbar-brand {
-  background-color: #F38A0C !important;
-  border-color: #F38A0C;
+    background: red; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#ff931e, #fbaf3a); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#ff931e, #fbaf3a); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#ff931e, #fbaf3a); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#ff931e, #fbaf3a); /* Standard syntax */
   color: #ffffff !important;
+  border-color: transparent;
 }
 
 .theme-dropdown .dropdown-menu {
