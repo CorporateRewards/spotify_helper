@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 21.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1305 717" style="enable-background:new 0 0 1305 717;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FBA92E;}
+	.st1{fill:#FCA120;}
+	.st2{fill:#FC9402;}
+	.st3{fill:#FD7E00;}
+	.st4{fill:#FE5500;}
+	.st5{clip-path:url(#SVGID_2_);}
+	.st6{fill:#66461D;}
+	.st7{fill:#FFFFFF;}
+	.st8{font-family:'Futura-Medium';}
+	.st9{font-size:238.3834px;}
+	.st10{fill:#FF931E;}
+	.st11{fill:#FBAF3A;}
+</style>
+<g>
+	<g>
+		<defs>
+			<path id="SVGID_1_" d="M936.6,39H368.4c-28.9,0-56.7,11.3-77.5,31.4L76.3,278.7c-45,43.7-45,116,0,159.7l214.6,208.3
+				c20.8,20.1,48.5,31.4,77.5,31.4h568.3c28.9,0,56.7-11.3,77.5-31.4l214.6-208.3c45-43.7,45-116,0-159.7L1014.1,70.4
+				C993.4,50.3,965.6,39,936.6,39z"/>
+		</defs>
+		<clipPath id="SVGID_2_">
+			<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+		</clipPath>
+		<g class="st5">
+			<circle class="st4" cx="652.5" cy="912" r="988.5"/>
+			<circle class="st3" cx="652.5" cy="912" r="821.5"/>
+			<circle class="st2" cx="652.5" cy="912" r="670.5"/>
+			<circle class="st1" cx="652.5" cy="912" r="513.5"/>
+			<circle class="st0" cx="652.5" cy="912" r="347.5"/>
+		</g>
+	</g>
+	<g>
+		<path class="st6" d="M936.6,39c28.9,0,56.7,11.3,77.5,31.4l214.6,208.3c45,43.7,45,116,0,159.7l-214.6,208.3
+			c-20.8,20.1-48.5,31.4-77.5,31.4H368.4c-28.9,0-56.7-11.3-77.5-31.4L76.3,438.3c-45-43.7-45-116,0-159.7L290.9,70.4
+			C311.6,50.3,339.4,39,368.4,39H936.6 M936.6,9H368.4c-18.3,0-36.1,3.5-53.1,10.3c-16.9,6.9-32.2,16.8-45.3,29.5L55.4,257.1
+			c-14,13.5-24.8,29.5-32.2,47.3c-7.1,17.2-10.7,35.4-10.7,54.1s3.6,36.9,10.7,54.1c7.4,17.8,18.2,33.8,32.2,47.3L270,668.1
+			c13.1,12.7,28.4,22.7,45.3,29.5c16.9,6.9,34.8,10.3,53.1,10.3h568.3c18.3,0,36.1-3.5,53.1-10.3c16.9-6.9,32.2-16.8,45.3-29.5
+			l214.6-208.3c14-13.5,24.8-29.5,32.2-47.3c7.1-17.2,10.7-35.4,10.7-54.1s-3.6-36.9-10.7-54.1c-7.4-17.8-18.2-33.8-32.2-47.3
+			L1035,48.9c-13.1-12.7-28.4-22.7-45.3-29.5C972.8,12.5,954.9,9,936.6,9L936.6,9z"/>
+	</g>
+	<text transform="matrix(1 0 0 1 180.3334 433.1636)" class="st7 st8 st9">TUNEUP</text>
+	<polygon class="st7" points="617.3,257 658.3,257 637.3,203 	"/>
+	<polygon class="st7" points="526.3,432 485.3,432 506.3,486 	"/>
+</g>
+</svg>

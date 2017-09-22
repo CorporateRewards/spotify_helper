@@ -3,6 +3,55 @@ body {
   padding-bottom: 30px;
 }
 
+.logo {
+
+    width: 131px;
+    position: relative;
+    bottom: 61%;
+
+}
+
+#search {
+
+  border-radius: 0px 25px 25px 0px;
+
+}
+
+.search_container {
+
+  position: absolute;
+  top:110px;
+
+}
+
+label {
+  position: relative;
+  width:100%;
+}
+label:before {
+  position: absolute;
+  right: 10px;
+  top: 0;
+  bottom: 0;
+  content: '';
+  width: 20px;
+  background: url('search-icon.svg') left center no-repeat / contain;
+  opacity:0.5;
+}
+input {
+  padding: 10px 30px;
+}
+
+.nav, .navbar, .navbar-inverse, .navbar-nav > .active > a, .navbar-nav > li > a, .navbar-brand {
+    background: red; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#ff931e, #fbaf3a); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#ff931e, #fbaf3a); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#ff931e, #fbaf3a); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#ff931e, #fbaf3a); /* Standard syntax */
+  color: #ffffff !important;
+  border-color: transparent;
+}
+
 .theme-dropdown .dropdown-menu {
   position: static;
   display: block;
@@ -15,4 +64,8 @@ body {
 
 .theme-showcase .navbar .container {
   width: auto;
+}
+
+.vote-btn {
+  display: inherit;
 }
