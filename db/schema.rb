@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170504160204) do
+ActiveRecord::Schema.define(version: 20170921205938) do
 
   create_table "tracks", force: :cascade do |t|
     t.string   "name"
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 20170504160204) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "first_name"
+    t.string   "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -40,8 +42,8 @@ ActiveRecord::Schema.define(version: 20170504160204) do
   create_table "votes", force: :cascade do |t|
     t.integer  "track_id"
     t.boolean  "vote"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["track_id"], name: "index_votes_on_track_id"
   end
 
