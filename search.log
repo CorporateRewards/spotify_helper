@@ -1,0 +1,367 @@
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/.git/COMMIT_EDITMSG
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/.git/config
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/.git/description
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/.git/HEAD
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/.git/hooks/applypatch-msg.sample
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/.git/hooks/commit-msg.sample
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/.git/hooks/post-update.sample
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/.git/hooks/pre-applypatch.sample
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/.git/hooks/pre-commit.sample
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/.git/hooks/pre-push.sample
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/.git/hooks/pre-rebase.sample
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/.git/hooks/prepare-commit-msg.sample
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/.git/hooks/update.sample
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/.git/index
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/.git/info/exclude
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/.git/logs/HEAD
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/.git/logs/refs/heads/feature/#32-popular-tracks
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/.git/logs/refs/remotes/origin/HEAD
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/.git/objects/pack/pack-449f263eb8064d030a95f6274852001007b9df7f.idx
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/.git/objects/pack/pack-449f263eb8064d030a95f6274852001007b9df7f.pack
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/.git/packed-refs
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/.git/refs/heads/feature/#32-popular-tracks
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/.git/refs/remotes/origin/HEAD
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/.gitignore
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/.ruby-version
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/assets/config/manifest.js
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/assets/images/.keep
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/assets/javascripts/application.js
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/assets/javascripts/cable.js
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/assets/javascripts/channels/.keep
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/assets/javascripts/tracks.coffee
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/assets/javascripts/tuneUp/common/.keep
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/assets/javascripts/tuneUp/pages.js
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/assets/javascripts/tuneUp/tracks.js
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/assets/javascripts/tuneUp-app.js
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/assets/javascripts/tuneUp-exec.js
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/assets/stylesheets/application.scss
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/assets/stylesheets/theme.css
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/assets/stylesheets/tracks.scss
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/channels/application_cable/channel.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/channels/application_cable/connection.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/controllers/application_controller.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/controllers/concerns/.keep
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/controllers/pages_controller.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/controllers/searches_controller.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/controllers/tracks_controller.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/controllers/votes_controller.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/helpers/application_helper.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/helpers/tracks_helper.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/jobs/application_job.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/mailers/application_mailer.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/models/application_record.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/models/concerns/.keep
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/models/track.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/models/user.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/models/vote.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/views/layouts/application.html.erb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/views/layouts/mailer.html.erb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/views/layouts/mailer.text.erb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/views/pages/auth.html.erb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/views/pages/index.html.erb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/views/pages/sign_in.html.erb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/views/pages/spotify.html.erb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/views/searches/show.html.erb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/app/views/tracks/show.html.erb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/bin/bundle
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/bin/rails
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/bin/rake
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/bin/setup
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/bin/spring
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/bin/update
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/config/application.rb
+    28	RSpotify.authenticate(ENV["spotify_id"], ENV["spotify_secret"])
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/config/boot.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/config/cable.yml
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/config/database.yml
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/config/environment.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/config/environments/development.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/config/environments/production.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/config/environments/test.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/config/initializers/application_controller_renderer.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/config/initializers/assets.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/config/initializers/backtrace_silencers.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/config/initializers/cookies_serializer.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/config/initializers/devise.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/config/initializers/filter_parameter_logging.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/config/initializers/inflections.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/config/initializers/mime_types.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/config/initializers/new_framework_defaults.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/config/initializers/omniauth.rb
+     4	  provider :spotify, ENV["spotify_id"], ENV["spotify_secret"], scope: 'user-read-email playlist-modify-public user-library-read user-library-modify playlist-modify-private'
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/config/initializers/session_store.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/config/initializers/wrap_parameters.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/config/locales/devise.en.yml
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/config/locales/en.yml
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/config/puma.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/config/routes.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/config/secrets.yml
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/config/spring.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/config.ru
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/db/migrate/20170401093639_devise_create_users.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/db/migrate/20170428135734_create_tracks.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/db/migrate/20170504160204_create_votes.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/db/schema.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/db/seeds.rb
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/Gemfile
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/Gemfile.lock
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/lib/assets/.keep
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/lib/tasks/.keep
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/log/.keep
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/public/404.html
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/public/422.html
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/public/500.html
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/public/apple-touch-icon-precomposed.png
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/public/apple-touch-icon.png
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/public/favicon.ico
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/public/robots.txt
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/Rakefile
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/README.md
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/search.log
+   217	    28	RSpotify.authenticate(ENV["spotify_id"], ENV["spotify_secret"])
+   269	     4	  provider :spotify, ENV["spotify_id"], ENV["spotify_secret"], scope: 'user-read-email playlist-modify-public user-library-read user-library-modify playlist-modify-private'
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/tmp/.keep
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/vendor/assets/javascripts/.keep
+
+
+>> /media/sf_shared/tune_up#32-popular-tracks/vendor/assets/stylesheets/.keep
