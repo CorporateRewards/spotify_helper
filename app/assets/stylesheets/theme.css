@@ -10,16 +10,14 @@ body {
     position: absolute;
     bottom: 14px;
     left: 31px;
-    transition: width 0.2s;
+    transition: all .2s ease-in-out;
 
 
 }
 
 .logo:hover {
 
-    width: 163px;
-
-
+    transform: scale(1.1);
 
 }
 

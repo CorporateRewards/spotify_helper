@@ -15,7 +15,7 @@ box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 .test1 {
   width:60%;
   height:60%;
-  background-color:dimGray;
+  background-color:white;
   border-radius:50%;
   position:absolute;
   color:white;
@@ -30,7 +30,7 @@ box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 .test2 {
   width:60%;
   height:60%;
-  background-color:dimGray;
+  background-color:white;
   border-radius:50%;
   position:absolute;
   color:white;
@@ -44,7 +44,7 @@ box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 .test3 {
   width:60%;
   height:60%;
-  background-color:dimGray;
+  background-color:white;
   border-radius:50%;
   position:absolute;
   color:white;
@@ -68,7 +68,7 @@ box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
   transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550) .6s;  
 }
 .mask2 {
-  top:15px;
+  top:8px;
   left:15px;
   width:100px;
   height:100px;
