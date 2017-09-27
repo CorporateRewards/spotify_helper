@@ -1,10 +1,6 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
-@import "theme";
-
 .parent2 {
-  top:-4px;
-  left:70px;
+  top:15px;
+  left:15px;
   position:fixed;
  display:block;
   width:100px;
@@ -12,7 +8,9 @@
   background-color:transparent;
   border-radius:50%;
   z-index:20;
-
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 }
 .test1 {
   width:60%;
@@ -26,7 +24,7 @@
     top:25%;
   left:25%;
   z-index:19;
-  transition: all 500ms cubic-bezier(0.680, 0, 0.265, -0.3);
+  transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550);
     position:absolute;
 }
 .test2 {
@@ -41,7 +39,7 @@
     top:25%;
   left:25%;
   z-index:19;
-  transition: all 500ms cubic-bezier(0.680, 0, 0.265, -0.3) .2s;
+  transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550) .2s;
 }
 .test3 {
   width:60%;
@@ -54,12 +52,12 @@
   line-height:70px;
     top:25%;
   left:25%;
-  transition: all 500ms cubic-bezier(0.680, 0, 0.265, -0.3) .4s;  
+  transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550) .4s;  
 }
   .test4 {
   width:60%;
   height:60%;
-  background-color:white;
+  background-color:dimGray;
   border-radius:50%;
   position:absolute;
   color:white;
@@ -67,13 +65,14 @@
   line-height:70px;
   top:25%;
   left:25%;
-  transition: all 500ms cubic-bezier(0.680, 0, 0.265, -0.3) .6s;  
+  transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550) .6s;  
 }
 .mask2 {
   top:8px;
   left:15px;
   width:100px;
   height:100px;
+  background:darkSlateGray;
   border-radius:50%;
   position:absolute;
   z-index:21;
