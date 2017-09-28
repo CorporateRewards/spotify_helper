@@ -7,7 +7,7 @@
           
           <div class="col-sm-12">
             <label>
-            <input type="text" class="form-control" id="search" placeholder="Title/Artist/Album">
+            <input type="text" class="form-control" id="search" placeholder="Type Title/Artist/Album">
             </label>
           </div>
         </div>
@@ -17,7 +17,7 @@
     </div>
 
     <table class="table">
-      <th>Track name</th><th>Artist</th><th>Tune Ups</th><th>Pipe Downs</th><th>Vote</th><th>Actions</th>
+      <th>Song</th><th>Artist</th><th>Tune Ups</th><th>Pipe Downs</th><th>Vote</th><th>Actions</th>
         <% @playlist.each do |track| %>
           <tr>
             <td><%= track.name %></td>
@@ -33,13 +33,18 @@
   </div>
 
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4 sidebar">
       <div class="info-sidebar">
-      <h1>PLACEHOLDER</h1>
-        <%= image_tag("sidebar.jpg", :alt => "sidebar", :width => "100%") %>
+        <p>Now Playing</p>
+        <h1>Thriller</h1>
+        <p>Michael Jackson</p>
+        <div class='row'>
+          <div class='col-md-4 tune-up-lg'><%= image_tag("TuneUp-08.png", :alt => "sidebar", :width => "100%") %></div>
+          <div class='col-md-4 tune-up-lg'><%= image_tag("TuneUp-07.png", :alt => "sidebar", :width => "100%") %></div>
+        </div>
+        
       </div>
-  </div> 
-</div>
-
-
-
+    </div>
+  </div>
+    
+   

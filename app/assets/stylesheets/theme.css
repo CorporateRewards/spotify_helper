@@ -1,13 +1,23 @@
 body {
   padding-top: 70px;
   padding-bottom: 30px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .logo {
 
-    width: 131px;
-    position: relative;
-    bottom: 61%;
+    width: 160px;
+    position: absolute;
+    bottom: 14px;
+    left: 31px;
+    transition: all .2s ease-in-out;
+
+
+}
+
+.logo:hover {
+
+    transform: scale(1.1);
 
 }
 
@@ -24,9 +34,25 @@ body {
 
 }
 
+
+
+table tr {
+
+  background-color: #d3d3d3;
+
+}
+
+table th {
+
+  color: white;
+  background-color: #999999;
+
+}
+
 label {
   position: relative;
   width:100%;
+  font-weight: normal;
 }
 label:before {
   position: absolute;
