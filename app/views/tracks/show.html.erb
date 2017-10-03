@@ -1,50 +1,44 @@
-
 <div class="search_container container">
-  <div class="col-md-8">
-
+    <div class="col-md-8">
         <form class="form-horizontal">
-        <div class="form-group">
-          
-          <div class="col-sm-12">
-            <label>
-            <input type="text" class="form-control" id="search" placeholder="Type Title/Artist/Album">
-            </label>
-          </div>
-        </div>
-      </form>
-    <div id="results">
-      
-    </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <label>
+                        <input type="text" class="form-control" id="search" placeholder="Type Title/Artist/Album">
+                    </label>
+                </div>
+            </div>
+        </form>
+        <div id="results"></div>
 
-    <table class="table">
-      <th>Song</th><th>Artist</th><th>Tune Ups</th><th>Pipe Downs</th><th>Vote</th><th>Actions</th>
-        <% @playlist.each do |track| %>
-          <tr>
-            <td><%= track.name %></td>
-            <td><%= track.artist %></td>
-            <td><%= track.votes.where(:vote => true).count %></td>
-            <td><%= track.votes.where(:vote => false).count %></td>
-            <td><%= link_to "Tune Up",new_tracks_votes_path(dbid: track.id, vote: 1),class:"btn btn-default vote-btn"  %>
-            <%= link_to "Pipe Down",new_tracks_votes_path(dbid: track.id, vote: 0),class:"btn btn-default vote-btn"  %></td>
-            <td><%= link_to "Remove",tracks_votes_path(dbid: track.id),class:"btn btn-default", method: :delete %></td>
-          </tr>
-        <% end %>
-    </table>
-  </div>
-
-  <div class="row">
-    <div class="col-md-4 sidebar">
-      <div class="info-sidebar">
-        <p>Now Playing</p>
-        <h1>Thriller</h1>
-        <p>Michael Jackson</p>
-        <div class='row'>
-          <div class='col-md-4 tune-up-lg'><%= image_tag("TuneUp-08.png", :alt => "sidebar", :width => "100%") %></div>
-          <div class='col-md-4 tune-up-lg'><%= image_tag("TuneUp-07.png", :alt => "sidebar", :width => "100%") %></div>
-        </div>
-        
-      </div>
+        <table class="table">
+            <th>Song</th><th>Artist</th><th>Tune Ups</th><th>Pipe Downs</th><th>Vote</th><th>Actions</th>
+            <% @playlist.first(100).each do |theseVotes| %>
+                <tr>
+                    <td><%= theseVotes["Track_Name"] %></td>
+                    <td><%= theseVotes["Track_Artist"] %></td>
+                    <td><%= theseVotes["Track_Up_Votes"] %></td>
+                    <td><%= theseVotes["Track_Down_Votes"] %></td>
+                    <td>
+                    <%= link_to "Tune Up",      new_tracks_votes_path(dbid: theseVotes["Track_ID"], vote: 1),class:"btn btn-default vote-btn"  %>
+                    <%= link_to "Pipe Down",    new_tracks_votes_path(dbid: theseVotes["Track_ID"], vote: 0),class:"btn btn-default vote-btn"  %>
+                    </td>
+                    <td><%= link_to "Remove",       tracks_votes_path(dbid: theseVotes["Track_ID"]),class:"btn btn-default", method: :delete %></td>
+                </tr>
+            <% end %>
+        </table>
     </div>
-  </div>
-    
-   
+    <div class="row">
+        <div class="col-md-4 sidebar">
+            <div class="info-sidebar">
+                <p>Now Playing</p>
+                <h1>Thriller</h1>
+                <p>Michael Jackson</p>
+                <div class='row'>
+                    <div class='col-md-4 tune-up-lg'><%= image_tag("TuneUp-08.png", :alt => "sidebar", :width => "100%") %></div>
+                    <div class='col-md-4 tune-up-lg'><%= image_tag("TuneUp-07.png", :alt => "sidebar", :width => "100%") %></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
