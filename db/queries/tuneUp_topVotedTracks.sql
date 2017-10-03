@@ -40,5 +40,5 @@ GROUP BY
             `tr`.`track_id`
 ORDER BY
             `Track_Nominal_Position` DESC,
-            `vt`.`updated_at` DESC
+            `vt`.`updated_at` ASC
 LIMIT       0, 100;
