@@ -10,7 +10,8 @@ class TracksController < ApplicationController
     end
 
     def show
-        @playlist = Track.all
+        thisQuery = File.read(Rails.root.join('db', 'queries', 'tuneUp_topVotedTracks.sql').to_s).to_s
+        @playlist = ActiveRecord::Base.connection.execute(thisQuery)
     end
 
     def destroy
