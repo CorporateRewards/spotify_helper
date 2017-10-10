@@ -11,6 +11,9 @@ class TracksController < ApplicationController
 
   def show
     @playlist = Track.all
+    @currently_playing = spotify_user.currently_playing
+    #date = DateTime.parse(spotify_user.currently_playing.album.release_date)
+    #@released_date = date.strftime('%b %d %Y')
   end
 
 	def destroy	
