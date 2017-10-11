@@ -10,7 +10,6 @@
             </div>
         </form>
         <div id="results"></div>
-
         <table class="table">
             <th>Song</th><th>Artist</th><th>Tune Ups</th><th>Pipe Downs</th><th>Vote</th><th>Actions</th>
             <% @playlist.first(100).each do |theseVotes| %>
@@ -30,14 +29,16 @@
     </div>
     <div class="row">
         <div class="col-md-4 sidebar">
-            <div class="info-sidebar">
-                <p>Now Playing</p>
-                <h1>Thriller</h1>
-                <p>Michael Jackson</p>
-                <div class='row'>
-                    <div class='col-md-4 tune-up-lg'><%= image_tag("TuneUp-08.png", :alt => "sidebar", :width => "100%") %></div>
-                    <div class='col-md-4 tune-up-lg'><%= image_tag("TuneUp-07.png", :alt => "sidebar", :width => "100%") %></div>
-                </div>
+            <h1>Currently Playing</h1>
+            <p><img src="<%= @currently_playing.album.images[0]['url'] %>" style="width:100%"></p>
+            <p>
+                <% @currently_playing.artists.each do |artist| %>
+                  <%= artist.name %>
+                <% end %>
+                - 
+                <%= @currently_playing.name %> 
+              </p>
+              <p><%= @released_date  %></p> 
             </div>
         </div>
     </div>
