@@ -1,1 +1,85 @@
-<%= link_to 'Sign in with Spotify', '/auth/spotify' %>
+<style>
+    html, body,
+    body > div.container,
+    table#loadingPane,
+    table#loadingPane tr,
+    table#loadingPane td,
+    table#loadingPane tbody
+    {
+        position:relative !important;
+        top:0px;
+        left:0px;
+        width:100%;
+        height:100%;
+        margin:0px;
+        padding:0px;
+        border:0px;
+        border-spacing:0px;
+        align:center;
+        text-align:center;
+        vertical-align:middle;
+        background-color:rgba(0,0,0,0);
+    }
+    table#loadingPane img.refreshIcon
+    {
+        position:relative;
+        width:50px;
+        height:50px;
+        animation:rotateImage 1.5s linear infinite;
+    }
+    div#loadingMessage
+    {
+        display:none;
+    }
+    div.container a[href*='\/auth\/spotify']
+    {
+        position:relative;
+    }
+    @keyframes rotateImage
+    {
+        25%
+        {
+            transform:rotate(-50deg);
+        }
+        75%
+        {
+            transform:rotate(370deg);
+        }
+        80%
+        {
+            transform:rotate(350deg);
+        }
+        85%
+        {
+            transform:rotate(370deg);
+        }
+        90%
+        {
+            transform:rotate(360deg);
+        }
+        100%
+        {
+            transform:rotate(360deg);
+        }
+    }
+</style>
+<script>
+    function authenticateSpotify()
+    {
+        document.querySelectorAll("div.container a[href*='\/auth\/spotify']")[0].style.display = "none";
+        document.querySelectorAll("div#loadingMessage")[0].style.display = "inline-block";
+        window.location = "/auth/spotify";
+    }
+</script>
+<table id="loadingPane" onload="authenticateSpotify();"><tr><td>
+    <div id="loadingMessage">
+        <img class="refreshIcon" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxzdmcgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIj4KCTxwYXRoIGZpbGw9InJnYmEoMCwgMCwgMCwgMC41KSIgZD0iTTQ3OS45NzEsMzIuMThjLTIxLjcyLDIxLjIxMS00Mi44OSw0My02NC41Miw2NC4zMDFjLTEuMDUsMS4yMy0yLjI2LTAuMTYtMy4wOS0wLjg1Yy0yNC41MTEtMjMuOTgtNTQuNTgtNDIuMjgxLTg3LjIyMS01Mi44NGMtMzcuNi0xMi4xNi03OC40NDktMTQuMDctMTE3LjAyOS01LjU5Yy02OC42NywxNC42Ny0xMjguODExLDY0LjA1OS0xNTYuNDQsMTI4LjYwOWMwLjAzMSwwLjAxNCwwLjA2MiwwLjAyNSwwLjA5MywwLjAzOWMtMi4zLDQuNTM3LTMuNjA1LDkuNjY2LTMuNjA1LDE1LjFjMCwxOC40NzUsMTQuOTc3LDMzLjQ1MSwzMy40NTEsMzMuNDUxYzE1LjgzMSwwLDI5LjA4NC0xMS4wMDIsMzIuNTU1LTI1Ljc3M2MxOS43NTctNDEuOTc5LDU4LjgzMi03NC40NDUsMTAzLjk2Ny04NS41MjdjNTIuMi0xMy4xNywxMTEuMzcsMS4zMywxNDkuNCw0MC4wNDFjLTIyLjAzLDIxLjgzLTQ0LjM5MSw0My4zNC02Ni4zMyw2NS4yNmM1OS41Mi0wLjMyLDExOS4wNi0wLjE0MSwxNzguNTktMC4wOUM0ODAuMjkxLDE0OS42MTEsNDc5LjkzMSw5MC44OTEsNDc5Ljk3MSwzMi4xOHoiLz4KCTxwYXRoIGZpbGw9InJnYmEoMCwgMCwgMCwgMC41KSIgZD0iTTQzMS42MDksMjk3LjVjLTE0LjYyLDAtMjcuMDQxLDkuMzgzLTMxLjU5MSwyMi40NTNjLTAuMDA5LTAuMDA0LTAuMDE5LTAuMDA4LTAuMDI3LTAuMDEyYy0xOS4xMSw0Mi41OS01Ny41Nyw3Ni4yMTktMTAyLjg0LDg4LjE4Yy01Mi43OTksMTQuMzExLTExMy40NSwwLjI5OS0xNTIuMTc5LTM5LjA1MWMyMS45Mi0yMS43Niw0NC4zNjktNDMuMDEsNjYuMTg5LTY0Ljg2OWMtNTkuNywwLjA0OS0xMTkuNDEsMC4wMjktMTc5LjExLDAuMDFjLTAuMTQsNTguNi0wLjE1OSwxMTcuMTg5LDAuMDExLDE3NS43ODljMjEuOTItMjEuOTEsNDMuNzUtNDMuOTEsNjUuNzktNjUuNjk5YzE0LjEwOSwxMy43ODksMjkuNzYsMjYuMDcsNDYuOTIsMzUuODY5YzU0LjczOSwzMS45NzEsMTIzLjM5OSwzOC42MDIsMTgzLjI5OSwxNy44OTFjNTcuNDc3LTE5LjI5NywxMDYuMDczLTYzLjE3OCwxMzEuMjEyLTExOC4zMThjMy42NDUtNS4zNTcsNS43NzYtMTEuODI0LDUuNzc2LTE4Ljc5M0M0NjUuMDYsMzEyLjQ3Nyw0NTAuMDgzLDI5Ny41LDQzMS42MDksMjk3LjV6Ii8+Cjwvc3ZnPg==" /><br />
+        <br />
+        Logging you into Spotify...
+    </div>
+    <%= link_to 'Sign in with Spotify', '/auth/spotify' %>
+</td></tr></table>
+<script>
+    window.onload = function() { authenticateSpotify(); };
+    authenticateSpotify();
+</script>
