@@ -1,45 +1,43 @@
 <div class="search_container container">
-    <div class="col-md-8">
-        <form class="form-horizontal">
-            <div class="form-group">
-                <div class="col-sm-12">
-                    <label>
-                        <input type="text" class="form-control" id="search" placeholder="Type Title/Artist/Album">
-                    </label>
-                </div>
-            </div>
-        </form>
-        <div id="results"></div>
-        <table class="table">
-            <th>Song</th><th>Artist</th><th>Tune Ups</th><th>Pipe Downs</th><th>Vote</th><th>Actions</th>
-            <% @playlist.first(100).each do |theseVotes| %>
-                <tr>
-                    <td><%= theseVotes["Track_Name"] %></td>
-                    <td><%= theseVotes["Track_Artist"] %></td>
-                    <td><%= theseVotes["Track_Up_Votes"] %></td>
-                    <td><%= theseVotes["Track_Down_Votes"] %></td>
-                    <td>
-                    <%= link_to "Tune Up",      new_tracks_votes_path(dbid: theseVotes["Track_ID"], vote: 1),class:"btn btn-default vote-btn"  %>
-                    <%= link_to "Pipe Down",    new_tracks_votes_path(dbid: theseVotes["Track_ID"], vote: 0),class:"btn btn-default vote-btn"  %>
-                    </td>
-                    <td><%= link_to "Remove",       tracks_votes_path(dbid: theseVotes["Track_ID"]),class:"btn btn-default", method: :delete %></td>
-                </tr>
-            <% end %>
-        </table>
+  <div class="col-md-8">
+    <form class="form-horizontal">
+      <div class="form-group">
+        <div class="col-sm-12">
+          <label>
+            <input type="text" class="form-control" id="search" placeholder="Type Title/Artist/Album">
+          </label>
+        </div>
+      </div>
+    </form>
+    <div id="results"></div>
+      <table class="table">
+        <th>Song</th><th>Artist</th><th>Tune Ups</th><th>Pipe Downs</th><th>Vote</th><th>Actions</th>
+        <% @playlist.each do |track| %>
+        <tr>
+          <td><%= track.name %></td>
+          <td><%= track.artist %></td>
+          <td><%= track.num_up_votes %></td>
+          <td><%= track.num_down_votes %></td>              
+          <td><%= link_to "Tune Up",new_tracks_votes_path(dbid: track.id, vote: 1),class:"btn btn-default vote-btn"  %>
+              <%= link_to "Pipe Down",new_tracks_votes_path(dbid: track.id, vote: 0),class:"btn btn-default vote-btn"  %></td>
+          <td><%= link_to "Remove",tracks_votes_path(dbid: track.id),class:"btn btn-default", method: :delete %></td>
+        </tr>
+        <% end %>
+      </table>
     </div>
     <div class="row">
-        <div class="col-md-4 sidebar">
-            <h1>Currently Playing</h1>
-            <p><img src="<%= @currently_playing.album.images[0]['url'] %>" style="width:100%"></p>
-            <p>
-                <% @currently_playing.artists.each do |artist| %>
-                  <%= artist.name %>
-                <% end %>
-                - 
-                <%= @currently_playing.name %> 
-              </p>
-              <p><%= @released_date  %></p> 
-            </div>
-        </div>
+      <div class="col-md-4 sidebar">
+        <h1>Currently Playing</h1>
+          <p><img src="<%= @currently_playing.album.images[0]['url'] %>" style="width:100%"></p>
+          <p>
+          <% @currently_playing.artists.each do |artist| %>
+            <%= artist.name %>
+          <% end %>
+           - 
+          <%= @currently_playing.name %> 
+          </p>
+          <p><%= @released_date  %></p> 
+      </div>
     </div>
+  </div>
 </div>
