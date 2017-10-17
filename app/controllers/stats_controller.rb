@@ -4,4 +4,5 @@ class StatsController < ApplicationController
     @top_artists = spotify_user.top_artists
   end
 
+
 end
