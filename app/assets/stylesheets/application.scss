@@ -6,7 +6,7 @@
   
   width: 122px;
   height: 66px;
-  background-image: url('logo.png');
+  background-image: image-url('logo.png');
   background-size:cover;
   margin:2px;
   margin-top:7px;
@@ -15,7 +15,7 @@
 
 .navbar-brand:hover {
   
-  background-image: url('LogoAnimation.gif')
+  background-image: image-url('LogoAnimation.gif')
 
 }
 
