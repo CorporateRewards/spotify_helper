@@ -9,5 +9,8 @@ Rails.application.routes.draw do
   get 'sign_in', to: 'pages#sign_in'
   get 'index', to: 'pages#index'
   get 'stats', to: 'stats#show'
-  get '/auth/spotify/callback', to: 'pages#spotify'
+  put 'play', to: 'tracks#play'
+  get 'play', to: 'tracks#play'
+  get 'spotify', to: 'pages#spotify'
+  get '/auth/spotify/callback', to: 'application#spotify'
 end

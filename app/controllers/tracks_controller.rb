@@ -27,4 +27,9 @@ class TracksController < ApplicationController
     redirect_to root_url
   end
 
+  def play
+    spotify_user.play_track("spotify:track:0bAM9qivrntXnHyklRRx39")
+    redirect_to root_url
+  end
+
 end
