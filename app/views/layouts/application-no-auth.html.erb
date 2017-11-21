@@ -53,7 +53,7 @@
       </div>
     </nav>
 
-    <div class=" theme-showcase" role="main">
+    <div class="container theme-showcase" role="main">
 
 
       <% if notice %>
@@ -67,23 +67,8 @@
       <div class="col-md-8">  
         <%= yield %>
       </div>
-      <div class="col-md-4">
-    <div id="currently_playing">
-        <h1>Currently Playing</h1>
-          <p><img src="<%= @currently_playing.album.images[0]['url'] %>" style="width:100%"></p>
-          <p>
-          <% @currently_playing.artists.each do |artist| %>
-            <%= artist.name %>
-          <% end %>
-           - 
-          <%= @currently_playing.name %> 
-          </p>
-
-    </div>
-      </div>
 
     </div> <!-- /container -->
-
 
 
     
