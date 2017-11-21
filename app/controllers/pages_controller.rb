@@ -1,14 +1,14 @@
 class PagesController < ApplicationController
 
   def index
-  	@playlist = playlist    
+    @playlist = playlist    
   end
 
-  def spotify
- 	session[:sp_user] = request.env['omniauth.auth']
-  	@spotify_user = spotify_user
-    redirect_to root_url
-  end
+  # def spotify
+  # session[:sp_user] = request.env['omniauth.auth']
+  #   @spotify_user = spotify_user
+  #   redirect_to root_url
+  # end
 
 
 end
