@@ -1,5 +1,5 @@
-<div class="search_container container">
-  <div class="col-md-8">
+<div class="">
+  <div class="">
     <form class="form-horizontal">
       <div class="form-group">
         <div class="col-sm-12">
@@ -26,20 +26,7 @@
         <% end %>
       </table>
     </div>
-    <div class="row">
-      <div class="col-md-4 sidebar">
-        <h1>Currently Playing</h1>
-          <p><img src="<%= @currently_playing.album.images[0]['url'] %>" style="width:100%"></p>
-          <p>
-          <% @currently_playing.artists.each do |artist| %>
-            <%= artist.name %>
-          <% end %>
-           - 
-          <%= @currently_playing.name %> 
-          </p>
-          <p><%= @released_date  %></p> 
-      </div>
+
     </div>
   </div>
-</div>
 
