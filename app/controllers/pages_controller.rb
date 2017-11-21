@@ -1,14 +1,10 @@
 class PagesController < ApplicationController
-
+layout 'application-no-auth'
+skip_before_filter :currently_playing
   def index
     @playlist = playlist    
   end
 
-  # def spotify
-  # session[:sp_user] = request.env['omniauth.auth']
-  #   @spotify_user = spotify_user
-  #   redirect_to root_url
-  # end
 
 
 end

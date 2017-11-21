@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   # before_action :authenticate_user!
 
-  before_filter :currently_playing
+  before_action :currently_playing
 
   def playlist
     @playlist = RSpotify::Playlist.find('crtechteam', '5esgCdY5baXWpIrPHs5ZYp')
@@ -21,9 +21,9 @@ class ApplicationController < ActionController::Base
   end
 
   def spotify_user
-    user_auth = SpotifyAuth.last
-    @userauth = user_auth.sp_user_hash
-    RSpotify::User.new(@userauth)
+    # user_auth = SpotifyAuth.last
+    # @userauth = user_auth.sp_user_hash
+    RSpotify::User.new(session[:sp_user])
   end
 
   def currently_playing
