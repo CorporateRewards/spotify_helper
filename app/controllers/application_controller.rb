@@ -29,4 +29,5 @@ class ApplicationController < ActionController::Base
   def currently_playing
       @currently_playing = spotify_user.currently_playing
   end
+
 end
