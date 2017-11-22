@@ -21,13 +21,21 @@ class ApplicationController < ActionController::Base
   end
 
   def spotify_user
+    if !SpotifyAuth.last
+      spotify_user = "not defined"
+    else
     # user_auth = SpotifyAuth.last
     # @userauth = user_auth.sp_user_hash
     RSpotify::User.new(session[:sp_user])
   end
+  end
 
   def currently_playing
+    if spotify_user == "not defined"
+      hello = "hello"
+    else
       @currently_playing = spotify_user.currently_playing
+    end
   end
 
 end
