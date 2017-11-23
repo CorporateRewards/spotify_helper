@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root to: 'pages#welcome'
+  root to: 'tracks#show'
   resource :search, only: [:show]
   resource :tracks do
     resource :votes
@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   get 'stats', to: 'stats#show'
   get 'spotify', to: 'pages#spotify'
   get '/auth/spotify/callback', to: 'application#spotify'
+  get 'welcome', to: 'pages#welcome'
 end

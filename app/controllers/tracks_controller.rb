@@ -11,7 +11,7 @@ class TracksController < ApplicationController
       track_id = Track.where(track_id: track[0].id).first
       track_id.votes.create(vote: params[:vote])
     end
-    redirect_to root_url
+    redirect_to tracks_url
   end
 
   def show
