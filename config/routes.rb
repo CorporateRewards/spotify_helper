@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   get 'stats', to: 'stats#show'
   get 'spotify', to: 'pages#spotify'
   get '/auth/spotify/callback', to: 'application#spotify'
+  get 'welcome', to: 'pages#welcome'
 end

@@ -68,6 +68,8 @@
         <%= yield %>
       </div>
       <div class="col-md-4">
+      <% if !@currently_playing.nil? %>
+
     <div id="currently_playing">
         <h1>Currently Playing</h1>
           <p><img src="<%= @currently_playing.album.images[0]['url'] %>" style="width:100%"></p>
@@ -80,7 +82,11 @@
           </p>
 
     </div>
+    <% else %>
+    <h1>Please log in to spotify</h1>
+    <% end %>
       </div>
+
 
     </div> <!-- /container -->
 
