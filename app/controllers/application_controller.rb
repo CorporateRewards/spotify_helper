@@ -25,27 +25,26 @@ class ApplicationController < ActionController::Base
       refresh_access
       user_auth = SpotifyAuth.last
       @userauth = user_auth.sp_user_hash
-      # RSpotify::User.new(session[:sp_user])
       RSpotify::User.new(@userauth)
     end
   end
 
   def refresh_access
     if SpotifyAuth.last
-    client_id = ENV["spotify_id"]
-    client_secret = ENV["spotify_secret"]
-    @baseuser = Base64.strict_encode64("#{client_id}:#{client_secret}")
-    @user_auth = SpotifyAuth.last
-    @ref_token = @user_auth.sp_user_hash["credentials"].refresh_token
+      client_id = ENV["spotify_id"]
+      client_secret = ENV["spotify_secret"]
+      @baseuser = Base64.strict_encode64("#{client_id}:#{client_secret}")
+      @user_auth = SpotifyAuth.last
+      @ref_token = @user_auth.sp_user_hash["credentials"].refresh_token
 
-    @urlstring_to_post = "https://accounts.spotify.com/api/token"
-    @result = HTTParty.post(@urlstring_to_post.to_str, 
-      :body => { :grant_type => "refresh_token", 
-                 :refresh_token => "AQCmB9aj_oeTmVkx7l5J44hWBUq_3DQIgN9SYTTWkkRGCowVUMelVIR4EKGbnKmr_zLjMpczQ7PmlfwMbe6i7VChih3xkmRnHmkHALQyFf5nfaWrY5DkITjwVpECIrNItyU"
+      @urlstring_to_post = "https://accounts.spotify.com/api/token"
+      @result = HTTParty.post(@urlstring_to_post.to_str, 
+        :body => { :grant_type => "refresh_token", 
+                 :refresh_token => @ref_token
                },
-      :headers => { 'Authorization' => 'Basic ODljNWFiYjA1YmQ0NDRlZGE3OThhZTJjMTVjY2I5MjE6N2I5YWJiMjNhZjhjNGRlM2E0NjQyZGE5MzcwN2M4MTU=' })
-    @user_auth.sp_user_hash["credentials"].token = @result["access_token"]
-    @user_auth.save
+        :headers => { 'Authorization' => 'Basic ODljNWFiYjA1YmQ0NDRlZGE3OThhZTJjMTVjY2I5MjE6N2I5YWJiMjNhZjhjNGRlM2E0NjQyZGE5MzcwN2M4MTU=' })
+      @user_auth.sp_user_hash["credentials"].token = @result["access_token"]
+      @user_auth.save
   end
   end
 
