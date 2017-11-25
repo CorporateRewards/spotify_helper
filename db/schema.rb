@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171120162431) do
+ActiveRecord::Schema.define(version: 20171125164433) do
 
   create_table "spotify_auths", force: :cascade do |t|
     t.text     "sp_user_hash"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20171120162431) do
     t.string   "track_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "uri"
+    t.text     "metadata"
   end
 
   create_table "users", force: :cascade do |t|
