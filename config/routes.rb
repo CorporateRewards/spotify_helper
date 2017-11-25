@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'index', to: 'pages#index'
   get 'stats', to: 'stats#show'
   get 'spotify', to: 'pages#spotify'
+  get 'update_playlist', to: 'tracks#update_playlist'
   get '/auth/spotify/callback', to: 'application#spotify'
   get 'welcome', to: 'pages#welcome'
 end

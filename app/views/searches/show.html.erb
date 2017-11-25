@@ -6,7 +6,7 @@
 		  <tr>
 		    <td><%= track.name %></td>
 			<td><%= track.artists.map(&:name).join(', ') %></td>
-			<td><%= link_to "add",tracks_path(uid: track.id, vote: 1),class:"btn btn-default", method: :post %></td>
+			<td><%= link_to "add",tracks_path(uid: track.id, vote: 1, uri: track.uri),class:"btn btn-default", method: :post %></td>
 		  </tr>
 		<% end %>
 	</table>

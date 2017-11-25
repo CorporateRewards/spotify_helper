@@ -1,5 +1,6 @@
 class Track < ApplicationRecord
   has_many :votes
+  serialize :metadata
 
   def num_up_votes
     self.votes.where(:vote => true).count
