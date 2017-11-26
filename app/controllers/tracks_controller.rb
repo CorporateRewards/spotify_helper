@@ -19,8 +19,9 @@ class TracksController < ApplicationController
   end
 
   def update_playlist
-    @tracks = Track.all.sort_by {|track| track.sum_total_votes}.pluck(:metadata).reverse
-    @tracks.delete_if {|x| x == nil }
+    @alltracks = Track.all.sort_by {|track| track.sum_total_votes}.pluck(:metadata).reverse
+    @alltracks.delete_if {|x| x == nil }
+    @tracks = @alltracks.first(100)
     if !@tracks.empty?
       @playlist = RSpotify::Playlist.find('crtechteam', '5esgCdY5baXWpIrPHs5ZYp')
       @playlist.replace_tracks!(@tracks.flatten)
