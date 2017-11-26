@@ -50,8 +50,14 @@ class ApplicationController < ActionController::Base
 
 
   def currently_playing
-    if !spotify_user.nil?
-      @currently_playing = spotify_user.currently_playing
+    begin
+      if !spotify_user.nil?
+        @currently_playing = spotify_user.currently_playing
+      else
+        @currently_playing = nil
+      end
+    rescue
+      @currently_playing = nil
     end
   end
 
