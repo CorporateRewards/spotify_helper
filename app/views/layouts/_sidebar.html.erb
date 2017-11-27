@@ -1,0 +1,18 @@
+<div class="col-md-4">
+  <div id="currently_playing">
+    <% if !@currently_playing.nil? %>        
+      <h1>Currently Playing</h1>
+      <p><img src="<%= @currently_playing.album.images[0]['url'] %>" style="width:100%"></p>
+      <p>
+      <% @currently_playing.artists.each do |artist| %>
+        <%= artist.name %>
+        - 
+        <%= @currently_playing.name %> 
+        </p>
+      <% end %>
+    <% else %>
+      <h1>We can't find the currently playing track</h1>
+      <p>Something's gone wrong and we can't find a currently playing track. Either the app isn't logged in to Spotify, or there isn't anything currently playing.</p>
+    <% end %>
+  </div>
+</div>

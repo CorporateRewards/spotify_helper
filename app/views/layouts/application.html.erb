@@ -10,89 +10,22 @@
   </head>
 
   <body data-action="<%= action_name %>" data-controller="<%= controller_path.gsub('/', '__') %>">
+    <%= render "layouts/navigation" %>
 
-
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-
-
-
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand hidden-sm hidden-md hidden-lg hidden-xl" href="/"></a>
+    <div class="container-fluid theme-showcase" role="main">
+      <%= render "layouts/errors" %>
+      <%= render "layouts/search" %>  
+      
+      <div class="row">
+        <div class="col-md-8">  
+            <%= yield %>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <a class="navbar-brand" href="/"></a>
-          <ul class="nav navbar-nav navbar-right">
-            
-            <li class="active"><a href="/">Home</a></li>
-            <li><%= link_to "Playlist", index_path %></li>
-            <li><%= link_to "Tracks", tracks_path %></li>
-            <li><%= link_to "Stats", stats_path %></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More<span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="/sign_in" class="navbar-link">Login with Spotify</a></li>
-                <% if user_signed_in? %>
-                <li><%= link_to "My Profile", edit_user_registration_path, method: :get, :class => 'navbar-link' %></li>
-                <li><%= link_to "Log out", destroy_user_session_path, method: :delete, :class => 'navbar-link' %></li>
-                <% else %>
-                <li><%= link_to "Sign Up", new_user_registration_path, method: :get, :class => 'navbar-link' %>
-                <li><%= link_to "Log In", new_user_session_path, method: :get, :class => 'navbar-link' %>
-                <% end %>
-              </ul>
-            </li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
 
-    <div class=" theme-showcase" role="main">
-
-
-      <% if notice %>
-        <p class="alert alert-success"><%= notice %></p>
-      <% end %>
-      <% if alert %>
-        <p class="alert alert-danger"><%= alert %></p>
-      <% end %>
-        
-
-      <div class="col-md-8">  
-        <%= yield %>
-      </div>
-      <div class="col-md-4">
-      <% if !@currently_playing.nil? %>
-
-    <div id="currently_playing">
-        <h1>Currently Playing</h1>
-          <p><img src="<%= @currently_playing.album.images[0]['url'] %>" style="width:100%"></p>
-          <p>
-          <% @currently_playing.artists.each do |artist| %>
-            <%= artist.name %>
-          <% end %>
-           - 
-          <%= @currently_playing.name %> 
-          </p>
-
-    </div>
-    <% else %>
-    <h1>We can't find the currently playing track</h1>
-    <p>Something's gone wrong and we can't find a currently playing track. Either the app isn't logged in to Spotify, or there isn't anything currently playing.</p>
-    <% end %>
+        <div class="col-md4">
+            <%= render "layouts/sidebar" %>
+        </div>
       </div>
 
-
-    </div> <!-- /container -->
-
-
-
-    
+    </div> <!-- /container -->    
   </body>
 </html>
