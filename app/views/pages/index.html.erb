@@ -1,25 +1,9 @@
 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
-<h2>Current Spotify Playlist</h2>
+<h2>The currently playing spotify playlist</h2>
 
 <div class="">
   <div>
-      <form class="form-horizontal">
-        <div class="form-group">
-          
-          <div class="col-sm-12">
-            <input type="text" class="form-control" id="search" placeholder="Type Title/Artist/Album">
-          </div>
-        </div>
-      </form>
-
-      
-    <div id="results">
-      
-    </div>
-
-
-
   	<table class="table">
   	  <th>Track name</th><th>Artist</th><th>Vote</th><th>Actions</th>
   	    <% @playlist.tracks.each do |track| %>
@@ -33,9 +17,6 @@
         <% end %>
  		</table>
   </div>
-
-
-
 </div>
 
 
