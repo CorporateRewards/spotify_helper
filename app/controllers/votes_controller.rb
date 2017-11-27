@@ -11,7 +11,7 @@ class VotesController < ApplicationController
             db_track.votes.create(vote: params[:vote])
         else
             track = RSpotify::Track.find([params[:uid]])
-            add_track = Track.create(:name => track[0].name, :artist => track[0].artists[0].name, :track_id => track[0].id)
+            add_track = Track.create(:name => track[0].name, :artist => track[0].artists[0].name, :track_id => track[0].id, :uri =>track[0].uri, :metadata => track)
             track_id = Track.where(track_id: params[:uid]).first
             track_id.votes.create(vote: params[:vote])
         end

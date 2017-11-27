@@ -3,8 +3,9 @@ class PagesController < ApplicationController
 #skip_before_action :currently_playing
 # skip_before_action :spotify, 
 
+
   def index
-    @playlist = playlist    
+    @playlist = playlist  
   end
 
 

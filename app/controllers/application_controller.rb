@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   require 'base64'
   protect_from_forgery with: :exception
   before_action :currently_playing, except: [:spotify]
+  before_action :playlist
 
   def playlist
     @playlist = RSpotify::Playlist.find('crtechteam', '5esgCdY5baXWpIrPHs5ZYp')

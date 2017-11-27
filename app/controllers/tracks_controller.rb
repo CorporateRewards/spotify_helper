@@ -23,8 +23,8 @@ class TracksController < ApplicationController
     @alltracks.delete_if {|x| x == nil }
     @tracks = @alltracks.first(100)
     if !@tracks.empty?
-      @playlist = RSpotify::Playlist.find('crtechteam', '5esgCdY5baXWpIrPHs5ZYp')
-      @playlist.replace_tracks!(@tracks.flatten)
+      @playlist_to_update = RSpotify::Playlist.find('crtechteam', '5esgCdY5baXWpIrPHs5ZYp')
+      @playlist_to_update.replace_tracks!(@tracks.flatten)
     end
     redirect_to root_url
   end
