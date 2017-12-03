@@ -3,7 +3,6 @@ class GetTrackMetadataWorker
 
   def perform
     tracks = Track.where(:metadata => nil).pluck(:track_id)
-
     tracks.each do |track_id|
       puts track_id
       spotify_track = RSpotify::Track.find(track_id)
