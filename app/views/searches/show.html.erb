@@ -1,12 +1,12 @@
 <h1>Results</h1>
 
-	<table class="table">
-	  <th>Track name</th><th>Artist</th><th>Actions</th>
-	    <% @tracks.each do |track| %>
-		  <tr>
-		    <td><%= track.name %></td>
-			<td><%= track.artists.map(&:name).join(', ') %></td>
-			<td><%= link_to "add",tracks_path(uid: track.id, vote: 1, uri: track.uri),class:"btn btn-default", method: :post %></td>
-		  </tr>
-		<% end %>
-	</table>
+  <table class="table">
+    <th>Track name</th><th>Artist</th><th>Actions</th>
+      <% @tracks.each do |track| %>
+      <tr>
+        <td><%= track.name %></td>
+      <td><%= track.artists.map(&:name).join(', ') %></td>
+      <td><%= link_to "add",tracks_path(uid: track.id, vote: 1, uri: track.uri),class:"btn btn-default", method: :post %></td>
+      </tr>
+    <% end %>
+  </table>

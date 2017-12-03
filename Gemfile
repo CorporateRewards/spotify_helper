@@ -39,6 +39,11 @@ gem 'figaro'
 gem 'bootstrap-sass'
 
 gem 'devise'
+gem 'redis'
+gem 'redis-namespace'
+gem 'redis-rails'
+gem 'redis-rack-cache'
+gem 'sidekiq'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
