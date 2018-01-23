@@ -14,17 +14,20 @@
 
     <div class="container-fluid theme-showcase" role="main">
       <%= render "layouts/errors" %>
+      <% if current_user %>
       <%= render "layouts/search" %>  
-      
+      <% end %>
+
       <div class="row">
         <div class="col-md-8">  
             <%= yield %>
         </div>
-
+      <% if current_user %>
         <div class="col-md4">
             <%= render "layouts/sidebar" %>
         </div>
       </div>
+      <% end %>
 
     </div> <!-- /container -->    
   </body>
