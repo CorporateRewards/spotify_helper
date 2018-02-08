@@ -18,4 +18,4 @@
 //= require_tree ./tuneUp/common
 //= require_tree ./tuneUp
 //= require tuneUp-exec
-
+//= require google_analytics
