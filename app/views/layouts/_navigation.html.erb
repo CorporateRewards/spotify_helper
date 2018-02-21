@@ -15,7 +15,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           <a class="navbar-brand" href="/"></a>
           <ul class="nav navbar-nav navbar-right">
-            
+            <li class="search-nav-container"><%= render "layouts/search" %></li>
             <li class="active"><a href="/">Home</a></li>
             <li><%= link_to "Playlist", index_path %></li>
             <li><%= link_to "Tracks", tracks_path %></li>
@@ -35,6 +35,5 @@
             </li>
           </ul>
         </div><!--/.nav-collapse -->
-        <%= render "layouts/search" %> 
       </div>
     </nav>
