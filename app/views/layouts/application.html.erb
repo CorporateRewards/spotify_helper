@@ -3,6 +3,7 @@
   <head>
     <title>TuneUp</title>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -15,7 +16,7 @@
     <div class="container-fluid theme-showcase" role="main">
       <%= render "layouts/errors" %>
       <% if current_user %>
-      <%= render "layouts/search" %>  
+      <%= render "layouts/results" %>  
       <% end %>
 
       <div class="row">
