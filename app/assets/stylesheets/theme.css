@@ -121,3 +121,8 @@ input {
   text-align: right;
   padding-right: 10%;
 }
+
+.search-nav-container {
+  position: relative;
+  top: 24px;
+}
