@@ -58,7 +58,7 @@ label {
   width:100%;
   font-weight: normal;
 }
-label:before {
+.search-container label:before {
   position: absolute;
   right: 10px;
   top: 0;
@@ -98,6 +98,32 @@ input {
 
 .vote-btn {
   display: inherit;
+}
+
+/* Edit profile form */
+
+.edit-form-container {
+  background-color: #fafafa;
+  padding: 20px;
+}
+
+.edit-form-container .field {
+  padding: 15px 0;
+  font-size: 20px;
+}
+
+.edit-form-container .field input{
+  width: 90%;
+  padding: 10px;
+}
+
+.edit-form-container .col-md-6 {
+  padding: 0 !important;
+}
+
+.edit-form-container .actions {
+  text-align: right;
+  padding-right: 10%;
 }
 
 .search-nav-container {
