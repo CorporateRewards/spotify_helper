@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171125164433) do
+ActiveRecord::Schema.define(version: 20180316121636) do
 
   create_table "spotify_auths", force: :cascade do |t|
     t.text     "sp_user_hash"
@@ -52,7 +52,9 @@ ActiveRecord::Schema.define(version: 20171125164433) do
     t.boolean  "vote"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
     t.index ["track_id"], name: "index_votes_on_track_id"
+    t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
 end
