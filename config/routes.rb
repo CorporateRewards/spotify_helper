@@ -13,4 +13,7 @@ Rails.application.routes.draw do
   get 'update_playlist', to: 'tracks#update_playlist'
   get '/auth/spotify/callback', to: 'application#spotify'
   get 'welcome', to: 'pages#welcome'
+  # get 'nicknames', to: 'nicknames#show'
+  resource :nicknames
+
 end

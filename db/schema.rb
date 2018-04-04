@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180316121636) do
+ActiveRecord::Schema.define(version: 20180321123300) do
+
+  create_table "nicknames", force: :cascade do |t|
+    t.string   "nickname"
+    t.integer  "user_id"
+    t.datetime "chosen_at"
+    t.boolean  "hidden"
+    t.index ["user_id"], name: "index_nicknames_on_user_id"
+  end
 
   create_table "spotify_auths", force: :cascade do |t|
     t.text     "sp_user_hash"
@@ -43,7 +51,9 @@ ActiveRecord::Schema.define(version: 20180316121636) do
     t.datetime "updated_at",                          null: false
     t.string   "first_name"
     t.string   "last_name"
+    t.integer  "nickname_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["nickname_id"], name: "index_users_on_nickname_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

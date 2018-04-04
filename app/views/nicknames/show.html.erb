@@ -1,0 +1,7 @@
+<h1>Nicknames</h1>
+
+<% if @nicknames %>
+  <% @nicknames.each do |nn| %>
+    <p> <%= nn.nickname %></p> 
+  <% end %>
+<% end %>
