@@ -1,3 +1,6 @@
+<%= @nickname.errors.full_messages.first if @nickname.errors.any? %>
+
+<hr/>
 <%= form_for @nickname do |f| %>
 
 <p>
