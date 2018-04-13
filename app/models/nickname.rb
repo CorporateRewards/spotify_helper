@@ -7,17 +7,18 @@ class Nickname < ApplicationRecord
   	too_short:"is too short! Minimum 2 characters please! 1 character can't be a nickname come on",
   	too_long:"is too long. 20 characters should be enough."
   }
-  @exclusions = [
-  	'god',
-  	'omnipotent',
-  	'omniscient',
-  	'nazi',
-  	'hitler'
-  ]
-  @exclusions_for_regex = Regexp.new '(' + @exclusions.join("|").to_s + ')'
-  validates_format_of :nickname,{
-  	without: @exclusions_for_regex,
-  	message: "do not think you are %{value}"
-  }
+
+  # @exclusions = ['nazi','hitler']
+  # @exclusions_for_regex = Regexp.new '(' + @exclusions.join("|").to_s + ')'
+  # validates_format_of :nickname,{
+  # 	without: @exclusions_for_regex,
+  # 	message: "do not think you are %{value}"
+  # }
+
+  validates_exclusion_of :nickname, in: :nickname_exclusions, message:"you don't belong here!"
+  
+  def nickname_exclusions
+  	['admin','god','omnipotent','omniscient','nazi','hitler']
+  end
 
 end
