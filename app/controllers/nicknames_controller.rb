@@ -1,6 +1,4 @@
 class NicknamesController < ApplicationController
-
-
   def show
     @nicknames = Nickname.all
   end
