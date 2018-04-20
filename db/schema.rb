@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180321123300) do
+ActiveRecord::Schema.define(version: 20180413175359) do
+
+  create_table "banned_phrases", force: :cascade do |t|
+    t.string "phrase"
+  end
 
   create_table "nicknames", force: :cascade do |t|
     t.string   "nickname"

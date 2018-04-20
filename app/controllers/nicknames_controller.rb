@@ -1,6 +1,4 @@
 class NicknamesController < ApplicationController
-
-
   def show
     @nicknames = Nickname.all
   end
@@ -14,7 +12,7 @@ class NicknamesController < ApplicationController
     @nickname.user = current_user
     if @nickname.save
       flash.notice = "Nickname created!"
-      render :show
+      redirect_to nicknames_path
     else
       flash.now[:error] = "Sorry, there was a problem creating your nickname"
       render :new
