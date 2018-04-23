@@ -14,6 +14,16 @@
       <%= f.label :last_name %><br />
       <%= f.text_field :last_name, autofocus: true %>
     </div>
+  
+
+    <div class="field">
+
+    <%= f.fields_for :nickname, (f.object.nickname || f.object.build_nickname) do |n| %>
+      <%= n.label :nickname %><br />
+      <%= n.text_field :nickname, autofocus: true %>
+
+     <% end %>
+    </div>
     
     <div class="field">
       <%= f.label :email %><br />

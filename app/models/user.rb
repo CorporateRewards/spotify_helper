@@ -4,5 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :votes
-  has_one :nickname
+  has_one :nickname, :dependent => :nullify
+  accepts_nested_attributes_for :nickname
+
 end
