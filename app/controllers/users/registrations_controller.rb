@@ -9,6 +9,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+  # def new
+  #   build_resource({})
+  #   resource.build_nickname
+  #   respond_with self.resource
+  # end
+
   # POST /resource
   # def create
   #   super
@@ -21,8 +27,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   # def update
-  #   @user = current_user
-  #   redirect_to user_path
+  #   super
   # end
 
   # DELETE /resource
@@ -43,12 +48,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :nickname])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, nickname_attributes: [:nickname]])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :nickname])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, nickname_attributes: [:nickname]])
   end
 
   # The path used after sign up.
@@ -61,4 +66,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
+  def after_update_path_for(resource)
+    edit_user_registration_path(resource)
+  end
 end
+

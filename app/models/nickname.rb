@@ -5,7 +5,7 @@ class Nickname < ApplicationRecord
     return /\b(#{@exclusions})\b/im
   end
 
-  belongs_to :user
+  belongs_to :user, optional: true
   validates :nickname, 
     presence: true, 
     uniqueness: true, 
