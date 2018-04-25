@@ -16,6 +16,6 @@ class Nickname < ApplicationRecord
     },
     format: { 
       without: nickname_exclusions, 
-      message: "You cannot be %{value}" 
+      message: "Your nickname cannot be %{value}" 
     }
 end

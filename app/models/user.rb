@@ -4,7 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :votes
-  has_one :nickname, :dependent => :nullify
-  accepts_nested_attributes_for :nickname
-
+  has_one :nickname, :dependent => :destroy
+  accepts_nested_attributes_for(:nickname, allow_destroy: true)
 end
