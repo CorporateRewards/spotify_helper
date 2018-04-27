@@ -1,6 +1,9 @@
 <div class="">
   <div class="">
     <%= link_to "Generate playlist",update_playlist_path,class:"btn btn-default" %>
+    <%= link_to "Play playlist",play_tracks_path,class:"btn btn-default" %>
+    <%= link_to "Pause playlist",pause_tracks_path,class:"btn btn-default" %>
+
       <table class="table">
         <th>Song</th><th>Artist</th><th>Tune Ups</th><th>Pipe Downs</th><th>Vote</th><th>Actions</th>
         <% @playlist.each do |track| %>

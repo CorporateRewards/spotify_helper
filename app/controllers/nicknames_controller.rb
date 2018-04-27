@@ -9,7 +9,7 @@ class NicknamesController < ApplicationController
 
   def create
     @nickname = Nickname.new(nickname_params)
-    @nickname.user = current_user
+    # @nickname.user = current_user
     if @nickname.save
       flash.notice = "Nickname created!"
       redirect_to nicknames_path

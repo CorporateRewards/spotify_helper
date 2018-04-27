@@ -28,6 +28,7 @@ class TracksController < ApplicationController
     redirect_to root_url
   end
 
+
   def show
     @playlist = Track.all.sort_by {|track| track.sum_total_votes }.reverse
   end
@@ -49,5 +50,19 @@ class TracksController < ApplicationController
     redirect_to root_url
   end
 
+  def play_tracks
+    user = RSpotify::User.find('crtechteam')
+    player = user.player
+    player.play()
+    redirect_to root_url
+  end
+
+
+  def pause_tracks
+    user = RSpotify::User.find('crtechteam')
+    player = user.player
+    player.pause()
+    redirect_to root_url
+  end
 
 end

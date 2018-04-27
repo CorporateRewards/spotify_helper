@@ -15,4 +15,5 @@ class Track < ApplicationRecord
     self.votes.where(:vote => true).count - self.votes.where(:vote => false).count
   end
 
+
 end
