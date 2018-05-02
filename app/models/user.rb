@@ -6,5 +6,4 @@ class User < ApplicationRecord
   has_many :votes
   has_one :nickname, :dependent => :nullify
   accepts_nested_attributes_for :nickname
-
 end
