@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
 
   def playlist
     @playlist = RSpotify::Playlist.find('crtechteam', '5esgCdY5baXWpIrPHs5ZYp')
+
   end
 
 
@@ -39,9 +40,10 @@ class ApplicationController < ActionController::Base
 
       @urlstring_to_post = "https://accounts.spotify.com/api/token"
       @result = HTTParty.post(@urlstring_to_post.to_str, 
-        :body => { :grant_type => "refresh_token", 
-                 :refresh_token => @ref_token
-               },
+        :body => { 
+          :grant_type => "refresh_token", 
+          :refresh_token => @ref_token
+        },
         :headers => { 'Authorization' => 'Basic ODljNWFiYjA1YmQ0NDRlZGE3OThhZTJjMTVjY2I5MjE6N2I5YWJiMjNhZjhjNGRlM2E0NjQyZGE5MzcwN2M4MTU=' })
       @user_auth.sp_user_hash["credentials"].token = @result["access_token"]
       @user_auth.save
@@ -52,7 +54,8 @@ class ApplicationController < ActionController::Base
   def currently_playing
     begin
       if !spotify_user.nil?
-        @currently_playing = spotify_user.currently_playing
+        @player = spotify_user.player
+        @currently_playing = @player.currently_playing
       else
         @currently_playing = nil
       end
