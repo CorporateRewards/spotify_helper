@@ -4,12 +4,15 @@
 		<%= pluralize(@nickname.errors.count, "error") %> prevented this nickname from being saved:
 	</h2>
 	<ul>
-		<% @nickname.errors.full_messages.each do |message| %>
-			<li><%= message %></li>
+		<% @nickname.errors.messages.values.each do |message| %>
+	        <% message.each do |m| %>
+	          <li><%= m %></li>
+	        <%end %>
 		<% end %>
 	</ul>
 	</div>
 <% end %>
+
 <%= form_for @nickname do |f| %>
 
 <p>
