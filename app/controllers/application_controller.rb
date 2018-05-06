@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
 
   def playlist
     @playlist = RSpotify::Playlist.find('crtechteam', '5esgCdY5baXWpIrPHs5ZYp')
+
   end
 
 
@@ -53,7 +54,8 @@ class ApplicationController < ActionController::Base
   def currently_playing
     begin
       if !spotify_user.nil?
-        @currently_playing = spotify_user.currently_playing
+        @player = spotify_user.player
+        @currently_playing = @player.currently_playing
       else
         @currently_playing = nil
       end

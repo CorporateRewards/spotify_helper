@@ -16,4 +16,7 @@ Rails.application.routes.draw do
   # get 'nicknames', to: 'nicknames#show'
   resource :nicknames
 
+  get 'play_tracks', to: 'tracks#play_tracks'
+  get 'pause_tracks', to: 'tracks#pause_tracks'
+
 end
