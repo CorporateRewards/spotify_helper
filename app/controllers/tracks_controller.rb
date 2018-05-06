@@ -35,6 +35,7 @@ class TracksController < ApplicationController
 
   def show
     @playlist = Track.sorted_by_most_votes
+    @volume = player.instance_variable_get(:@device).instance_variable_get(:@volume_percent)
   end
 
   def update_playlist
@@ -87,8 +88,15 @@ class TracksController < ApplicationController
     redirect_to root_url
   end
 
-  def volume_control(volume)
-    player.volume(volume)
+  def volume_control
+    volume = player.instance_variable_get(:@device).instance_variable_get(:@volume_percent).to_i
+    if params[:change] == "1"
+      volume += 10
+      player.volume(volume)
+    else
+      volume -= 10
+      player.volume(volume)
+    end
   end 
 
 end

@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get 'play_individual_track', to: 'tracks#play_individual_track'
   get 'next_track', to: 'tracks#next_track'
   get 'previous_track', to: 'tracks#previous_track'
+  get 'volume_control', to: 'tracks#volume_control'
 
 
 end
