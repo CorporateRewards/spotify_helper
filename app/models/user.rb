@@ -7,3 +7,4 @@ class User < ApplicationRecord
   has_one :nickname, :dependent => :destroy
   accepts_nested_attributes_for(:nickname, allow_destroy: true)
 end
+
