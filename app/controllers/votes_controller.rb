@@ -2,7 +2,8 @@ class VotesController < ApplicationController
 
   def new
     track = Track.find_or_create_by(id: params[:dbid])
-    vote = track.votes.find_or_create_by(user: current_user)
+    user = current_user ? current_user : User.find_by(email: current_admin.email)
+    vote = track.votes.find_or_create_by(user: user)
     vote.update(vote: params[:vote])
     redirect_to root_url
   end
