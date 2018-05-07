@@ -1,5 +1,6 @@
 class TracksController < ApplicationController
 
+  before_action :refresh_access, only: [:next_track, :previous_track]
   def user
     user ||= RSpotify::User.find('crtechteam')
 
@@ -36,6 +37,11 @@ class TracksController < ApplicationController
   def show
     @playlist = Track.sorted_by_most_votes
     @volume = player.instance_variable_get(:@device).instance_variable_get(:@volume_percent)
+    @user_auth
+  end
+
+  def track_details
+    @track = RSpotify::Track.find([params[:track]])
   end
 
   def update_playlist
@@ -76,6 +82,7 @@ class TracksController < ApplicationController
       :body => { 
       },
       :headers => { "Authorization" => "Authorization: Bearer #{user_auth}" })
+
     redirect_to root_url
   end
 

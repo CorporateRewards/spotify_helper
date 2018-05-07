@@ -1,4 +1,13 @@
 <div class="col-md-4">
+  <% if admin_signed_in? %>
+    <%= link_to "Generate playlist",update_playlist_path,class:"btn btn-default", remote: true  %>
+    <%= link_to "Play playlist",play_tracks_path,class:"btn btn-default", remote: true  %>
+    <%= link_to "Pause playlist",pause_tracks_path,class:"btn btn-default", remote: true  %>
+    <%= link_to "Next track",next_track_path,class:"btn btn-default", remote: true  %>
+    <%= link_to "Previous track",previous_track_path,class:"btn btn-default", remote: true  %>
+    <%= link_to "Volume up",volume_control_path(change: 1),class:"btn btn-default", remote: true %>
+    <%= link_to "Volume down",volume_control_path(change: -1),class:"btn btn-default", remote: true %>
+  <% end %>
   <div id="currently_playing">
     <% if !@currently_playing.nil? %>        
       <h1>Currently Playing</h1>
