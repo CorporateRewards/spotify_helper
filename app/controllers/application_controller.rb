@@ -8,8 +8,10 @@ class ApplicationController < ActionController::Base
     @playlist = RSpotify::Playlist.find('crtechteam', '5esgCdY5baXWpIrPHs5ZYp')
   end
 
-  def authenticate_user!
-    return if admin_signed_in?
+  def authenticate_user!(*args)
+    if admin_signed_in?
+      return
+    end
     super
   end
 

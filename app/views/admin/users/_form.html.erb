@@ -1,0 +1,38 @@
+
+<% if @user %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this file from being uploaded:</h2>
+   
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="row">
+  <div class="col-md-12">
+
+<%= form_for @user, :url => admin_users_path do |f| %>
+    <p>
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+    </p>
+        <p>
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+    </p>
+      <p>
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+  
+<% end %>
+  </div>
+</div>

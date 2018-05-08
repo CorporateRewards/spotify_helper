@@ -27,5 +27,7 @@ Rails.application.routes.draw do
   get 'previous_track', to: 'tracks#previous_track'
   get 'volume_control', to: 'tracks#volume_control'
   get 'track_details', to: 'tracks#track_details'
+  get 'device_list', to: 'tracks#device_list'
+
 
 end

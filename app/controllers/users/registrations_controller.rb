@@ -4,6 +4,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params
 
+
   # GET /resource/sign_up
   # def new
   #   super
@@ -44,11 +45,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, nickname_attributes: [:nickname]])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:skip_password_validation, :first_name, :last_name, nickname_attributes: [:nickname]])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
