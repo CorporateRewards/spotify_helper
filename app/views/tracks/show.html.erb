@@ -1,5 +1,5 @@
 <div class="">
-  <div class="">
+  <div id="tracks-table" class="">
       <table class="table table-hover">
         <th>Song</th><th>Artist</th><th>Tune Ups</th><th>Pipe Downs</th><th>Vote</th><th>Actions</th>
         <% @playlist.each do |track| %>
@@ -14,7 +14,7 @@
               <%= link_to "Play",play_individual_track_path(track: track.uri),class:"btn btn-default", remote: true %>
               <%= link_to "Details",track_details_path(track: track.track_id),class:"btn btn-default" %>
               <% if admin_signed_in? %>
-                <%= link_to image_tag("remove.png", width: "20px"),tracks_votes_path(dbid: track.id),class:"", method: :delete %>
+                <%= link_to image_tag("remove.png"),tracks_votes_path(dbid: track.id),class:"", method: :delete %>
               <% end %>
           </td>
         </tr>
