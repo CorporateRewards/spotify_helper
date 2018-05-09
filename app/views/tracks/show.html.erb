@@ -1,8 +1,6 @@
 <div class="">
-          <td><%= link_to "View devices", device_list_path %> </td>           
-
   <div class="">
-      <table class="table">
+      <table class="table table-hover">
         <th>Song</th><th>Artist</th><th>Tune Ups</th><th>Pipe Downs</th><th>Vote</th><th>Actions</th>
         <% @playlist.each do |track| %>
         <tr>

@@ -39,18 +39,16 @@ body {
 }
 
 
-
 table tr {
-
-  background-color: #d3d3d3;
+  /*background-color: #d3d3d3;*/
+  background-color: #ffffff;
 
 }
 
 table th {
-
   color: white;
-  background-color: #999999;
-
+  /*background-color: #999999;*/
+  background-color: #fbaf3a;
 }
 
 label {
