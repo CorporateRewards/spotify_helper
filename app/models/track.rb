@@ -21,12 +21,14 @@ class Track < ApplicationRecord
 
   def self.made_the_playlist
     # Get the top voted tracks
-    @votedtracks = Track.all.where.not(metadata: nil).sort_by {|track| track.sum_total_votes}.pluck(:metadata).reverse.first(10)
+    @votedtracks = Track.all.where.not(metadata: nil).where.not('created_at >= ?', 2.days.ago).sort_by {|track| track.sum_total_votes}.pluck(:metadata).reverse.first(80)
 
     # Get new tracks added in the last 2 days
     @newtracks = Track.all.where('created_at >= ?', 2.days.ago).pluck(:metadata)
 
     # Return the top voted tracks and the new tracks
-    @votedtracks + @newtracks
+    @new_playlist = @votedtracks + @newtracks
+
+
   end
 end

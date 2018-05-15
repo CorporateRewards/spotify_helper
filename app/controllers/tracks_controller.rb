@@ -1,5 +1,6 @@
 class TracksController < ApplicationController
 
+  before_action :refresh_access, only: [:next_track, :previous_track, :device_list, :play_individual_track]
   def user
     user ||= RSpotify::User.find('crtechteam')
 
@@ -28,7 +29,8 @@ class TracksController < ApplicationController
       uri: spotify_track[0].uri, 
       metadata: spotify_track
     )
-    track.votes.create(vote: params[:vote], user: current_user)
+    user = current_user ? current_user : User.find_by(email: current_admin.email)
+    track.votes.create(vote: params[:vote], user: user)
     redirect_to root_url
   end
 
@@ -36,22 +38,46 @@ class TracksController < ApplicationController
   def show
     @playlist = Track.sorted_by_most_votes
     @volume = player.instance_variable_get(:@device).instance_variable_get(:@volume_percent)
+    @user_auth
+  end
+
+  def track_details
+    @track = RSpotify::Track.find([params[:track]])
   end
 
   def update_playlist
     @alltracks = Track.made_the_playlist
-
     if !@alltracks.empty?
-      @playlist = RSpotify::Playlist.find('crtechteam', '5esgCdY5baXWpIrPHs5ZYp')
-      @playlist.replace_tracks!(@alltracks.flatten)
+      if @alltracks.length < 100
+        @playlist = RSpotify::Playlist.find('crtechteam', '5esgCdY5baXWpIrPHs5ZYp')
+        @playlist.replace_tracks!(@alltracks.flatten)
+      else
+        @first_100_tracks = @alltracks.first(100)
+        @playlist = RSpotify::Playlist.find('crtechteam', '5esgCdY5baXWpIrPHs5ZYp')
+        @playlist.replace_tracks!(@first_100_tracks.flatten)
+        length = @alltracks.length - 100
+        @additional = @alltracks.last(length)
+
+        @additional.each do |t|
+          @playlist.add_tracks!(t)          
+        end
     end
-    redirect_to root_url
+      redirect_to root_url
+    end
   end
 
   def destroy
     track = RSpotify::Track.find([params[:uid]])
     playlist.remove_tracks!(track)
     redirect_to root_url
+  end
+
+  def device_list
+    @urlstring_to_post = "https://api.spotify.com/v1/me/player/devices"
+    @result = HTTParty.get(@urlstring_to_post.to_str, 
+      :body => { 
+      },
+      :headers => { "Authorization" => "Authorization: Bearer #{user_auth}" })
   end
 
   def play_tracks
@@ -66,7 +92,7 @@ class TracksController < ApplicationController
   end
 
   def play_individual_track
-    player.play_track(nil, params[:track])
+    player.play_track(params[:track])
     redirect_to root_url
   end
 
@@ -76,6 +102,7 @@ class TracksController < ApplicationController
       :body => { 
       },
       :headers => { "Authorization" => "Authorization: Bearer #{user_auth}" })
+
     redirect_to root_url
   end
 

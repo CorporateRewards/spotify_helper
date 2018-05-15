@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => { registrations: 'users/registrations' }
+  devise_for :users, :controllers => { registrations: 'users/registrations', sessions: 'users/sessions'}
+  devise_for :admins, :controllers => { sessions: 'admins/sessions'}
+
+  namespace :admin do
+    resources :users
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'tracks#show'
   resource :search, only: [:show]
@@ -21,6 +26,8 @@ Rails.application.routes.draw do
   get 'next_track', to: 'tracks#next_track'
   get 'previous_track', to: 'tracks#previous_track'
   get 'volume_control', to: 'tracks#volume_control'
+  get 'track_details', to: 'tracks#track_details'
+  get 'device_list', to: 'tracks#device_list'
 
 
 end

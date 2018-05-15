@@ -1,15 +1,34 @@
 <div class="col-md-4">
+  <% if admin_signed_in? %>
+    <%= link_to "Generate playlist",update_playlist_path,class:"btn btn-default", remote: true  %>
+    <%= link_to "Play playlist",play_tracks_path,class:"btn btn-default", remote: true  %>
+    <%= link_to "Pause playlist",pause_tracks_path,class:"btn btn-default", remote: true  %>
+    <%= link_to "Next track",next_track_path,class:"btn btn-default", remote: true  %>
+    <%= link_to "Previous track",previous_track_path,class:"btn btn-default", remote: true  %>
+    <%= link_to "Volume up",volume_control_path(change: 1),class:"btn btn-default", remote: true %>
+    <%= link_to "Volume down",volume_control_path(change: -1),class:"btn btn-default", remote: true %>
+  <% end %>
   <div id="currently_playing">
     <% if !@currently_playing.nil? %>        
       <h1>Currently Playing</h1>
       <p><img src="<%= @currently_playing.album.images[0]['url'] %>" style="width:100%"></p>
-      <p>
-      <% @currently_playing.artists.each do |artist| %>
+      <div id="track-info">
+        <h4>Artist(s)</h4>
+        <% @currently_playing.artists.each do |artist| %>
+        <p>
         <%= artist.name %>
-        - 
-        <%= @currently_playing.name %> 
         </p>
       <% end %>
+        <h4>Track name</h4>
+        <%= @currently_playing.name %> 
+        
+        <h4>Album name</h4>
+        <%= @currently_playing.album.name %> 
+
+        <h4>Album release date</h4>
+        <%= @currently_playing.album.release_date %> 
+
+      </div>
     <% else %>
       <h1>We can't find the currently playing track</h1>
       <p>Something's gone wrong and we can't find a currently playing track. Either the app isn't logged in to Spotify, or there isn't anything currently playing.</p>

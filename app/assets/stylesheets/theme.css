@@ -38,19 +38,34 @@ body {
 
 }
 
-
-
-table tr {
-
-  background-color: #d3d3d3;
-
+#tracks-table tr {
+  /*background-color: #d3d3d3;*/
+  font-size: 12px;
 }
 
+#tracks-table td {
+  /*background-color: #d3d3d3;*/
+  max-width: 250px;
+  overflow-wrap: normal;
+}
+
+table tr .btn {
+  /*backg bround-color: #d3d3d3;*/
+  background-color: #ffffff;
+  font-size: 10px;
+}
+
+
+table tr img {
+  /*background-color: #d3d3d3;*/
+  width: 15px;
+}
+
+
 table th {
-
   color: white;
-  background-color: #999999;
-
+  /*background-color: #999999;*/
+  background-color: #fbaf3a;
 }
 
 label {
@@ -129,4 +144,14 @@ input {
 .search-nav-container {
   position: relative;
   top: 24px;
+}
+
+#track-info {
+  padding: 10px;
+
+}
+
+#track-info h4 {
+  border: 1px solid #fbaf3a;
+  text-align: center;
 }

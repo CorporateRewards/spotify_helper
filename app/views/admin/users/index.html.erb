@@ -1,0 +1,24 @@
+<div class="">
+  <td><%= link_to "Add user", new_admin_user_path %> </td>           
+  <div class="">
+      <table class="table">
+        <th>First name</th><th>Last name</th><th>Nickname</th><th>Email</th><th>View user</th>
+        <% @users.each do |u| %>
+        <tr>
+          <td><%= u.first_name %></td>
+          <td><%= u.last_name %></td>
+          <td>
+          <% if u.nickname != nil %>
+            <%= u.nickname.nickname %>
+          <% end %>
+          </td>
+          <td><%= u.email %></td> 
+          <td>
+              <%= link_to "View user", admin_user_path(u) %> 
+              <%= link_to "Edit user", edit_admin_user_path(u) %>
+          </td>           
+        </tr>
+        <% end %>
+      </table>
+    </div>
+</div>

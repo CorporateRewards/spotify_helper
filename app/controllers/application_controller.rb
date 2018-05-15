@@ -3,11 +3,16 @@ class ApplicationController < ActionController::Base
   require 'base64'
   protect_from_forgery with: :exception
   before_action :authenticate_user!, :currently_playing
-  # , except: [:spotify]
 
   def playlist
     @playlist = RSpotify::Playlist.find('crtechteam', '5esgCdY5baXWpIrPHs5ZYp')
+  end
 
+  def authenticate_user!(*args)
+    if admin_signed_in?
+      return
+    end
+    super
   end
 
   def spotify_user
@@ -15,7 +20,7 @@ class ApplicationController < ActionController::Base
       # refresh_access
       user_auth = SpotifyAuth.last
       @userauth = user_auth.sp_user_hash
-      RSpotify::User.new(@userauth)
+      @spotify_user = RSpotify::User.new(@userauth)
     end
   end
 

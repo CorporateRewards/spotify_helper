@@ -1,0 +1,15 @@
+<h3>First name</h3>
+<p><%= @user.first_name %></p>
+
+<h3>Last name</h3>
+<p><%= @user.last_name %></p>
+
+<h3>Email</h3>
+<p><%= @user.email %></p>
+
+<h3>Nickname</h3>
+<p>
+<% if @user.nickname %>
+  <%= @user.nickname.nickname %>
+<% end %>
+</p>
