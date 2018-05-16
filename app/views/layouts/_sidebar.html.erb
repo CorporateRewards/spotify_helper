@@ -1,12 +1,18 @@
 <div class="col-md-4">
   <% if admin_signed_in? %>
-    <%= link_to "Generate playlist",update_playlist_path,class:"btn btn-default", remote: true  %>
-    <%= link_to "Play playlist",play_tracks_path,class:"btn btn-default", remote: true  %>
-    <%= link_to "Pause playlist",pause_tracks_path,class:"btn btn-default", remote: true  %>
-    <%= link_to "Next track",next_track_path,class:"btn btn-default", remote: true  %>
-    <%= link_to "Previous track",previous_track_path,class:"btn btn-default", remote: true  %>
-    <%= link_to "Volume up",volume_control_path(change: 1),class:"btn btn-default", remote: true %>
-    <%= link_to "Volume down",volume_control_path(change: -1),class:"btn btn-default", remote: true %>
+  <div id="player-controls">
+    <div class="row">    
+      <%= link_to image_tag("up.png", alt: "Volume up"),volume_control_path(change: 1),class:"text-center col-md-2", remote: true %>
+      <%= link_to image_tag("play.png", alt: "Play playlist"),play_tracks_path,class:"text-center col-md-2", remote: true  %>
+      <%= link_to image_tag("pause.png", alt: "Pause playlist"),pause_tracks_path,class:"text-center col-md-2", remote: true  %>
+      <%= link_to image_tag("previous.png", alt: "Previous track"),previous_track_path,class:"text-center col-md-2", remote: true  %>
+      <%= link_to image_tag("next.png", alt: "Next track"),next_track_path,class:"text-center col-md-2", remote: true  %>
+      <%= link_to image_tag("down.png", alt: "Volume down"),volume_control_path(change: -1),class:"text-center col-md-2", remote: true %>
+    </div>
+    <div class="row">
+    </div>
+
+  </div>
   <% end %>
   <div id="currently_playing">
     <% if !@currently_playing.nil? %>        

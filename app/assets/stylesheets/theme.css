@@ -15,6 +15,14 @@ body {
 
 }
 
+
+#player-controls img {
+  width: 85%;
+}
+
+#volume img {
+  width: 30%;
+}
 .logo:hover {
 
     transform: scale(1.1);
