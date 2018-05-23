@@ -30,7 +30,9 @@ class TracksController < ApplicationController
       metadata: spotify_track
     )
     user = current_user ? current_user : User.find_by(email: current_admin.email)
-    track.votes.create(vote: params[:vote], user: user)
+    vote = track.votes.find_or_create_by(user: user)
+    vote.update(vote: params[:vote])
+
     redirect_to root_url
   end
 

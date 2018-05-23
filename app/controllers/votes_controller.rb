@@ -1,7 +1,7 @@
 class VotesController < ApplicationController
 
   def new
-    track = Track.find_or_create_by(id: params[:dbid])
+    track = params[:uid] ?  Track.find_or_create_by(track_id: params[:uid], uri: params[:uri]) : Track.find_or_create_by(id: params[:dbid])
     user = current_user ? current_user : User.find_by(email: current_admin.email)
     vote = track.votes.find_or_create_by(user: user)
     vote.update(vote: params[:vote])
