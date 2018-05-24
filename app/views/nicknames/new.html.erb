@@ -1,0 +1,20 @@
+<% if @nickname.errors.any? %>
+    <div id="error_reason">
+        <h2><%= pluralize(@nickname.errors.count, "error") %> prevented this nickname from being saved:</h2>
+        <ul>
+            <% @nickname.errors.each do |attr, err| %>
+                <li><%= err %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
+
+<%= form_for @nickname do |f| %>
+<p>
+    <%= f.label :nickname %><br/>
+    <%= f.text_field :nickname %>
+</p>
+<p>
+<%= f.submit %></p>
+
+<% end %>

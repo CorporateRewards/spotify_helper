@@ -15,7 +15,7 @@
 
     <div class="container-fluid theme-showcase" role="main">
       <%= render "layouts/errors" %>
-      <% if current_user %>
+      <% if current_user || current_admin %>
       <%= render "layouts/results" %>  
       <% end %>
 
@@ -23,13 +23,14 @@
         <div class="col-md-8">  
             <%= yield %>
         </div>
-      <% if current_user %>
+      <% if current_user || current_admin %>
         <div class="col-md4">
             <%= render "layouts/sidebar" %>
         </div>
       </div>
       <% end %>
 
-    </div> <!-- /container -->    
+    </div> <!-- /container --> 
+    <% console %>   
   </body>
 </html>

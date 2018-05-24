@@ -1,0 +1,3 @@
+class BannedPhrases < ApplicationRecord
+  
+end

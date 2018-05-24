@@ -23,13 +23,17 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="/sign_in" class="navbar-link">Login with Spotify</a></li>
                 <% if user_signed_in? %>
-                <li><%= link_to "My Profile", edit_user_registration_path, method: :get, :class => 'navbar-link' %></li>
-                <li><%= link_to "Log out", destroy_user_session_path, method: :delete, :class => 'navbar-link' %></li>
+                  <li><%= link_to "My Profile", edit_user_registration_path, method: :get, :class => 'navbar-link' %></li>
+                  <li><%= link_to "Log out", destroy_user_session_path, method: :delete, :class => 'navbar-link' %></li>
+                <% elsif admin_signed_in? %>
+                  <li><%= link_to "Manage users", admin_users_path, method: :get, :class => 'navbar-link' %></li>
+                  <li><%= link_to "View devices", device_list_path, :class => 'navbar-link' %> </li>           
+                  <li><%= link_to "Generate playlist",update_playlist_path,class:"navbar-link", remote: true  %></li>
+                  <li><%= link_to "Log out", destroy_admin_session_path, method: :delete, :class => 'navbar-link' %></li>
                 <% else %>
-                <li><%= link_to "Sign Up", new_user_registration_path, method: :get, :class => 'navbar-link' %>
-                <li><%= link_to "Log In", new_user_session_path, method: :get, :class => 'navbar-link' %>
+                  <li><%= link_to "Sign Up", new_user_registration_path, method: :get, :class => 'navbar-link' %>
+                  <li><%= link_to "Log In", new_user_session_path, method: :get, :class => 'navbar-link' %>
                 <% end %>
               </ul>
             </li>
