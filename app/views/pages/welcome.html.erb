@@ -1,1 +1,49 @@
-<h1>Thanks for logging in to Spotify</h1>
+<% if !@currently_playing.nil? %>  
+
+
+<div id="player" class="col-sm-6 col-md-4 col-centered">
+  <h3 class="text-center">Currently Playing</h3>
+  <div class="row currently-playing-vote">
+    <%= link_to image_tag("thumbs-up.png", width: "30px"),tracks_path(uid: @currently_playing.id, vote: 1, uri: @currently_playing.uri), class:"vote-btn", method: :post %>
+    <%= link_to image_tag("thumbs-down.png", width: "30px"),tracks_path(uid: @currently_playing.id, vote: 0, uri: @currently_playing.uri),class:"vote-btn", method: :post %>
+  </div>
+  <div id="currently-playing">
+
+  <img src="<%= @currently_playing.album.images[0]['url'] %>" style="width:100%"></p>
+    <% if admin_signed_in? %>
+
+      <div id="player-controls">
+        <div class="row">    
+          <%= link_to image_tag("down.png", alt: "Volume down"),volume_control_path(change: -1),class:"text-center col-sm-2", remote: true %>
+          <%= link_to image_tag("previous.png", alt: "Previous track"),previous_track_path,class:"text-center col-sm-2", remote: true  %>
+          <%= link_to image_tag("play.png", alt: "Play playlist"),play_tracks_path,class:"text-center col-sm-2", remote: true  %>
+          <%= link_to image_tag("pause.png", alt: "Pause playlist"),pause_tracks_path,class:"text-center col-sm-2", remote: true  %>
+          <%= link_to image_tag("next.png", alt: "Next track"),next_track_path,class:"text-center col-sm-2", remote: true  %>
+          <%= link_to image_tag("up.png", alt: "Volume up"),volume_control_path(change: 1),class:"text-center col-sm-2", remote: true %>
+        </div>
+      </div> 
+    <% end %>
+  </div>
+</div>
+
+<div id="track-info" class="text-center col-md-4 col-centered"">
+  <h4>Artist(s)</h4>
+  <% @currently_playing.artists.each do |artist| %>
+  <p>
+  <%= artist.name %>
+  </p>
+<% end %>
+  <h4>Track name</h4>
+  <%= @currently_playing.name %> 
+  
+  <h4>Album name</h4>
+  <%= @currently_playing.album.name %> 
+
+  <h4>Album release date</h4>
+  <%= @currently_playing.album.release_date %> 
+</div>
+
+<% else %>
+  <h1>We can't find the currently playing track</h1>
+  <p>Something's gone wrong and we can't find a currently playing track. Either the app isn't logged in to Spotify, or there isn't anything currently playing.</p>
+<% end %>

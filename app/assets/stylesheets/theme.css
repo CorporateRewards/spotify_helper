@@ -1,78 +1,28 @@
+/*General*/
+
 body {
-  padding-top: 175px;
-  padding-bottom: 30px;
   font-family: 'Open Sans', sans-serif;
 }
 
-.logo {
 
-    width: 160px;
-    position: absolute;
-    bottom: 14px;
-    left: 31px;
-    transition: all .2s ease-in-out;
-
-
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Josefin Sans', sans-serif;
 }
 
-
-#player-controls img {
-  width: 85%;
-}
-
-#volume img {
-  width: 30%;
-}
-.logo:hover {
-
-    transform: scale(1.1);
-
-}
-
-#search {
-  width: 250px;
-  border-radius: 25px 25px;
-  transition: 0.5s;
-}
-
-#search:focus {
-  width: 500px;
-}
-
-.search_container {
-
-  position: absolute;
-  top:110px;
-
-}
-
-#tracks-table tr {
-  /*background-color: #d3d3d3;*/
-  font-size: 12px;
-}
-
-#tracks-table td {
-  /*background-color: #d3d3d3;*/
-  max-width: 250px;
-  overflow-wrap: normal;
-}
 
 table tr .btn {
-  /*backg bround-color: #d3d3d3;*/
   background-color: #ffffff;
   font-size: 10px;
 }
 
 
 table tr img {
-  /*background-color: #d3d3d3;*/
   width: 15px;
 }
 
 
 table th {
   color: white;
-  /*background-color: #999999;*/
   background-color: #fbaf3a;
 }
 
@@ -81,47 +31,158 @@ label {
   width:100%;
   font-weight: normal;
 }
-.search-container label:before {
-  position: absolute;
-  right: 10px;
-  top: 0;
-  bottom: 0;
-  content: '';
-  width: 20px;
-  background: url('search-icon.svg') left center no-repeat / contain;
-  opacity:0.5;
-}
+
+
 input {
   padding: 10px 30px;
 }
 
-.nav, .navbar, .navbar-inverse, .navbar-nav > .active > a, .navbar-nav > li > a, .navbar-brand {
-   background: red;      /*For browsers that do not support gradients */
-    background: -webkit-linear-gradient(#ff931e, #fbaf3a); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(#ff931e, #fbaf3a); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(#ff931e, #fbaf3a); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(#ff931e, #fbaf3a); /* Standard syntax */
+
+/*Header*/
+
+.profile {
+  height: 60px;
+}
+
+.profile img {
+  height: 40px;
+}
+.navbar-brand img {
+  height: 70px
+}
+
+.dropdown-toggle {
+  padding: 0 !important;
+}
+
+
+.navbar-brand {
+    height: 100%;
+}
+
+
+.nav, .navbar, .navbar-inverse, .navbar-brand {
+  background: red;   
+  background: -webkit-linear-gradient(#ff931e, #fbaf3a); 
+  background: -o-linear-gradient(#ff931e, #fbaf3a); 
+  background: -moz-linear-gradient(#ff931e, #fbaf3a);
+  background: linear-gradient(#ff931e, #fbaf3a);
   color: #ffffff !important;
   border-color: transparent;
 }
 
-.theme-dropdown .dropdown-menu {
-  position: static;
-  display: block;
-  margin-bottom: 20px;
+#logo {
+    transition: all .2s ease-in-out;
 }
 
-.theme-showcase > p > .btn {
-  margin: 5px 0;
+#logo:hover {
+    background-image: image-url('LogoAnimation.gif');
+    transform: scale(1.1);
 }
 
-.theme-showcase .navbar .container {
-  width: auto;
+.navbar-brand {
+  
+  width: 122px;
+  height: 66px;
+  background-image: image-url('logo.png');
+  background-size:cover;
+  margin:2px;
+  margin-top:7px;
+
 }
+
+.navbar-brand:hover {
+  
+  background-image: image-url('LogoAnimation.gif')
+
+}
+
+#searchsubmit {
+  height: 25px;
+}
+
+#searchsub {
+  position: absolute;
+  right: 0px;
+  top: 5px;
+  background: transparent;
+  padding: 0;
+  border-style: none;
+}
+
+/*Welcome-Player*/
+
+#currently-playing {
+  position: relative;
+  width: 100%;
+  margin: 0 auto; 
+}
+
+.currently-playing-vote {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.currently-playing-vote a{
+  text-align: center;
+}
+
+#currently-playing img {
+  border-radius: 50px;
+}
+
+#player {
+  padding-top: 10px;
+}
+
+#player-controls {
+  margin: 0 auto;
+  width: 100%;
+  position: absolute;
+  bottom: 20px;
+  background-color: white;
+  opacity: 0.5;
+  padding: 5px 50px;
+  text-align: center;
+}
+
+#player-controls img {
+max-width: 30px;
+}
+
+#volume img {
+  width: 30%;
+}
+
 
 .vote-btn {
-  display: inherit;
+  float: left;
+  width: 50%;
+  padding: 20px 0;
 }
+
+
+/*Tracks page*/
+
+#tracks-table tr {
+  font-size: 12px;
+}
+
+#tracks-table td {
+  max-width: 250px;
+  overflow-wrap: normal;
+}
+
+#track-info {
+  padding: 10px;
+}
+
+#track-info h4 {
+  border: 1px solid #fbaf3a;
+  text-align: center;
+}
+
+
 
 /* Edit profile form */
 
@@ -149,17 +210,21 @@ input {
   padding-right: 10%;
 }
 
-.search-nav-container {
-  position: relative;
-  top: 24px;
+body {
+  font-family: 'Open Sans', sans-serif;
 }
 
-#track-info {
-  padding: 10px;
-
+.col-centered{
+    float: none;
+    margin: 0 auto;
 }
 
-#track-info h4 {
-  border: 1px solid #fbaf3a;
-  text-align: center;
+.sidebar:before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  top: 0; bottom: 0;
+  background: rgba(34,97,122,.9);
+  mix-blend-mode: multiply;
+
 }

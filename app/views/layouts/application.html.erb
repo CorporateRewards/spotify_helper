@@ -4,6 +4,7 @@
     <title>TuneUp</title>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
       <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+       <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet"> 
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -20,17 +21,11 @@
       <% end %>
 
       <div class="row">
-        <div class="col-md-8">  
+        <div class="col-md-12">  
             <%= yield %>
         </div>
-      <% if current_user || current_admin %>
-        <div class="col-md4">
-            <%= render "layouts/sidebar" %>
-        </div>
       </div>
-      <% end %>
 
     </div> <!-- /container --> 
-    <% console %>   
-  </body>
+</body>
 </html>
