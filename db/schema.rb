@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20180506183437) do
+ActiveRecord::Schema.define(version: 20180622162541) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -74,6 +73,10 @@ ActiveRecord::Schema.define(version: 20180506183437) do
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "nickname_id"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["nickname_id"], name: "index_users_on_nickname_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
