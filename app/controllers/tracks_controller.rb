@@ -33,7 +33,7 @@ class TracksController < ApplicationController
     vote = track.votes.find_or_create_by(user: user)
     vote.update(vote: params[:vote])
 
-    redirect_to root_url
+    #redirect_to root_url
   end
 
 
