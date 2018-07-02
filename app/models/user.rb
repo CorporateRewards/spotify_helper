@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_many :votes
   has_one :nickname, :dependent => :destroy
   accepts_nested_attributes_for(:nickname, allow_destroy: true)
+  validates :email, format: { with: /\@corporaterewards\.co.uk/,
+    message: "You must register with a corporaterewards.co.uk" }
 
   attr_accessor :skip_password_validation
 
