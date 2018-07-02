@@ -22,4 +22,3 @@ UTIL = {
 
 $( document ).ready( UTIL.init );
 $( document ).on('page:load', UTIL.init );
-$( document ).ajaxComplete( UTIL.init );
