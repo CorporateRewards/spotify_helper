@@ -14,6 +14,7 @@ $(document).ajaxComplete(function() {
               var inprogress = true;
               e.preventDefault();
               localStorage.searchVal = search.val();
+
             // If we have a page count, increment by 10
             if (localStorage.pageCount) {
                 localStorage.pageCount = parseInt(localStorage.pageCount) + 10;

@@ -31,6 +31,8 @@
             <ul class="dropdown-menu">
             <li><% link_to "Playlist", index_path, class: 'navbar-link' %></li>
               <li><%= link_to "Tracks", tracks_path, class: 'navbar-link' %></li>
+              <li><%= link_to "My Activity", my_activity_path, method: :get, class: 'navbar-link' %></li>
+
               <% if user_signed_in? %>
                 <li><%= link_to "My Profile", edit_user_registration_path, method: :get, class: 'navbar-link' %></li>
                 <li><%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'navbar-link' %></li>

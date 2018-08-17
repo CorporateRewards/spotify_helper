@@ -44,7 +44,15 @@ class ApplicationController < ActionController::Base
   end
   end
 
+  def track_progress
+      @progress = spotify_user.player.progress
+    respond_to do |format|
+      format.json { render json: @progress }
+    end
+  end
+  
   def currently_playing
+
     begin
       if !spotify_user.nil?
         @player = spotify_user.player
@@ -54,6 +62,11 @@ class ApplicationController < ActionController::Base
       end
     rescue
       @currently_playing = nil
+    end
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @currently_playing }
     end
   end
 

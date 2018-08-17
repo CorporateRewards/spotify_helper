@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get '/auth/spotify/callback', to: 'spotify_auths#spotify'
   get 'welcome', to: 'pages#welcome'
   resource :nicknames
-
+  get 'currently_playing', to: 'application#currently_playing'
   get 'play_tracks', to: 'tracks#play_tracks'
   get 'pause_tracks', to: 'tracks#pause_tracks'
   get 'play_individual_track', to: 'tracks#play_individual_track'
@@ -28,6 +28,6 @@ Rails.application.routes.draw do
   get 'volume_control', to: 'tracks#volume_control'
   get 'track_details', to: 'tracks#track_details'
   get 'device_list', to: 'tracks#device_list'
-
-
+  get 'progress', to: 'application#track_progress'
+  get 'my_activity', to: 'users/users#user_votes'
 end

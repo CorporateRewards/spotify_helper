@@ -4,6 +4,4 @@ class PagesController < ApplicationController
     @playlist = playlist    
   end
 
-
-
 end

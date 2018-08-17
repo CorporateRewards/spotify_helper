@@ -9,7 +9,7 @@
   </div>
   <div id="currently-playing">
 
-  <img src="<%= @currently_playing.album.images[0]['url'] %>" style="width:100%"></p>
+  <img id="albumimage" src="<%= @currently_playing.album.images[0]['url'] %>" style="width:100%"></p>
     <% if admin_signed_in? %>
 
       <div id="player-controls">
@@ -28,19 +28,25 @@
 
 <div id="track-info" class="text-center col-md-4 col-centered"">
   <h4>Artist(s)</h4>
+  <div id="artistname">
   <% @currently_playing.artists.each do |artist| %>
-  <p>
-  <%= artist.name %>
-  </p>
-<% end %>
-  <h4>Track name</h4>
-  <%= @currently_playing.name %> 
   
+    <p><%= artist.name %></p>
+  
+<% end %>
+</div>
+  <h4>Track name</h4>
+  <p id="trackname">
+  <%= @currently_playing.name %> 
+  </p>
   <h4>Album name</h4>
+  <p id="albumname">
   <%= @currently_playing.album.name %> 
-
+  </p>
   <h4>Album release date</h4>
+  <p id="releasedate">
   <%= @currently_playing.album.release_date %> 
+  </p>
 </div>
 
 <% else %>
