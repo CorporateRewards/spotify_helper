@@ -4,8 +4,13 @@ class VotesController < ApplicationController
     track = params[:uid] ?  Track.find_or_create_by(track_id: params[:uid], uri: params[:uri]) : Track.find_or_create_by(id: params[:dbid])
     user = current_user ? current_user : User.find_by(email: current_admin.email)
     vote = track.votes.find_or_create_by(user: user)
-    vote.update(vote: params[:vote])
-    redirect_to root_url
+    if vote.update(vote: params[:vote])
+      flash.notice = "Thanks for your vote!"
+      redirect_to :back
+    else
+      flash.notice = "Sorry, something went wrong, try again please"
+      redirect_to :back
+    end
   end
 
   def destroy 

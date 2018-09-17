@@ -158,9 +158,17 @@ max-width: 30px;
 .vote-btn {
   float: left;
   width: 50%;
-  padding: 20px 0;
+  /*padding: 20px 0;*/
+  /*text-align: center;*/
 }
 
+.vote-btn > img { 
+  width: 30px;
+}
+
+.vote-img { 
+  width: 30px;
+}
 
 /*Tracks page*/
 

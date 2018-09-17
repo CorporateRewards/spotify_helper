@@ -31,8 +31,14 @@ class TracksController < ApplicationController
     )
     user = current_user ? current_user : User.find_by(email: current_admin.email)
     vote = track.votes.find_or_create_by(user: user)
-    vote.update(vote: params[:vote])
 
+    if vote.update(vote: params[:vote])
+      flash.notice = "Thanks for your vote!"
+      redirect_to :back
+    else
+      flash.notice = "Sorry, something went wrong, try again please"
+      redirect_to :back
+    end
     #redirect_to root_url
   end
 
