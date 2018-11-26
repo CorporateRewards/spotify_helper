@@ -9,8 +9,13 @@ Rails.application.routes.draw do
   root to: 'pages#welcome'
   resource :search, only: [:show]
   resource :tracks do
-    resource :votes
-  end
+      resources :votes do
+        member do
+          put :place_vote
+        end
+      end
+    end
+
   get 'sign_in', to: 'pages#sign_in'
   get 'index', to: 'pages#index'
   get 'stats', to: 'stats#show'

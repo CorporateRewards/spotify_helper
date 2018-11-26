@@ -1,0 +1,20 @@
+<table class="table table-hover">
+  <th>Song</th><th>Artist</th><th>Tune Ups</th><th>Pipe Downs</th><th>Vote</th><th>Actions</th>
+  <% @playlist.each do |track| %>
+  <tr>
+    <td><%= track.name %></td>
+    <td><%= track.artist %></td>
+    <td><%= track.num_up_votes %></td>
+    <td><%= track.num_down_votes %></td>
+    <td><%= link_to image_tag("thumbs-up.png", width: "30px"),place_vote_tracks_vote_path(dbid: track.id, vote: 1, id: track.id),class:"btn btn-default vote-btn", method: :put, remote: true %>
+        <%= link_to image_tag("thumbs-down.png", width: "30px"),place_vote_tracks_vote_path(dbid: track.id, vote: 0, id: track.id),class:"btn btn-default vote-btn", method: :put, remote: true %></td>
+    <td>
+        <%= link_to "Play",play_individual_track_path(track: track.uri),class:"btn btn-default", remote: true %>
+        <%= link_to "Details",track_details_path(track: track.track_id),class:"btn btn-default" %>
+        <% if admin_signed_in? %>
+          <%= link_to image_tag("remove.png"),tracks_votes_path(dbid: track.id),class:"", method: :delete %>
+        <% end %>
+    </td>
+  </tr>
+  <% end %>
+</table>

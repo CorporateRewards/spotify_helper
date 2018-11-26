@@ -33,9 +33,9 @@ class ApplicationController < ActionController::Base
       @ref_token = @user_auth.sp_user_hash["credentials"].refresh_token
 
       @urlstring_to_post = "https://accounts.spotify.com/api/token"
-      @result = HTTParty.post(@urlstring_to_post.to_str, 
-        :body => { 
-          :grant_type => "refresh_token", 
+      @result = HTTParty.post(@urlstring_to_post.to_str,
+        :body => {
+          :grant_type => "refresh_token",
           :refresh_token => @ref_token
         },
         :headers => { 'Authorization' => 'Basic ODljNWFiYjA1YmQ0NDRlZGE3OThhZTJjMTVjY2I5MjE6N2I5YWJiMjNhZjhjNGRlM2E0NjQyZGE5MzcwN2M4MTU=' })
@@ -50,7 +50,7 @@ class ApplicationController < ActionController::Base
       format.json { render json: @progress }
     end
   end
-  
+
   def currently_playing
 
     begin
@@ -67,6 +67,7 @@ class ApplicationController < ActionController::Base
     respond_to do |format|
       format.html
       format.json { render json: @currently_playing }
+      format.js
     end
   end
 

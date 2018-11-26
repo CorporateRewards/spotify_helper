@@ -23,10 +23,10 @@ class TracksController < ApplicationController
     # See if track is in database
     track = Track.find_or_initialize_by(track_id: spotify_track[0].id)
     playlist.add_tracks!(spotify_track)
-    track.update!(name: spotify_track[0].name, 
-      artist: spotify_track[0].artists[0].name, 
-      track_id: spotify_track[0].id, 
-      uri: spotify_track[0].uri, 
+    track.update!(name: spotify_track[0].name,
+      artist: spotify_track[0].artists[0].name,
+      track_id: spotify_track[0].id,
+      uri: spotify_track[0].uri,
       metadata: spotify_track
     )
     user = current_user ? current_user : User.find_by(email: current_admin.email)
@@ -67,7 +67,7 @@ class TracksController < ApplicationController
         @additional = @alltracks.last(length)
 
         @additional.each do |t|
-          @playlist.add_tracks!(t)          
+          @playlist.add_tracks!(t)
         end
     end
       redirect_to root_url
@@ -82,8 +82,8 @@ class TracksController < ApplicationController
 
   def device_list
     @urlstring_to_post = "https://api.spotify.com/v1/me/player/devices"
-    @result = HTTParty.get(@urlstring_to_post.to_str, 
-      :body => { 
+    @result = HTTParty.get(@urlstring_to_post.to_str,
+      :body => {
       },
       :headers => { "Authorization" => "Authorization: Bearer #{user_auth}" })
   end
@@ -106,8 +106,8 @@ class TracksController < ApplicationController
 
   def next_track
     @urlstring_to_post = "https://api.spotify.com/v1/me/player/next"
-    @result = HTTParty.post(@urlstring_to_post.to_str, 
-      :body => { 
+    @result = HTTParty.post(@urlstring_to_post.to_str,
+      :body => {
       },
       :headers => { "Authorization" => "Authorization: Bearer #{user_auth}" })
 
@@ -116,8 +116,8 @@ class TracksController < ApplicationController
 
   def previous_track
     @urlstring_to_post = "https://api.spotify.com/v1/me/player/previous"
-    @result = HTTParty.post(@urlstring_to_post.to_str, 
-      :body => { 
+    @result = HTTParty.post(@urlstring_to_post.to_str,
+      :body => {
       },
       :headers => { "Authorization" => "Authorization: Bearer #{user_auth}" })
     redirect_to root_url
@@ -132,6 +132,6 @@ class TracksController < ApplicationController
       volume -= 10
       player.volume(volume)
     end
-  end 
+  end
 
 end
