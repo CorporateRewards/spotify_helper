@@ -17,6 +17,14 @@ class TracksController < ApplicationController
   end
 
   def create
+    @track = Track.create(track_params)
+  end
+
+  def new
+    @track = Track.new
+  end
+
+  def add_a_track
     # Find the track on spotify
     spotify_track = RSpotify::Track.find([params[:uid]])
 
@@ -31,10 +39,8 @@ class TracksController < ApplicationController
     )
     user = current_user ? current_user : User.find_by(email: current_admin.email)
     vote = track.votes.find_or_create_by(user: user)
-
     if vote.update(vote: params[:vote])
-      flash.notice = "Thanks for your vote!"
-      redirect_to :back
+      respond_to :js
     else
       flash.notice = "Sorry, something went wrong, try again please"
       redirect_to :back
@@ -42,6 +48,9 @@ class TracksController < ApplicationController
     #redirect_to root_url
   end
 
+  def index
+    @playlist = Track.sorted_by_most_votes
+  end
 
   def show
     @playlist = Track.sorted_by_most_votes

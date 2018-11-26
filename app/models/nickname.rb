@@ -6,16 +6,16 @@ class Nickname < ApplicationRecord
   end
 
   belongs_to :user, optional: true
-  validates :nickname, 
-    presence: true, 
-    uniqueness: true, 
+  validates :nickname,
+    presence: true,
+    uniqueness: true,
     length: {
       in: 2..20,
-      too_short: "Your nickname is too short! Minimum 2 characters please! 1 character can't be a nickname come on",
-      too_long: "Your nickname is too long. 20 characters should be enough."
+      too_short: 'Your nickname is too short! Minimum 2 characters please!',
+      too_long: 'Your nickname is too long. 20 characters should be enough.'
     },
-    format: { 
-      without: nickname_exclusions, 
-      message: "Your nickname cannot be \"%{value}\"" 
+    format: {
+      without: nickname_exclusions,
+      message: 'Your nickname cannot be %{value}'
     }
 end

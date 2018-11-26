@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'pages#welcome'
   resource :search, only: [:show]
-  resource :tracks do
+  resources :tracks do
+    member do
+      post :add_a_track
+    end
       resources :votes do
         member do
           put :place_vote

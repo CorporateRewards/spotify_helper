@@ -3,15 +3,13 @@
   <table class="table">
     <th>Track name</th><th>Artist</th><th>Actions</th>
       <% @tracks.each do |track| %>
-      <tr>
+      <tr class='track'>
         <td><%= track.name %></td>
       <td><%= track.artists.map(&:name).join(', ') %></td>
-      <td><%= link_to "add",tracks_path(uid: track.id, vote: 1, uri: track.uri),class:"btn btn-default", method: :post %></td>
+      <td><%= link_to "add",add_a_track_track_path(uid: track.id, vote: 1, uri: track.uri, id: track.id, track_id: track.id),class:"btn btn-default", method: :post, remote: true %></td>
       </tr>
     <% end %>
   </table>
 
   <button id="previous-results" class="btn btn-default hidden">Previous 10 results</button>
   <button id="next-results" class="btn btn-default">Next 10 results</button>
-
-

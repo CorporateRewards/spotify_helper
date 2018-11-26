@@ -6,7 +6,7 @@
         <tr>
           <td><%= vote.track.name %></td>
           <td><%= vote.track.artist %></td>
-          <td><%= link_to image_tag(vote.vote ? "thumbs-up.png" : "thumbs-down.png", class: "vote-img"),new_tracks_votes_path(dbid: vote.track.id, vote: vote.vote ? 0 : 1), class:"vote-btn"  %></td>
+          <td><%= link_to image_tag(vote.vote ? "thumbs-up.png" : "thumbs-down.png", class: "vote-img"),place_vote_track_vote_path(dbid: vote.track.id, track_id: vote.track.id, id: vote.track.id, vote: vote.vote ? 0 : 1), method: :put, class:"vote-btn"  %></td>
           <td>
               <%= link_to "Play",play_individual_track_path(track: vote.track.uri),class:"btn btn-default", remote: true %>
               <%= link_to "Details",track_details_path(track: vote.track.track_id),class:"btn btn-default" %>
