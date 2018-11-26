@@ -17,7 +17,7 @@ class VotesController < ApplicationController
     @playlist = Track.sorted_by_most_votes
     track = params[:uid] ?  Track.find_or_create_by(track_id: params[:uid], uri: params[:uri]) : Track.find_or_create_by(id: params[:dbid])
     user = current_user ? current_user : User.find_by(email: current_admin.email)
-    vote = track.votes.find_or_create_by(user: user)
+    vote = track.votes.find_or_initialize_by(user: user)
     if vote.update(vote: params[:vote])
       respond_to :js
     else
