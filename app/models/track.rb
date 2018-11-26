@@ -1,5 +1,5 @@
 class Track < ApplicationRecord
-  has_many :votes
+  has_many :votes, dependent: :destroy
   serialize :metadata
   has_many :users, through: :votes
   validates :track_id, uniqueness: true
