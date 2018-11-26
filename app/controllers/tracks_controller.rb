@@ -50,6 +50,8 @@ class TracksController < ApplicationController
 
   def index
     @playlist = Track.sorted_by_most_votes
+    @user = current_user ? current_user : User.find_by(email: current_admin.email)
+    @votes = @user.votes.all
   end
 
   def show
@@ -120,6 +122,8 @@ class TracksController < ApplicationController
                             headers: { 'Authorization' => "Authorization: Bearer #{user_auth}" }
                            )
     @currently_playing = @player.currently_playing
+    @user = current_user ? current_user : User.find_by(email: current_admin.email)
+    @votes = @user.votes.all
     respond_to :js
   end
 

@@ -4,8 +4,19 @@
 <div id="player" class="col-sm-6 col-md-4 col-centered">
   <h3 class="text-center">Currently Playing</h3>
   <div class="row currently-playing-vote">
-    <%= link_to image_tag("thumbs-up.png", width: "30px"),tracks_path(uid: @currently_playing.id, vote: 1, uri: @currently_playing.uri), class:"vote-btn", method: :post %>
-    <%= link_to image_tag("thumbs-down.png", width: "30px"),tracks_path(uid: @currently_playing.id, vote: 0, uri: @currently_playing.uri),class:"vote-btn", method: :post %>
+    <%= link_to image_tag("thumbs-up.png", width: "30px"),
+        place_vote_track_vote_path(
+          uid: @currently_playing.id,
+          vote: 1,
+          uri: @currently_playing.uri,
+          id: @currently_playing.id,
+          track_id: @currently_playing.id),
+          class:"#{@votes.where(track_id: @track[0].id, vote: true).empty? ? 'active' : 'disabled'} btn btn-default home-page vote-btn",
+          method: :put,
+          remote: true
+    %>
+    <%= link_to image_tag("thumbs-down.png", width: "30px"),
+        place_vote_track_vote_path(uid: @currently_playing.id, vote: 0, uri: @currently_playing.uri, id: @currently_playing.id, track_id: @currently_playing.id), class:"#{@votes.where(track_id: @track[0].id, vote: false).empty? ? 'active' : 'disabled'} btn btn-default home-page vote-btn", method: :put, remote: true %>
   </div>
 
   <div id="currently-playing">

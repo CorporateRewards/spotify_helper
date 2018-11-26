@@ -6,8 +6,17 @@
     <td><%= track.artist %></td>
     <td><%= track.num_up_votes %></td>
     <td><%= track.num_down_votes %></td>
-    <td><%= link_to image_tag("thumbs-up.png", width: "30px"),place_vote_track_vote_path(dbid: track.id, vote: 1,track_id: track.id, id: track.id),class:"btn btn-default vote-btn", method: :put, remote: true %>
-        <%= link_to image_tag("thumbs-down.png", width: "30px"),place_vote_track_vote_path(dbid: track.id, vote: 0,track_id: track.id, id: track.id),class:"btn btn-default vote-btn", method: :put, remote: true %></td>
+    <td><%= link_to image_tag("thumbs-up.png", width: "30px"),
+                              place_vote_track_vote_path(
+                                dbid: track.id,
+                                vote: 1,
+                                track_id: track.id,
+                                id: track.id
+                              ),
+                              class: "#{@votes.where(track_id: track.id, vote: false).empty? ? 'disabled' : 'active'} btn btn-default track-listing vote-btn",
+                              method: :put,
+                              remote: true %>
+        <%= link_to image_tag("thumbs-down.png", width: "30px"),place_vote_track_vote_path(dbid: track.id, vote: 0,track_id: track.id, id: track.id),class:"#{@votes.where(track_id: track.id, vote: true).empty? ? 'disabled' : 'active'} btn btn-default track-listing vote-btn", method: :put, remote: true %></td>
     <td>
         <%= link_to "Play",play_individual_track_path(track: track.uri),class:"btn btn-default", remote: true %>
         <%= link_to "Details",track_details_path(track: track.track_id),class:"btn btn-default" %>
@@ -18,3 +27,4 @@
   </tr>
   <% end %>
 </table>
+<%= console %>

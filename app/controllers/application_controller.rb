@@ -57,13 +57,15 @@ class ApplicationController < ActionController::Base
       if !spotify_user.nil?
         @player = spotify_user.player
         @currently_playing = @player.currently_playing
+        @track = Track.where(track_id: @currently_playing.id)
       else
         @currently_playing = nil
       end
     rescue
       @currently_playing = nil
     end
-
+    @user = current_user ? current_user : User.find_by(email: current_admin.email)
+    @votes = @user.votes.all
     respond_to do |format|
       format.html
       format.json { render json: @currently_playing }
