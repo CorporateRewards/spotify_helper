@@ -1,0 +1,147 @@
+# Targets version 0.59.1
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'node_modules/**/*'
+    - 'tmp/**/*'
+  TargetRubyVersion: 2.2
+
+inherit_mode:
+  merge:
+    - 'Exclude'
+
+
+# --- TEMP FOR AUTOFIXING CODEBASE ---
+Style/RescueModifier:
+  # Fixing to `begin..rescue..end` with long lines makes code unreadable
+  AutoCorrect: false
+
+Security/YAMLLoad:
+  # `YAML.safe_load` doesn't allow symbols, which we use for serialization.
+  # Most uses of YAML are from files in the repo, rather than user input.
+  AutoCorrect: false
+# --- END ---
+
+Layout/EndAlignment:
+  EnforcedStyleAlignWith: 'variable'
+
+Layout/FirstParameterIndentation:
+  EnforcedStyle: 'consistent'
+
+Layout/IndentArray:
+  EnforcedStyle: 'consistent'
+
+Layout/IndentHash:
+  EnforcedStyle: 'consistent'
+
+Layout/MultilineArrayBraceLayout:
+  EnforcedStyle: 'new_line'
+
+Layout/MultilineHashBraceLayout:
+  EnforcedStyle: 'new_line'
+
+Layout/MultilineMethodCallBraceLayout:
+  EnforcedStyle: 'new_line'
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: 'indented'
+
+Layout/MultilineOperationIndentation:
+  EnforcedStyle: 'indented'
+
+Layout/SpaceInLambdaLiteral:
+  EnforcedStyle: 'require_space'
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - 'spec/**/*_spec.rb'
+    - 'spec_legacy/**/*_spec.rb'
+
+Lint/Void:
+  CheckForMethodsWithNoSideEffects: true
+
+Metrics/AbcSize:
+  Max: 20
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*_spec.rb'
+    - 'spec_legacy/**/*_spec.rb'
+  ExcludedMethods: []
+
+Metrics/ClassLength:
+  Max: 300
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+Metrics/MethodLength:
+  Max: 25
+
+Metrics/ModuleLength:
+  Max: 300
+
+Metrics/PerceivedComplexity:
+  Max: 10
+
+Naming/AccessorMethodName:
+  Enabled: true
+  # monitor this cop
+
+Naming/PredicateName:
+  NamePrefix:
+    - 'is_'
+    - 'have_'
+  NamePrefixBlacklist:
+    - 'is_'
+    - 'have_'
+
+Naming/VariableNumber:
+  EnforcedStyle: 'snake_case'
+
+Performance/RedundantMerge:
+  MaxKeyValuePairs: 1
+
+Performance/TimesMap:
+  AutoCorrect: true
+
+Style/Alias:
+  EnforcedStyle: 'prefer_alias_method'
+
+Style/AndOr:
+  EnforcedStyle: 'conditionals'
+
+Style/BlockDelimiters:
+  EnforcedStyle: 'line_count_based'
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: 'compact'
+
+Style/Documentation:
+  Enabled: false
+
+Style/Lambda:
+  EnforcedStyle: 'literal'
+
+Style/Next:
+  EnforcedStyle: 'always'
+
+Style/ParenthesesAroundCondition:
+  Enabled: false
+
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    default: '[]'
+    '%r': '{}'
+
+Style/RegexpLiteral:
+  EnforcedStyle: 'mixed'
+
+Style/RescueStandardError:
+  EnforcedStyle: 'implicit'
+
+Style/TernaryParentheses:
+  EnforcedStyle: 'require_parentheses_when_complex'
+
+Metrics/LineLength:
+  Max: 120
