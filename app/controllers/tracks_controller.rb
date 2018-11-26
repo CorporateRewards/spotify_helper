@@ -114,13 +114,13 @@ class TracksController < ApplicationController
   end
 
   def next_track
-    @urlstring_to_post = "https://api.spotify.com/v1/me/player/next"
+    @urlstring_to_post = 'https://api.spotify.com/v1/me/player/next'
     @result = HTTParty.post(@urlstring_to_post.to_str,
-      :body => {
-      },
-      :headers => { "Authorization" => "Authorization: Bearer #{user_auth}" })
-
-    redirect_to root_url
+                            body: {},
+                            headers: { 'Authorization' => "Authorization: Bearer #{user_auth}" }
+                           )
+    @currently_playing = @player.currently_playing
+    respond_to :js
   end
 
   def previous_track

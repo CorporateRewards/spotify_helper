@@ -1,25 +1,26 @@
 /*General*/
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Josefin Sans', sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Josefin Sans", sans-serif;
 }
-
 
 table tr .btn {
   background-color: #ffffff;
   font-size: 10px;
 }
 
-
 table tr img {
   width: 15px;
 }
-
 
 table th {
   color: white;
@@ -28,15 +29,13 @@ table th {
 
 label {
   position: relative;
-  width:100%;
+  width: 100%;
   font-weight: normal;
 }
-
 
 input {
   padding: 10px 30px;
 }
-
 
 /*Header*/
 
@@ -48,23 +47,24 @@ input {
   height: 40px;
 }
 .navbar-brand img {
-  height: 70px
+  height: 70px;
 }
 
 .dropdown-toggle {
   padding: 0 !important;
 }
 
-
 .navbar-brand {
-    height: 100%;
+  height: 100%;
 }
 
-
-.nav, .navbar, .navbar-inverse, .navbar-brand {
-  background: red;   
-  background: -webkit-linear-gradient(#ff931e, #fbaf3a); 
-  background: -o-linear-gradient(#ff931e, #fbaf3a); 
+.nav,
+.navbar,
+.navbar-inverse,
+.navbar-brand {
+  background: red;
+  background: -webkit-linear-gradient(#ff931e, #fbaf3a);
+  background: -o-linear-gradient(#ff931e, #fbaf3a);
   background: -moz-linear-gradient(#ff931e, #fbaf3a);
   background: linear-gradient(#ff931e, #fbaf3a);
   color: #ffffff !important;
@@ -72,29 +72,48 @@ input {
 }
 
 #logo {
-    transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 #logo:hover {
-    background-image: image-url('LogoAnimation.gif');
-    transform: scale(1.1);
+  background-image: image-url("LogoAnimation.gif");
+  transform: scale(1.1);
 }
 
+.navbar-right {
+  padding-top: 7px;
+}
 .navbar-brand {
-  
   width: 122px;
   height: 66px;
-  background-image: image-url('logo.png');
-  background-size:cover;
-  margin:2px;
-  margin-top:7px;
-
+  background-image: image-url("logo.png");
+  background-size: cover;
+  margin: 2px;
+  margin-top: 7px;
 }
 
 .navbar-brand:hover {
-  
-  background-image: image-url('LogoAnimation.gif')
+  background-image: image-url("LogoAnimation.gif");
+}
 
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  background-color: transparent;
+  color: #555;
+}
+#search-form {
+  width: 300px;
+}
+
+.navbar-form {
+  padding-top: 12px;
+}
+
+.form-group,
+.search-container,
+#search {
+  width: 100%;
 }
 
 #searchsubmit {
@@ -110,20 +129,55 @@ input {
   border-style: none;
 }
 
+.profile-links {
+  padding-top: 10px;
+}
+
+/* Footer */
+
+.footer {
+  text-align: center;
+  padding: 50px 0;
+  background-color: #fbaf3a;
+  height: 200px;
+  color: #fff;
+}
+
+#footer-links {
+  list-style: none;
+  width: 100%;
+}
+
+#footer-links li {
+  display: inline-block;
+  padding: 10px;
+  color: #ccc;
+}
+
+a {
+  color: #333333;
+}
+
+a:hover {
+  color: #666666;
+  text-decoration: none;
+}
+
 /*Welcome-Player*/
 
 #currently-playing {
   position: relative;
   width: 100%;
-  margin: 0 auto; 
+  margin: 0 auto;
 }
 
 .currently-playing-vote {
   text-align: center;
   margin: 0 auto;
+  padding-bottom: 20px;
 }
 
-.currently-playing-vote a{
+.currently-playing-vote a {
   text-align: center;
 }
 
@@ -147,13 +201,12 @@ input {
 }
 
 #player-controls img {
-max-width: 30px;
+  max-width: 30px;
 }
 
 #volume img {
   width: 30%;
 }
-
 
 .vote-btn {
   float: left;
@@ -162,11 +215,11 @@ max-width: 30px;
   /*text-align: center;*/
 }
 
-.vote-btn > img { 
+.vote-btn > img {
   width: 30px;
 }
 
-.vote-img { 
+.vote-img {
   width: 30px;
 }
 
@@ -190,8 +243,6 @@ max-width: 30px;
   text-align: center;
 }
 
-
-
 /* Edit profile form */
 
 .edit-form-container {
@@ -204,7 +255,7 @@ max-width: 30px;
   font-size: 20px;
 }
 
-.edit-form-container .field input{
+.edit-form-container .field input {
   width: 90%;
   padding: 10px;
 }
@@ -219,20 +270,21 @@ max-width: 30px;
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
-.col-centered{
-    float: none;
-    margin: 0 auto;
+.col-centered {
+  float: none;
+  margin: 0 auto;
 }
 
 .sidebar:before {
   content: "";
   position: absolute;
-  left: 0; right: 0;
-  top: 0; bottom: 0;
-  background: rgba(34,97,122,.9);
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(34, 97, 122, 0.9);
   mix-blend-mode: multiply;
-
 }
