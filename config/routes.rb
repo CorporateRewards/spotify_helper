@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'pages#welcome'
+  get "/pages/:page" => "pages#show"
+  
   resource :search, only: [:show]
   resources :tracks do
     member do
