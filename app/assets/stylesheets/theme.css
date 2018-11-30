@@ -37,6 +37,15 @@ input {
   padding: 10px 30px;
 }
 
+.btn-default,
+.btn-default.active {
+  background: none;
+  border: none;
+  border-color: none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
 /*Header*/
 
 .profile {
@@ -193,9 +202,9 @@ a:hover {
   margin: 0 auto;
   width: 100%;
   position: absolute;
-  bottom: 20px;
+  top: -15px;
   background-color: white;
-  opacity: 0.5;
+  opacity: 0.9;
   padding: 5px 50px;
   text-align: center;
 }
