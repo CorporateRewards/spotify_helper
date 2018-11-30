@@ -1,7 +1,7 @@
 <% if !@currently_playing.nil? %>
 
 
-<div id="player" class="col-sm-6 col-md-4 col-centered">
+<div id="player" class="col-sm-12 col-md-6">
   <h3 class="text-center">Currently Playing</h3>
   <div class="row currently-playing-vote">
     <%= link_to image_tag("thumbs-up.png", width: "30px"),
@@ -10,18 +10,28 @@
           vote: 1,
           uri: @currently_playing.uri,
           id: @currently_playing.id,
-          track_id: @currently_playing.id),
+          track_id: @currently_playing.id
+        ),
           class:"#{@votes.where(track_id: @track[0].id, vote: true).empty? ? 'active' : 'disabled'} btn btn-default home-page vote-btn",
           method: :put,
           remote: true
     %>
     <%= link_to image_tag("thumbs-down.png", width: "30px"),
-        place_vote_track_vote_path(uid: @currently_playing.id, vote: 0, uri: @currently_playing.uri, id: @currently_playing.id, track_id: @currently_playing.id), class:"#{@votes.where(track_id: @track[0].id, vote: false).empty? ? 'active' : 'disabled'} btn btn-default home-page vote-btn", method: :put, remote: true %>
+        place_vote_track_vote_path(
+          uid: @currently_playing.id,
+          vote: 0,
+          uri: @currently_playing.uri,
+          id: @currently_playing.id,
+          track_id: @currently_playing.id
+        ),
+          class:"#{@votes.where(track_id: @track[0].id, vote: false).empty? ? 'active' : 'disabled'} btn btn-default home-page vote-btn",
+          method: :put,
+          remote: true %>
   </div>
 
   <div id="currently-playing">
 
-  <img id="albumimage" src="<%= @currently_playing.album.images[0]['url'] %>" style="width:100%"></p>
+  <img id="albumimage" src="<%= @currently_playing.album.images[0]['url'] %>" style="width:75%" />
     <% if admin_signed_in? %>
 
       <div id="player-controls">
@@ -36,32 +46,24 @@
       </div>
     <% end %>
   </div>
-  </div>
 
-  <div id="track-info" class="text-center col-md-4 col-centered"">
-    <h4>Artist(s)</h4>
-    <div id="artistname">
+
+<div id="track-info" class="text-center">
+  <h4>Artist(s)</h4>
+  <div id="artistname">
     <% @currently_playing.artists.each do |artist| %>
-
-      <p><%= artist.name %></p>
-
-  <% end %>
+    <p><%= artist.name %></p>
+    <% end %>
   </div>
-    <h4>Track name</h4>
-    <p id="trackname">
-    <%= @currently_playing.name %>
-    </p>
-    <h4>Album name</h4>
-    <p id="albumname">
-    <%= @currently_playing.album.name %>
-    </p>
-    <h4>Album release date</h4>
-    <p id="releasedate">
-    <%= @currently_playing.album.release_date %>
-    </p>
-  </div>
+  <h4>Track name</h4>
+  <p id="trackname"><%= @currently_playing.name %></p>
+  <h4>Album name</h4>
+  <p id="albumname"><%= @currently_playing.album.name %></p>
+  <h4>Album release date</h4><p id="releasedate"><%= @currently_playing.album.release_date %></p>
+</div>
 
-  <% else %>
-    <h1>We can't find the currently playing track</h1>
-    <p>Something's gone wrong and we can't find a currently playing track. Either the app isn't logged in to Spotify, or there isn't anything currently playing.</p>
-  <% end %>
+<% else %>
+  <h1>We can't find the currently playing track</h1>
+  <p>Something's gone wrong and we can't find a currently playing track. Either the app isn't logged in to Spotify, or there isn't anything currently playing.</p>
+<% end %>
+</div>

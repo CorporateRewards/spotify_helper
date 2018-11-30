@@ -3,6 +3,5 @@ $('#tracks-table').html("<%= j (render 'tracks/track_vote_listing.html') %>")
 });
 
 $(".home-page.vote-btn").on("ajax:success",function(e, data, status, xhr){
-  console.log($(this))
   $('#home-playing').html("<%= j (render 'tracks/currently_playing.html') %>")
 });
