@@ -36,7 +36,7 @@ class TracksController < ApplicationController
       uri: spotify_track[0].uri,
       metadata: spotify_track
     )
-    # user = current_user ? current_user : User.find_by(email: current_admin.email)
+
     vote = track.votes.find_or_create_by(user: user)
     if vote.update(vote: params[:vote])
       respond_to :js
@@ -48,7 +48,6 @@ class TracksController < ApplicationController
 
   def index
     @playlist = Track.sorted_by_most_votes
-    # @user = current_user ? current_user : User.find_by(email: current_admin.email)
     @votes = @user.votes.all
   end
 
@@ -101,21 +100,18 @@ class TracksController < ApplicationController
 
   def play_tracks
     player.play
-    redirect_to root_url
   end
 
   def pause_tracks
     player.pause
-    redirect_to root_url
   end
 
   def play_individual_track
     player.play_track(params[:track])
-    redirect_to root_url
   end
 
-  def next_track
-    @urlstring_to_post = 'https://api.spotify.com/v1/me/player/next'
+  def navigate_track
+    @urlstring_to_post = "https://api.spotify.com/v1/me/player/#{params[:direction]}"
     @result = HTTParty.post(
       @urlstring_to_post.to_str,
       body: {},
@@ -127,17 +123,6 @@ class TracksController < ApplicationController
     respond_to :js
   end
 
-  def previous_track
-    @urlstring_to_post = 'https://api.spotify.com/v1/me/player/previous'
-    @result = HTTParty.post(
-      @urlstring_to_post.to_str,
-      body: {
-      },
-      headers: { 'Authorization' => "Authorization: Bearer #{user_auth}" }
-    )
-    redirect_to root_url
-  end
-
   def volume_control
     volume = player.instance_variable_get(:@device).instance_variable_get(:@volume_percent).to_i
     if params[:change] == '1'
@@ -146,7 +131,5 @@ class TracksController < ApplicationController
       volume -= 10
     end
     player.volume(volume)
-
   end
-
 end
