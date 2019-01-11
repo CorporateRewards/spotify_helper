@@ -1,0 +1,23 @@
+<footer class="footer fixed-bottom">
+  <% if admin_signed_in? %>
+
+  <div id="player-controls">
+    <div class="row">
+      <%= link_to image_tag("down.png", alt: "Volume down"),volume_control_path(change: -1),class:"text-center col-sm-2", remote: true %>
+      <%= link_to image_tag("previous.png", alt: "Previous track"),navigate_track_path(direction: 'previous'),class:"text-center col-sm-2", remote: true, method: "get"  %>
+      <%= link_to image_tag("play.png", alt: "Play playlist"),play_tracks_path,class:"text-center col-sm-2", remote: true  %>
+      <%= link_to image_tag("pause.png", alt: "Pause playlist"),pause_tracks_path,class:"text-center col-sm-2", remote: true  %>
+      <%= link_to image_tag("next.png", alt: "Next track"),navigate_track_path(direction: 'next'),class:"text-center col-sm-2", remote: true,  method: "get"   %>
+      <%= link_to image_tag("up.png", alt: "Volume up"),volume_control_path(change: 1),class:"text-center col-sm-2", remote: true %>
+    </div>
+  </div>
+<% end %>
+
+<div id="footer-links">
+  <ul>
+  <li><%= link_to "Contact", "/pages/contact" %></li>
+  <li><%= link_to "Privacy Policy", "/pages/privacy_policy" %></li>
+  <li><%= link_to "Terms and Conditions", "/pages/terms_and_conditions" %></li>
+</ul>
+</div>
+</footer>
