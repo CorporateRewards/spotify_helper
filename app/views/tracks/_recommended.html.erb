@@ -1,0 +1,34 @@
+<% if !@currently_playing.nil? %>
+<h3 class="text-center">Recommended</h3>
+<div id="recommended-section" class="col-sm-12 col-md-6">
+
+<% @recommended.tracks.each do |track| %>
+  <div class="recommended col-md-3">
+    <img id="albumimage" src="<%= track.album.images[0]['url'] %>" style="width:100px" />
+
+    <div class="track-info" class="text-center">
+      <div id="artistname">
+        <strong>Artist(s): </strong>
+        <% track.artists.each do |artist| %>
+        <%= artist.name %>
+        <% end %>
+      </div>
+      <div id="trackname">
+        <strong>Track name: </strong>
+        <%= track.name %>
+      </div>
+      <div id="albumname">
+        <strong>Album name: </strong>
+        <%= track.album.name %>
+      </div>
+
+    </div>
+  </div>
+
+<% end %>
+
+<% else %>
+  <h1>We can't find any recommendations for you</h1>
+  <p>Whoops, we're having a problem getting recommendations for you right now, please try again later.</p>
+<% end %>
+</div>

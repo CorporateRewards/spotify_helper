@@ -2,6 +2,7 @@
 
 body {
   font-family: "Open Sans", sans-serif;
+  padding-bottom: 150px;
 }
 
 h1,
@@ -146,10 +147,14 @@ input {
 
 .footer {
   text-align: center;
-  padding: 50px 0;
+  height: 100px;
+  padding: 0px 0;
   background-color: #fbaf3a;
-  height: 200px;
   color: #fff;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }
 
 #footer-links {
@@ -196,14 +201,17 @@ a:hover {
 }
 
 #player {
-  padding-top: 10px;
+  padding-top: 0px;
+  border-right: 3px solid black;
 }
 
+.recommended {
+  height: 250px;
+  text-align: center;
+}
 #player-controls {
   margin: 0 auto;
   width: 100%;
-  position: absolute;
-  top: -15px;
   background-color: white;
   opacity: 0.9;
   padding: 5px 50px;
@@ -221,8 +229,6 @@ a:hover {
 .vote-btn {
   float: left;
   width: 50%;
-  /*padding: 20px 0;*/
-  /*text-align: center;*/
 }
 
 .vote-btn > img {
@@ -244,8 +250,8 @@ a:hover {
   overflow-wrap: normal;
 }
 
-#track-info {
-  padding: 10px;
+.track-info {
+  font-size: 10px;
 }
 
 #track-info h4 {
@@ -277,10 +283,6 @@ a:hover {
 .edit-form-container .actions {
   text-align: right;
   padding-right: 10%;
-}
-
-body {
-  font-family: "Open Sans", sans-serif;
 }
 
 .col-centered {
