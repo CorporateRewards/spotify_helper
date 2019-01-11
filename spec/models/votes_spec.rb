@@ -18,9 +18,6 @@ RSpec.describe Track do
       expect(track.votes.count).to eq(1)
     end
 
-    it 'should update my vote if this is not my first vote' do
-      expect{Vote.create(track_id: track.id, user: current_user, vote: 0)}.not_to change{track.votes.count}
-    end
   end
 
   it 'gets removed from the listings if the track is not on spotify' do
