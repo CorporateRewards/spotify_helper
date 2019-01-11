@@ -1,5 +1,5 @@
 class TracksController < ApplicationController
-  before_action :refresh_access, only: %i[next_track previous_track device_list play_individual_track]
+  before_action :refresh_access
 
   def spotify_user
     RSpotify::User.find('crtechteam')
@@ -48,7 +48,7 @@ class TracksController < ApplicationController
 
   def index
     @playlist = Track.sorted_by_most_votes
-    @votes = @user.votes.all
+    @votes = user.votes.all
   end
 
   def show
@@ -118,9 +118,7 @@ class TracksController < ApplicationController
       headers: { 'Authorization' => "Authorization: Bearer #{user_auth}" }
     )
     @currently_playing = player.currently_playing
-    # @user = current_user ? current_user : User.find_by(email: current_admin.email)
     @votes = user.votes.all
-    respond_to :js
   end
 
   def volume_control
