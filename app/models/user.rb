@@ -9,6 +9,7 @@ class User < ApplicationRecord
   validates :email, format: { with: /\@corporaterewards\.co.uk|\@createk\.io/,
                               message: 'You must register with a corporaterewards.co.uk'
                             }
+  validates_presence_of :first_name, :last_name
 
   attr_accessor :skip_password_validation
 
