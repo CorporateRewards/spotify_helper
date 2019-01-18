@@ -181,7 +181,6 @@ a:hover {
 
 #currently-playing {
   position: relative;
-  width: 100%;
   margin: 0 auto;
   text-align: center;
 }
@@ -190,18 +189,55 @@ a:hover {
   text-align: center;
   margin: 0 auto;
   padding-bottom: 20px;
+  margin-top: -50px;
 }
 
 .currently-playing-vote a {
   text-align: center;
+  a:hover {
+    color: #666666;
+    text-decoration: none;
+  }
+}
+
+.currently-playing-vote a:hover {
+  background-color: transparent !important;
+}
+.currently-playing-vote img {
+  width: 30px;
 }
 
 #currently-playing img {
   border-radius: 50px;
 }
 
+#albumimage {
+  width: 60%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 10px;
+}
+
+.prev-album {
+  width: 40%;
+  position: absolute;
+  left: 10px;
+  top: 50px;
+  z-index: -10;
+}
+
+.next-album {
+  width: 40%;
+  position: absolute;
+  right: 10px;
+  top: 50px;
+  z-index: -10;
+}
+
 #player {
   padding-top: 0px;
+}
+
+#home-playing {
   border-right: 3px solid black;
 }
 
@@ -227,16 +263,8 @@ a:hover {
 }
 
 .vote-btn {
-  float: left;
-  width: 50%;
-}
-
-.vote-btn > img {
-  width: 30px;
-}
-
-.vote-img {
-  width: 30px;
+  padding: 10px;
+  width: 40%;
 }
 
 /*Tracks page*/
