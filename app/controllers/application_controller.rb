@@ -58,12 +58,48 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def player
+    @player = spotify_user.player
+  end
+
+  def new_previous_track
+    @urlstring_to_post = 'https://api.spotify.com/v1/me/player/recently-played?limit=1'
+    @result = HTTParty.get(
+      @urlstring_to_post.to_str,
+      body: {
+      },
+      headers: { 'Authorization' => "Authorization: Bearer #{@userauth['credentials'].token}" }
+    )
+    @previous_track = @result.body[items][0].album || nil
+  end
+
+  def current_track
+    @currently_playing = player.currently_playing
+    @track = Track.where(track_id: @currently_playing.id)
+  end
+
+  def previous_track
+    location = 0
+    previous_track_location = playlist.tracks.each.with_index do |playlist_track, index|
+      location = index if @currently_playing.id == playlist_track.id
+    end
+    @previous_track = playlist.tracks[location - 1]
+  end
+
+  def next_track
+    location = 0
+    next_track_location = playlist.tracks.each.with_index do |playlist_track, index|
+      location = index if @currently_playing.id == playlist_track.id
+    end
+    @next_track = playlist.tracks[location + 1]
+  end
+
   def currently_playing
     begin
       if !spotify_user.nil?
-        @player = spotify_user.player
-        @currently_playing = @player.currently_playing
-        @track = Track.where(track_id: @currently_playing.id)
+        current_track
+        previous_track
+        next_track
       else
         @currently_playing = nil
       end

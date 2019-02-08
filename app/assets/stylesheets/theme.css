@@ -220,26 +220,24 @@ a:hover {
   border-radius: 50px;
 }
 
-#albumimage {
-  width: 60%;
+.album-image {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 60%;
   margin-bottom: 10px;
 }
 
-.prev-album {
-  width: 40%;
+.prev-next-album {
+  width: 50%;
   position: absolute;
-  left: 10px;
-  top: 50px;
-  z-index: -10;
+  top: 40px;
+  z-index: -10000;
+}
+.prev-album {
+  left: 5px;
 }
 
 .next-album {
-  width: 40%;
-  position: absolute;
-  right: 10px;
-  top: 50px;
-  z-index: -10;
+  right: 5px;
 }
 
 #player {

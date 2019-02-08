@@ -117,7 +117,7 @@ class TracksController < ApplicationController
       body: {},
       headers: { 'Authorization' => "Authorization: Bearer #{user_auth}" }
     )
-    @currently_playing = player.currently_playing
+    currently_playing
     @votes = user.votes.all
     @recommendations = recommended
   end
