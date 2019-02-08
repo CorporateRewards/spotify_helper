@@ -79,7 +79,6 @@ class ApplicationController < ActionController::Base
   end
 
   def previous_track
-    # @previous_track = spotify_user.recently_played(limit: 1)
     location = 0
     previous_track_location = playlist.tracks.each.with_index do |playlist_track, index|
       location = index if @currently_playing.id == playlist_track.id
