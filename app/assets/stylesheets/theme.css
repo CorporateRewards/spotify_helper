@@ -271,7 +271,16 @@ a:hover {
 
 .vote-btn {
   padding: 10px;
-  width: 40%;
+}
+
+.up-vote {
+  position: relative;
+  right: 100px;
+}
+
+.down-vote {
+  position: relative;
+  left: 100px;
 }
 
 /*Tracks page*/
