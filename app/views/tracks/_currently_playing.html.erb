@@ -32,9 +32,14 @@
 <div class="col-md-12">
 
   <div id="currently-playing">
-    <img id="prev-albumimage" class="prev-album" src="<%= @currently_playing.album.images[0]['url'] %>" />
-    <img id="albumimage" src="<%= @currently_playing.album.images[0]['url'] %>" />
-    <img id="next-albumimage" class="next-album" src="<%= @currently_playing.album.images[0]['url'] %>" />
+    <% if @previous_track.present? %>
+    <img class="prev-next-album prev-album album-image" src="<%= @previous_track.album.images[0]['url'] %>" />
+    <% end %>
+    <img class="album-image" src="<%= @currently_playing.album.images[0]['url'] %>" />
+    <% if @next_track.present? %>
+    <img class="prev-next-album next-album album-image" src="<%= @next_track.album.images[0]['url'] %>" />
+    <% end %>
+
   </div>
 
 
@@ -53,7 +58,7 @@ by
 <div id="albumname">
   From
   <strong><%= @currently_playing.album.name %></strong>
-  released 
+  released
   <strong><%= @currently_playing.album.release_date %></strong>
 </div>
 </div>

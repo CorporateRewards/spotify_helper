@@ -3,7 +3,7 @@
   <% @recommended.tracks.each do |track| %>
     <div class="recommended col-md-3">
       <%= link_to track.preview_url, rel: 'noreferrer', target: '_blank' do %>
-        <img id="albumimage" src="<%= track.album.images[0]['url'] %>" style="width:100px" />
+        <img class="album-image" src="<%= track.album.images[0]['url'] %>" style="width:100px" />
       <% end %>
       <div class="add-track">
         <%= link_to "I love it!",add_a_track_track_path(uid: track.id, vote: 1, uri: track.uri, id: track.id, track_id: track.id),class:"btn btn-color track", method: :post, remote: true %>
