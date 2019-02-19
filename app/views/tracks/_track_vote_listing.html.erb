@@ -1,6 +1,6 @@
 <table class="table table-hover">
   <th>Song</th><th>Artist</th><th>Tune Ups</th><th>Pipe Downs</th><th>Vote</th><th>Actions</th>
-  <% @playlist.each do |track| %>
+  <% @sorted_playlist.each do |track| %>
   <tr>
     <td><%= track.name %></td>
     <td><%= track.artist %></td>

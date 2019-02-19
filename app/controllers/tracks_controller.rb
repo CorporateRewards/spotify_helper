@@ -28,7 +28,7 @@ class TracksController < ApplicationController
 
     # See if track is in database
     track = Track.find_or_initialize_by(track_id: spotify_track[0].id)
-    playlist.add_tracks!(spotify_track)
+    add_to_playlist(spotify_track)
     track.update!(
       name: spotify_track[0].name,
       artist: spotify_track[0].artists[0].name,
@@ -36,7 +36,10 @@ class TracksController < ApplicationController
       uri: spotify_track[0].uri,
       metadata: spotify_track
     )
+    add_vote(track)
+  end
 
+  def add_vote(track)
     vote = track.votes.find_or_create_by(user: user)
     if vote.update(vote: params[:vote])
       respond_to :js
@@ -46,9 +49,13 @@ class TracksController < ApplicationController
     end
   end
 
+  def add_to_playlist(track)
+    playlist.add_tracks!(track)
+  end
+
   def index
-    @playlist = Track.sorted_by_most_votes
-    @votes = user.votes.all
+    @sorted_playlist = Track.sorted_by_most_votes
+    @votes = user.votes.where.not(track_id: nil)
   end
 
   def show
@@ -118,7 +125,7 @@ class TracksController < ApplicationController
       headers: { 'Authorization' => "Authorization: Bearer #{user_auth}" }
     )
     currently_playing
-    @votes = user.votes.all
+    @votes = user.votes.where.not(track_id: nil)
     @recommendations = recommended
   end
 

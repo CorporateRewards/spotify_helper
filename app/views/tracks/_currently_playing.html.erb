@@ -12,7 +12,7 @@
           id: @currently_playing.id,
           track_id: @currently_playing.id
         ),
-          class:"#{@votes.where(track_id: @track[0].id, vote: true).empty? ? 'active' : 'disabled'} btn btn-default home-page vote-btn up-vote",
+          class:"#{@votes.where(track_id: @track, vote: true).empty? ? 'active' : 'disabled'} btn btn-default home-page vote-btn up-vote",
           method: :put,
           remote: true
     %>
@@ -24,7 +24,7 @@
           id: @currently_playing.id,
           track_id: @currently_playing.id
         ),
-          class:"#{@votes.where(track_id: @track[0].id, vote: false).empty? ? 'active' : 'disabled'} btn btn-default home-page vote-btn down-vote",
+          class:"#{@votes.where(track_id: @track, vote: false).empty? ? 'active' : 'disabled'} btn btn-default home-page vote-btn down-vote",
           method: :put,
           remote: true %>
   </div>

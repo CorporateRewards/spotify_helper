@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!, :currently_playing
 
   def playlist
-    @playlist = RSpotify::Playlist.find('crtechteam', '5esgCdY5baXWpIrPHs5ZYp')
+    @playlist ||= RSpotify::Playlist.find('crtechteam', '5esgCdY5baXWpIrPHs5ZYp')
   end
 
   def authenticate_user!(*args)
@@ -62,25 +62,14 @@ class ApplicationController < ActionController::Base
     @player = spotify_user.player
   end
 
-  def new_previous_track
-    @urlstring_to_post = 'https://api.spotify.com/v1/me/player/recently-played?limit=1'
-    @result = HTTParty.get(
-      @urlstring_to_post.to_str,
-      body: {
-      },
-      headers: { 'Authorization' => "Authorization: Bearer #{@userauth['credentials'].token}" }
-    )
-    @previous_track = @result.body[items][0].album || nil
-  end
-
   def current_track
     @currently_playing = player.currently_playing
-    @track = Track.where(track_id: @currently_playing.id)
+    @track = Track.where(track_id: @currently_playing.id).pluck(:id)
   end
 
   def previous_track
     location = 0
-    previous_track_location = playlist.tracks.each.with_index do |playlist_track, index|
+    playlist.tracks.each.with_index do |playlist_track, index|
       location = index if @currently_playing.id == playlist_track.id
     end
     @previous_track = playlist.tracks[location - 1]
@@ -88,7 +77,7 @@ class ApplicationController < ActionController::Base
 
   def next_track
     location = 0
-    next_track_location = playlist.tracks.each.with_index do |playlist_track, index|
+    playlist.tracks.each.with_index do |playlist_track, index|
       location = index if @currently_playing.id == playlist_track.id
     end
     @next_track = playlist.tracks[location + 1]
@@ -107,7 +96,7 @@ class ApplicationController < ActionController::Base
       @currently_playing = nil
     end
 
-    @votes = user.votes.all || nil if user
+    @votes = user.votes.where.not(track_id: nil) || nil if user
 
     respond_to do |format|
       format.html
