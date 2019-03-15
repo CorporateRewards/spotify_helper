@@ -44,11 +44,16 @@ class ApplicationController < ActionController::Base
         refresh_token: @ref_token
       },
       headers: {
-        'Authorization' => 'Basic ODljNWFiYjA1YmQ0NDRlZGE3OThhZTJjMTVjY2I5MjE6N2I5YWJiMjNhZjhjNGRlM2E0NjQyZGE5MzcwN2M4MTU='
+        'Authorization' =>
+          'Basic ODljNWFiYjA1YmQ0NDRlZGE3OThhZTJjMTVjY2I5MjE6N2I5YWJiMjNhZjhjNGRlM2E0NjQyZGE5MzcwN2M4MTU='
       }
     )
     @user_auth.sp_user_hash['credentials'].token = @result['access_token']
     @user_auth.save
+  end
+
+  def player
+    @player = spotify_user.player
   end
 
   def track_progress
@@ -58,8 +63,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def player
-    @player = spotify_user.player
+  def current_track_progress
+    @progress = player.progress
+    @track_length = @currently_playing.duration_ms
+    @remaining = @track_length - @progress
   end
 
   def current_track
@@ -83,12 +90,21 @@ class ApplicationController < ActionController::Base
     @next_track = playlist.tracks[location + 1]
   end
 
+  def update_active_track
+    currently_playing
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def currently_playing
     begin
       if !spotify_user.nil?
         current_track
         previous_track
         next_track
+        current_track_progress
       else
         @currently_playing = nil
       end

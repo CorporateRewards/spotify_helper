@@ -1,9 +1,14 @@
 <div id="recommended-section">
-  <h3 class="text-center">Recommended</h3>
+  <div class="text-center">
+    <h3>Recommended For You</h3>
+    <p>Based on the tracks you've liked so far, we think you will like these ones too.</p>
+  </div>
+</div>
+<div>
   <% @recommended.tracks.each do |track| %>
-    <div class="recommended col-md-3">
+    <div class="recommended col-sm-3 col-xs-6">
       <%= link_to track.preview_url, rel: 'noreferrer', target: '_blank' do %>
-        <img class="album-image" src="<%= track.album.images[0]['url'] %>" style="width:100px" />
+        <img class="album-image recommended-album" src="<%= track.album.images[0]['url'] %>" style="width:100px" />
       <% end %>
       <div class="add-track">
         <%= link_to "I love it!",add_a_track_track_path(uid: track.id, vote: 1, uri: track.uri, id: track.id, track_id: track.id),class:"btn btn-color track", method: :post, remote: true %>
@@ -26,4 +31,5 @@
       </div>
     </div>
   <% end %>
+  </div>
 </div>

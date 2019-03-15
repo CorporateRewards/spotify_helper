@@ -1,0 +1,27 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal">x</button>
+  <h4 class="modal-title" id="myModalLabel"><%= @track[0].name %></h4>
+</div>
+<div class="modal-body text-center">
+  <div class="row">
+    <div class='col-md-12'>
+      <%= image_tag(@track[0].album.images[0]['url'], class: "album-image") %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class='col-md-12'>
+      <h3>Track name: </h3>
+      <p><%= @track[0].name %></p>
+
+      <h3>Artist name: </h3>
+      <p><%= @track[0].artists[0].name %></p>
+
+      <h3>Album name: </h3>
+      <p><%= @track[0].album.name %></p>
+
+      <h3>Album release date: </h3>
+      <p><%= @track[0].album.release_date %></p>
+    </div>
+  </div>
+</div>

@@ -22,9 +22,13 @@ class TracksController < ApplicationController
     @track = Track.new
   end
 
+  def spotify_track
+    RSpotify::Track.find([params[:uid]])
+  end
+
   def add_a_track
     # Find the track on spotify
-    spotify_track = RSpotify::Track.find([params[:uid]])
+    spotify_track
 
     # See if track is in database
     track = Track.find_or_initialize_by(track_id: spotify_track[0].id)
@@ -66,6 +70,10 @@ class TracksController < ApplicationController
 
   def track_details
     @track = RSpotify::Track.find([params[:track]])
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def update_playlist

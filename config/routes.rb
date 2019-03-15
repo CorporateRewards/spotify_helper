@@ -39,4 +39,6 @@ Rails.application.routes.draw do
   get 'device_list', to: 'tracks#device_list'
   get 'progress', to: 'application#track_progress'
   get 'my_activity', to: 'users/users#user_votes'
+  get 'update_active_track', to: 'tracks#update_active_track'
+
 end

@@ -121,12 +121,11 @@ input {
   background-color: transparent;
   color: #555;
 }
-#search-form {
-  width: 300px;
-}
 
 .navbar-form {
   padding-top: 12px;
+  width: 100%;
+  border: none;
 }
 
 .form-group,
@@ -224,14 +223,25 @@ a:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   width: 60%;
   margin-bottom: 10px;
+  position: relative;
+  z-index: 2;
+}
+
+.album-image.recommended-album {
+  z-index: 0;
+}
+
+#recommended-section {
+  margin-bottom: 100px;
 }
 
 .prev-next-album {
   width: 50%;
   position: absolute;
   top: 40px;
-  z-index: -10000;
+  z-index: 1;
 }
+
 .prev-album {
   left: 5px;
 }
@@ -242,10 +252,6 @@ a:hover {
 
 #player {
   padding-top: 0px;
-}
-
-#home-playing {
-  border-right: 3px solid black;
 }
 
 .recommended {
@@ -298,7 +304,7 @@ a:hover {
   font-size: 10px;
 }
 
-#track-info h4 {
+.current-track-info h4 {
   border: 1px solid #fbaf3a;
   text-align: center;
 }

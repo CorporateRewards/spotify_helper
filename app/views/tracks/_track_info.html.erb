@@ -1,0 +1,19 @@
+<div class="current-track-info text-center">
+  <div class="trackname">
+    <strong>
+    <%= track.name %>
+    </strong>
+    by
+    <strong>
+    <% track.artists.each do |artist| %>
+    <%= artist.name %>
+    <% end %>
+    </strong>
+  </div>
+  <div class="albumname">
+    From
+    <strong><%= track.album.name %></strong>
+    released
+    <strong><%= track.album.release_date %></strong>
+  </div>
+</div>

@@ -1,6 +1,5 @@
   <div id="player">
     <h3 class="text-center">Currently Playing</h3>
-
   <% if !@currently_playing.nil? %>
 
   <div class="row currently-playing-vote col-md-12">
@@ -29,42 +28,50 @@
           remote: true %>
   </div>
 
-<div class="col-md-12">
+  <div class="col-md-12">
 
-  <div id="currently-playing">
-    <% if @previous_track.present? %>
-    <img class="prev-next-album prev-album album-image" src="<%= @previous_track.album.images[0]['url'] %>" />
-    <% end %>
-    <img class="album-image" src="<%= @currently_playing.album.images[0]['url'] %>" />
-    <% if @next_track.present? %>
-    <img class="prev-next-album next-album album-image" src="<%= @next_track.album.images[0]['url'] %>" />
-    <% end %>
-
+    <div id="currently-playing">
+      <% if @previous_track.present? %>
+      <div id="previous-track">
+        <%= link_to image_tag(@previous_track.album.images[0]['url'], class: "prev-next-album prev-album album-image"), track_details_path(track: @previous_track.id), method: :get, class: 'prev-next', remote: true, data: { target: '#model-window', toggle: 'modal' } %>
+      </div>
+      <% end %>
+      <div id="current-track">
+        <%= link_to image_tag(@currently_playing.album.images[0]['url'], class: "current-track album-image"), track_details_path(track: @currently_playing.id), method: :get, remote: true, data: { target: '#model-window', toggle: 'modal' } %>
+      </div>
+      <% if @next_track.present? %>
+      <div id="next-track">
+        <%= link_to image_tag(@next_track.album.images[0]['url'], class: "prev-next-album next-album album-image"), track_details_path(track: @next_track.id), method: :get, class: 'prev-next', remote: true, data: { target: '#model-window', toggle: 'modal' } %>
+      </div>
+      <% end %>
+      <div id="current-track-info" class="track-info">
+        <%= render partial: 'tracks/track_info', locals: { track: @currently_playing } %>
+      </div>
+    </div>
   </div>
+  <% else %>
+    <h1>We can't find the currently playing track</h1>
+    <p>Something's gone wrong and we can't find a currently playing track. Either the app isn't logged in to Spotify, or there isn't anything currently playing.</p>
+  <% end %>
+</div>
 
-
-<div id="track-info" class="text-center">
-  <div id="trackname">
-  <strong>
-  <%= @currently_playing.name %>
-  </strong>
-by
-    <strong>
-    <% @currently_playing.artists.each do |artist| %>
-    <%= artist.name %>
-    <% end %>
-    </strong>
+<div id="modal-window" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    </div>
   </div>
-<div id="albumname">
-  From
-  <strong><%= @currently_playing.album.name %></strong>
-  released
-  <strong><%= @currently_playing.album.release_date %></strong>
 </div>
-</div>
-</div>
-<% else %>
-  <h1>We can't find the currently playing track</h1>
-  <p>Something's gone wrong and we can't find a currently playing track. Either the app isn't logged in to Spotify, or there isn't anything currently playing.</p>
-<% end %>
-</div>
+
+<script id="update-track">
+$("#modal-window").modal('hide');
+$('.modal-backdrop').remove();
+  remaining = "<%= @remaining %>";
+  if (typeof(remaining) !== 'undefined' && remaining != '') {
+    if (typeof(refreshTrack) !== 'undefined') {
+      clearTimeout(refreshTrack)
+    }
+    refreshTrack = setTimeout(function() {
+       $.get("update_active_track.js");
+    }, remaining)
+  }
+</script>
