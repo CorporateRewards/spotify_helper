@@ -1,17 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Track do
-  # user { User.new(first_name: 'Gill', last_name: 'Manning', email: 'gill@createk.io', password: '12345678') }
-
   context 'when voting on a track' do
-    let!(:current_user) do
-      User.create(
-        email: 'test@createk.io',
-        first_name: 'Gill',
-        last_name: 'Man',
-        password: '12345678'
-      )
-    end
+    let!(:current_user) { FactoryGirl.create(:user) }
     let!(:track) { Track.create(track_id: 'newtrack', metadata: 'testmetadata') }
     let!(:vote) { Vote.create(track_id: track.id, user: current_user) }
 
