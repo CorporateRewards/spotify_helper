@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :track do
     sequence(:track_id) { |n| "newtrack#{n}" }
     metadata { 'testmetadata' }
