@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Track do
   context 'when voting on a track' do
-    let!(:current_user) { FactoryGirl.create(:user) }
+    let!(:current_user) { create(:user) }
     let!(:track) { Track.create(track_id: 'newtrack', metadata: 'testmetadata') }
     let!(:vote) { Vote.create(track_id: track.id, user: current_user) }
 
