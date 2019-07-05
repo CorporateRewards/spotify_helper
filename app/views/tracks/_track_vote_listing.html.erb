@@ -17,8 +17,8 @@
         track_id: track.id,
         id: track.id
       ),
-      class: "#{@votes.where(track_id: track.id, vote: true).empty? ? 'active' : 'disabled'} btn btn-default track-listing vote-btn",
-      method: :put,
+      class: "#{users_vote_on_track(track, true)} btn btn-default track-listing vote-btn",
+      method: :post,
       remote: true
       %>
         <%= link_to image_tag(
@@ -31,8 +31,8 @@
             track_id: track.id,
             id: track.id
           ),
-          class: "#{@votes.where(track_id: track.id, vote: false).empty? ? 'active' : 'disabled'} btn btn-default track-listing vote-btn",
-          method: :put,
+          class: "#{users_vote_on_track(track, false)} btn btn-default track-listing vote-btn",
+          method: :post,
           remote: true
           %></td>
     <td>
