@@ -11,6 +11,19 @@ class VotesController < ApplicationController
     redirect_to :back
   end
 
+  def create
+    @sorted_playlist = Track.sorted_by_most_votes
+    @votes = @user.votes.all.where.not(track_id: nil)
+    @track = initialize_vote_track(params)
+    vote = @track.votes.find_or_initialize_by(user: user)
+    if vote.update(vote: params[:vote])
+      respond_to :js
+    else
+      flash.notice = 'Sorry, something went wrong, try again please'
+      redirect_to :back
+    end
+  end
+
   def initialize_vote_track(params)
     if params[:dbid]
       Track.find(params[:dbid])
@@ -28,19 +41,6 @@ class VotesController < ApplicationController
         metadata: spotify_track
       )
       track
-    end
-  end
-
-  def place_vote
-    @sorted_playlist = Track.sorted_by_most_votes
-    @votes = @user.votes.all.where.not(track_id: nil)
-    @track = initialize_vote_track(params)
-    vote = @track.votes.find_or_initialize_by(user: user)
-    if vote.update(vote: params[:vote])
-      respond_to :js
-    else
-      flash.notice = 'Sorry, something went wrong, try again please'
-      redirect_to :back
     end
   end
 

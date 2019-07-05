@@ -14,12 +14,8 @@ Rails.application.routes.draw do
     member do
       post :add_a_track
     end
-      resources :votes do
-        member do
-          put :place_vote
-        end
-      end
-    end
+    resources :votes
+  end
 
   get 'sign_in', to: 'pages#sign_in'
   get 'index', to: 'pages#index'
