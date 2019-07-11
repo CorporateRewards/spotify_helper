@@ -1,4 +1,4 @@
-class Playlist
+class Player
   def initialize(user, params = nil)
     @player = user.player
     @direction = params[:direction]
