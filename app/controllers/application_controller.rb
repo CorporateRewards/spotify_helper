@@ -12,12 +12,14 @@ class ApplicationController < ActionController::Base
     return super unless admin_signed_in?
   end
 
-  def spotify_user
-    return unless SpotifyAuth.last
+  def spotify_authorized_user
+    SpotifyAuth.last
+  end
 
-    # refresh_access
-    user_auth = SpotifyAuth.last
-    @userauth = user_auth.sp_user_hash
+  def spotify_user
+    return unless spotify_authorized_user
+
+    @userauth = spotify_authorized_user.sp_user_hash
     @spotify_user = RSpotify::User.new(@userauth)
   end
 
@@ -28,28 +30,29 @@ class ApplicationController < ActionController::Base
   end
 
   def refresh_access
-    return unless SpotifyAuth.last
+    return unless spotify_authorized_user
+
+    puts 'Refreshing spotify access'
 
     client_id = ENV['spotify_id']
     client_secret = ENV['spotify_secret']
-    @baseuser = Base64.strict_encode64("#{client_id}:#{client_secret}")
-    @user_auth = SpotifyAuth.last
-    @ref_token = @user_auth.sp_user_hash['credentials'].refresh_token
+    authorization_token = Base64.strict_encode64("#{client_id}:#{client_secret}")
+    ref_token = spotify_authorized_user.sp_user_hash['credentials'].refresh_token
 
-    @urlstring_to_post = 'https://accounts.spotify.com/api/token'
+    urlstring_to_post = 'https://accounts.spotify.com/api/token'
     @result = HTTParty.post(
-      @urlstring_to_post.to_str,
+      urlstring_to_post.to_str,
       body: {
         grant_type: 'refresh_token',
-        refresh_token: @ref_token
+        refresh_token: ref_token
       },
       headers: {
         'Authorization' =>
-          'Basic ODljNWFiYjA1YmQ0NDRlZGE3OThhZTJjMTVjY2I5MjE6N2I5YWJiMjNhZjhjNGRlM2E0NjQyZGE5MzcwN2M4MTU='
+          "Basic '#{authorization_token}'"
       }
     )
-    @user_auth.sp_user_hash['credentials'].token = @result['access_token']
-    @user_auth.save
+    spotify_authorized_user.sp_user_hash['credentials'].token = @result['access_token']
+    spotify_authorized_user.save
   end
 
   def player
