@@ -51,7 +51,6 @@ class TracksController < ApplicationController
 
   def show
     @playlist = Track.sorted_by_most_votes
-    @volume = player.instance_variable_get(:@device).instance_variable_get(:@volume_percent)
   end
 
   def track_details
