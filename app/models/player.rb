@@ -1,8 +1,8 @@
 class Player
   def initialize(user, params = nil)
     @player = user.player
-    @direction = params[:direction]
-    @volume_change = params[:change]
+    @direction = params[:direction] if params.present?
+    @volume_change = params[:change] if params.present?
   end
 
   def play_tracks
