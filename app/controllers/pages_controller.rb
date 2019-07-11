@@ -15,10 +15,10 @@ class PagesController < ApplicationController
 
   def welcome
     @user = current_user || User.find_by(email: current_admin.email)
-    @recommended = RSpotify::Recommendations.generate(limit: 8,
-                                                      seed_tracks: tracks_liked_by_user(@user).map(&:track_id)
-                                                     )
-    @recommendations = @recommended.tracks
+    @recommended = RSpotify::Recommendations.generate(
+      limit: 8,
+      seed_tracks: tracks_liked_by_user(@user).map(&:track_id)
+    )
   end
 
   def tracks_liked_by_user(user)
