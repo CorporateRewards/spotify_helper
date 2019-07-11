@@ -16,6 +16,10 @@ class ApplicationController < ActionController::Base
     SpotifyAuth.last
   end
 
+  def spotify_access_token
+    spotify_authorized_user.sp_user_hash['credentials'].token
+  end
+
   def spotify_user
     return unless spotify_authorized_user
 

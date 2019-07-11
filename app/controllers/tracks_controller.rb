@@ -1,19 +1,6 @@
 class TracksController < ApplicationController
   before_action :refresh_access
 
-  def spotify_user
-    RSpotify::User.find('crtechteam')
-  end
-
-  def player
-    spotify_user.player
-  end
-
-  def user_auth
-    @user = SpotifyAuth.last
-    @user_auth = @user.sp_user_hash['credentials'].token
-  end
-
   def create
     @track = Track.create(track_params)
   end
@@ -65,7 +52,6 @@ class TracksController < ApplicationController
   def show
     @playlist = Track.sorted_by_most_votes
     @volume = player.instance_variable_get(:@device).instance_variable_get(:@volume_percent)
-    @user_auth
   end
 
   def track_details
@@ -109,7 +95,7 @@ class TracksController < ApplicationController
       @urlstring_to_post.to_str,
       body: {
       },
-      headers: { 'Authorization' => "Authorization: Bearer #{user_auth}" }
+      headers: { 'Authorization' => "Authorization: Bearer #{spotify_access_token}" }
     )
   end
 
