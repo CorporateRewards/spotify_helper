@@ -114,24 +114,19 @@ class TracksController < ApplicationController
   end
 
   def play_tracks
-    player.play
+    Player.new(spotify_user).play_tracks
   end
 
   def pause_tracks
-    player.pause
+    Player.new(spotify_user).pause_tracks
   end
 
   def play_individual_track
-    player.play_track(params[:track])
+    Player.new(spotify_user).play_track(params[:track])
   end
 
   def navigate_track
-    @urlstring_to_post = "https://api.spotify.com/v1/me/player/#{params[:direction]}"
-    @result = HTTParty.post(
-      @urlstring_to_post.to_str,
-      body: {},
-      headers: { 'Authorization' => "Authorization: Bearer #{user_auth}" }
-    )
+    Player.new(spotify_user, params).navigate
     currently_playing
     @votes = user.votes.where.not(track_id: nil)
     @recommendations = recommended
@@ -151,12 +146,6 @@ class TracksController < ApplicationController
   end
 
   def volume_control
-    volume = player.instance_variable_get(:@device).instance_variable_get(:@volume_percent).to_i
-    if params[:change] == '1'
-      volume += 10
-    else
-      volume -= 10
-    end
-    player.volume(volume)
+    Player.new(spotify_user, params).change_volume
   end
 end
