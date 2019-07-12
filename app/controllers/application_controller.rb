@@ -38,8 +38,8 @@ class ApplicationController < ActionController::Base
     puts 'Refreshing spotify access'
     authorization_token = Base64.strict_encode64("#{ENV['spotify_id']}:#{ENV['spotify_secret']}")
     ref_token = spotify_authorized_user.sp_user_hash['credentials'].refresh_token
-
     spotify_token_url = 'https://accounts.spotify.com/api/token'
+
     @result = HTTParty.post(
       spotify_token_url,
       body: {
@@ -48,15 +48,16 @@ class ApplicationController < ActionController::Base
       },
       headers: {
         'Authorization' =>
-          "Basic '#{authorization_token}'"
+          "Basic #{authorization_token}"
       }
     )
+
     spotify_authorized_user.sp_user_hash['credentials'].token = @result['access_token']
-    puts 'Spotify access refreshed' if spotify_authorized_user.save
+    puts 'Spotify access refreshed' if @result['access_token'].present? && spotify_authorized_user.save
   end
 
   def player
-    @player = spotify_user.player
+    spotify_user.player
   end
 
   def track_progress
