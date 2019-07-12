@@ -14,9 +14,7 @@ class TracksController < ApplicationController
     @votes = user.votes.where.not(track_id: nil)
   end
 
-  def show
-    @playlist = Track.sorted_by_most_votes
-  end
+  def show; end
 
   def destroy
     track = RSpotify::Track.find([params[:uid]])
