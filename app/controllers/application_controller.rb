@@ -36,15 +36,12 @@ class ApplicationController < ActionController::Base
     return unless spotify_authorized_user
 
     puts 'Refreshing spotify access'
-
-    client_id = ENV['spotify_id']
-    client_secret = ENV['spotify_secret']
-    authorization_token = Base64.strict_encode64("#{client_id}:#{client_secret}")
+    authorization_token = Base64.strict_encode64("#{ENV['spotify_id']}:#{ENV['spotify_secret']}")
     ref_token = spotify_authorized_user.sp_user_hash['credentials'].refresh_token
 
-    urlstring_to_post = 'https://accounts.spotify.com/api/token'
+    spotify_token_url = 'https://accounts.spotify.com/api/token'
     @result = HTTParty.post(
-      urlstring_to_post.to_str,
+      spotify_token_url,
       body: {
         grant_type: 'refresh_token',
         refresh_token: ref_token
@@ -55,7 +52,7 @@ class ApplicationController < ActionController::Base
       }
     )
     spotify_authorized_user.sp_user_hash['credentials'].token = @result['access_token']
-    spotify_authorized_user.save
+    puts 'Spotify access refreshed' if spotify_authorized_user.save
   end
 
   def player
