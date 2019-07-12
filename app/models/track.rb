@@ -26,17 +26,18 @@ class Track < ApplicationRecord
   end
 
   def self.made_the_playlist
-    # Get the top voted tracks
-    @votedtracks = Track.valid
+    @new_playlist = top_voted_tracks + recently_added_tracks
+  end
+
+  def self.top_voted_tracks
+    Track.valid
       .no_free_pass
       .sort_by(&:sum_total_votes)
       .pluck(:metadata)
       .reverse.first(80)
+  end
 
-    # Get new tracks added in the last 2 days
-    @newtracks = Track.free_pass.pluck(:metadata)
-
-    # Return the top voted tracks and the new tracks
-    @new_playlist = @votedtracks + @newtracks
+  def self.recently_added_tracks
+    Track.free_pass.pluck(:metadata)
   end
 end
