@@ -1,7 +1,5 @@
 class PagesController < ApplicationController
-  def index
-    @playlist = playlist
-  end
+  def index; end
 
   def show
     render template: "pages/#{params[:page]}"
