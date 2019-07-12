@@ -26,7 +26,7 @@ class Track < ApplicationRecord
   end
 
   def self.made_the_playlist
-    @new_playlist = top_voted_tracks + recently_added_tracks
+    top_voted_tracks + recently_added_tracks
   end
 
   def self.top_voted_tracks
