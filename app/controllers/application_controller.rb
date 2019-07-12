@@ -69,33 +69,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def current_track_progress
-    @progress = player.progress
-    @track_length = @currently_playing.duration_ms
-    @remaining = @track_length - @progress
-  end
-
-  def current_track
-    @currently_playing = player.currently_playing
-    @track = Track.where(track_id: @currently_playing.id).pluck(:id)
-  end
-
-  def previous_track
-    location = 0
-    playlist.tracks.each.with_index do |playlist_track, index|
-      location = index if @currently_playing.id == playlist_track.id
-    end
-    @previous_track = playlist.tracks[location - 1]
-  end
-
-  def next_track
-    location = 0
-    playlist.tracks.each.with_index do |playlist_track, index|
-      location = index if @currently_playing.id == playlist_track.id
-    end
-    @next_track = playlist.tracks[location + 1]
-  end
-
   def update_active_track
     currently_playing
 
@@ -105,25 +78,57 @@ class ApplicationController < ActionController::Base
   end
 
   def currently_playing
-    begin
-      if !spotify_user.nil?
-        current_track
-        previous_track
-        next_track
-        current_track_progress
-      else
-        @currently_playing = nil
-      end
-    rescue
-      @currently_playing = nil
-    end
-
-    @votes = user.votes.where.not(track_id: nil) || nil if user
+    assign_track_variables
+    assign_user_votes
 
     respond_to do |format|
       format.html
       format.json { render json: @currently_playing }
       format.js
     end
+  end
+
+  private
+
+  def assign_track_variables
+    return @currently_playing = nil if spotify_user.nil?
+
+    assign_current_track
+    assign_previous_track
+    assign_next_track
+    current_track_progress
+  end
+
+  def assign_user_votes
+    return unless user.present?
+
+    @votes = user.votes.where.not(track_id: nil) || nil
+  end
+
+  def assign_current_track
+    @currently_playing = player.currently_playing
+    @track = Track.where(track_id: @currently_playing.id).pluck(:id)
+  end
+
+  def assign_previous_track
+    location = 0
+    playlist.tracks.each.with_index do |playlist_track, index|
+      location = index if @currently_playing.id == playlist_track.id
+    end
+    @previous_track = playlist.tracks[location - 1]
+  end
+
+  def assign_next_track
+    location = 0
+    playlist.tracks.each.with_index do |playlist_track, index|
+      location = index if @currently_playing.id == playlist_track.id
+    end
+    @next_track = playlist.tracks[location + 1]
+  end
+
+  def current_track_progress
+    @progress = player.progress
+    @track_length = @currently_playing.duration_ms
+    @remaining = @track_length - @progress
   end
 end
