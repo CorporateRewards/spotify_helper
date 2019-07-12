@@ -23,8 +23,7 @@ class ApplicationController < ActionController::Base
   def spotify_user
     return unless spotify_authorized_user
 
-    @userauth = spotify_authorized_user.sp_user_hash
-    @spotify_user = RSpotify::User.new(@userauth)
+    RSpotify::User.new(spotify_authorized_user.sp_user_hash)
   end
 
   def user
