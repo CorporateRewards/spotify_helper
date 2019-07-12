@@ -33,24 +33,7 @@ class TracksController < ApplicationController
   end
 
   def update_playlist
-    @alltracks = Track.made_the_playlist
-    return if @alltracks.empty?
-
-    if @alltracks.length < 100
-      @playlist = RSpotify::Playlist.find('crtechteam', '5esgCdY5baXWpIrPHs5ZYp')
-      @playlist.replace_tracks!(@alltracks.flatten)
-    else
-      @first_100_tracks = @alltracks.first(100)
-      @playlist = RSpotify::Playlist.find('crtechteam', '5esgCdY5baXWpIrPHs5ZYp')
-      @playlist.replace_tracks!(@first_100_tracks.flatten)
-      length = @alltracks.length - 100
-      @additional = @alltracks.last(length)
-
-      @additional.each do |t|
-        @playlist.add_tracks!(t)
-      end
-    end
-    redirect_to root_url
+    UpdatePlaylistWorker.perform_async
   end
 
   def find_track_on_spotify
