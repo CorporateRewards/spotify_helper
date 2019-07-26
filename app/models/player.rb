@@ -5,8 +5,8 @@ class Player
     @volume_change = params[:change] if params.present?
   end
 
-  def play_tracks
-    @player.play
+  def play_tracks(playlist)
+    @player.play_context(device_id = nil, playlist)
   end
 
   def pause_tracks

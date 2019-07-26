@@ -84,7 +84,7 @@ class TracksController < ApplicationController
   end
 
   def play_tracks
-    Player.new(spotify_user).play_tracks
+    Player.new(spotify_user).play_tracks(params[:playlist])
   end
 
   def pause_tracks
