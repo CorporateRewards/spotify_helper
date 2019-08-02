@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :votes
   end
 
+  resources :playlists
   resources :players
   get 'sign_in', to: 'pages#sign_in'
   get 'index', to: 'pages#index'

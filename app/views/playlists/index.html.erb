@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Playlists</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @playlists.each do |playlist| %>
+      <tr>
+        <td><%= playlist.name %></td>
+        <td><%= playlist.id %></td>
+        <td><%= playlist.uri %></td>
+        <td><%= link_to 'Play', player_control_path({playlist: playlist.uri, activity: 'play_tracks'}), class:"text-center col-sm-2", remote: true %></td>
+        <td><%= link_to 'View details', playlist_path(id: playlist.id), class:"text-center col-sm-2" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
