@@ -90,6 +90,7 @@ class ApplicationController < ActionController::Base
 
   def assign_track_variables
     return @currently_playing = nil if spotify_user.nil?
+    return if player.nil?
 
     assign_current_track
     assign_previous_track
