@@ -1,12 +1,20 @@
 class Player
   def initialize(user, params = nil)
     @player = user.player
+    @activity = params[:activity]
+    @playlist = params[:playlist]
     @direction = params[:direction] if params.present?
     @volume_change = params[:change] if params.present?
   end
 
+  def update_status
+    self.send(@activity)
+  end
+
+  private
+
   def play_tracks
-    @player.play
+    @player.play_context(device_id = nil, @playlist)
   end
 
   def pause_tracks

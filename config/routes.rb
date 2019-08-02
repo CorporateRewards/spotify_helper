@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :votes
   end
 
+  resources :players
   get 'sign_in', to: 'pages#sign_in'
   get 'index', to: 'pages#index'
   get 'stats', to: 'stats#show'
@@ -26,7 +27,7 @@ Rails.application.routes.draw do
   get 'welcome', to: 'pages#welcome'
   resource :nicknames
   get 'currently_playing', to: 'application#currently_playing'
-  get 'play_tracks', to: 'tracks#play_tracks'
+  get 'player_control', to: 'players#update'
   get 'pause_tracks', to: 'tracks#pause_tracks'
   get 'play_individual_track', to: 'tracks#play_individual_track'
   get 'navigate_track', to: 'tracks#navigate_track'

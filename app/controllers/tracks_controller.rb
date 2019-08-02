@@ -83,29 +83,6 @@ class TracksController < ApplicationController
     )
   end
 
-  def play_tracks
-    Player.new(spotify_user).play_tracks
-  end
-
-  def pause_tracks
-    Player.new(spotify_user).pause_tracks
-  end
-
-  def play_individual_track
-    Player.new(spotify_user).play_track(params[:track])
-  end
-
-  def navigate_track
-    Player.new(spotify_user, params).navigate
-    currently_playing
-    @votes = user.votes.where.not(track_id: nil)
-    assign_recommended_tracks
-  end
-
-  def volume_control
-    Player.new(spotify_user, params).change_volume
-  end
-
   def assign_recommended_tracks
     @recommended = RSpotify::Recommendations.generate(
       limit: 8,
