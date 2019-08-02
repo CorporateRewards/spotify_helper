@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def spotify_authorized_user
-    SpotifyAuth.last
+    @spotify_authorized_user ||= SpotifyAuth.last
   end
 
   def spotify_access_token
