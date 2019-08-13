@@ -19,6 +19,10 @@ class PagesController < ApplicationController
     )
   end
 
+  def auth
+    render :layout => false
+  end
+
   def tracks_liked_by_user(user)
     user_votes = Vote.where(user_id: user).pluck(:track_id)
     Track.find(user_votes).sample(5)

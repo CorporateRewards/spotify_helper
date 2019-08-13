@@ -57,7 +57,7 @@ class ApplicationController < ActionController::Base
   end
 
   def player
-    spotify_user.player
+    @player = spotify_user.player
   end
 
   def track_progress
