@@ -13,9 +13,12 @@ class PagesController < ApplicationController
 
   def welcome
     @user = current_user || User.find_by(email: current_admin.email)
+    seed_data = tracks_liked_by_user(@user)
+    return unless seed_data.present?
+
     @recommended = RSpotify::Recommendations.generate(
       limit: 8,
-      seed_tracks: tracks_liked_by_user(@user).map(&:track_id)
+      seed_tracks: seed_data
     )
   end
 
@@ -25,6 +28,8 @@ class PagesController < ApplicationController
 
   def tracks_liked_by_user(user)
     user_votes = Vote.where(user_id: user).pluck(:track_id)
-    Track.find(user_votes).sample(5)
+    return unless user_votes.present?
+
+    Track.find(user_votes).sample(5).map(&:track_id)
   end
 end
