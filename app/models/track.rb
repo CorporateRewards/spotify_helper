@@ -40,4 +40,11 @@ class Track < ApplicationRecord
   def self.recently_added_tracks
     Track.free_pass.pluck(:metadata)
   end
+
+  def self.liked_by_user(user)
+    user_votes = Vote.where(user_id: user).pluck(:track_id)
+    return unless user_votes.present?
+
+    Track.find(user_votes).sample(5).map(&:track_id)
+  end
 end

@@ -78,7 +78,8 @@ class ApplicationController < ActionController::Base
   def currently_playing
     assign_track_variables
     assign_user_votes
-
+    assign_user_recommendations
+    
     respond_to do |format|
       format.html
       format.json { render json: @currently_playing }
@@ -102,6 +103,16 @@ class ApplicationController < ActionController::Base
     return unless user.present?
 
     @votes = user.votes.where.not(track_id: nil) || nil
+  end
+
+  def assign_user_recommendations
+    seed_data = Track.liked_by_user(@user)
+    return unless seed_data.present?
+
+    @recommended = RSpotify::Recommendations.generate(
+      limit: 8,
+      seed_tracks: seed_data
+    )
   end
 
   def assign_current_track
