@@ -1,4 +1,4 @@
-FROM ruby:2.4.0
+FROM ruby:2.4.0-slim
 MAINTAINER gill@createk.io
 
 RUN apt-get update && apt-get install -y \
