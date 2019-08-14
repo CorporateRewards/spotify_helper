@@ -1,14 +1,16 @@
 <footer class="footer fixed-bottom">
   <% if admin_signed_in? %>
-
   <div id="player-controls">
     <div class="row">
-      <%= link_to image_tag("down.png", alt: "Volume down"),volume_control_path(change: -1),class:"text-center col-sm-2", remote: true %>
-      <%= link_to image_tag("previous.png", alt: "Previous track"),navigate_track_path(direction: 'previous'),class:"text-center col-sm-2", remote: true, method: "get"  %>
-      <%= link_to image_tag("play.png", alt: "Play playlist"),play_tracks_path,class:"text-center col-sm-2", remote: true  %>
-      <%= link_to image_tag("pause.png", alt: "Pause playlist"),pause_tracks_path,class:"text-center col-sm-2", remote: true  %>
-      <%= link_to image_tag("next.png", alt: "Next track"),navigate_track_path(direction: 'next'),class:"text-center col-sm-2", remote: true,  method: "get"   %>
-      <%= link_to image_tag("up.png", alt: "Volume up"),volume_control_path(change: 1),class:"text-center col-sm-2", remote: true %>
+      <%= link_to image_tag("down.png", alt: "Volume down"),player_control_path(change: -1, activity: 'change_volume'), class:"text-center", remote: true %>
+      <%= link_to image_tag("previous.png", alt: "Previous track"),player_control_path(direction: 'previous', activity: 'navigate'), class:"text-center", remote: true, method: "get"  %>
+      <% if @player && @player.playing? %>
+        <%= link_to image_tag("pause.png", alt: "Pause playlist"),player_control_path(activity: 'pause_tracks'), class:"text-center", remote: true  %>
+      <% else %>
+        <%= link_to image_tag("play.png", alt: "Play playlist"),player_control_path(activity: 'play_tracks'), class:"text-center", remote: true  %>
+      <% end %>
+      <%= link_to image_tag("next.png", alt: "Next track"),player_control_path(direction: 'next', activity: 'navigate'), class:"text-center", remote: true,  method: "get"   %>
+      <%= link_to image_tag("up.png", alt: "Volume up"),player_control_path(change: 1, activity: 'change_volume'), class:"text-center", remote: true %>
     </div>
   </div>
 <% end %>

@@ -1,27 +1,25 @@
-
 class UpdatePlaylistWorker
   include Sidekiq::Worker
 
   def perform
-    user_auth = SpotifyAuth.last
-    @userauth = user_auth.sp_user_hash
-    @spotify_user = RSpotify::User.new(@userauth)
-    @alltracks = Track.made_the_playlist
-    if !@alltracks.empty?
-      if @alltracks.length < 100
-        @playlist = RSpotify::Playlist.find('crtechteam', '5esgCdY5baXWpIrPHs5ZYp')
-        @playlist.replace_tracks!(@alltracks.flatten)
-      else
-        @first_100_tracks = @alltracks.first(100)
-        @playlist = RSpotify::Playlist.find('crtechteam', '5esgCdY5baXWpIrPHs5ZYp')
-        @playlist.replace_tracks!(@first_100_tracks.flatten)
-        length = @alltracks.length - 100
-        @additional = @alltracks.last(length)
+    return if tracks_to_be_added.empty?
 
-        @additional.each do |t|
-          @playlist.add_tracks!(t)          
-      end
-    end
+    initiate_rspotify_user
+    initiate_playlist
+    @playlist.replace_tracks!(tracks_to_be_added.flatten)
   end
-end
+
+  private
+
+  def tracks_to_be_added
+    Track.top_voted_tracks + Track.recently_added_tracks
+  end
+
+  def initiate_rspotify_user
+    RSpotify::User.new(SpotifyAuth.last.sp_user_hash)
+  end
+
+  def initiate_playlist
+    @playlist = RSpotify::Playlist.find('crtechteam', '5esgCdY5baXWpIrPHs5ZYp')
+  end
 end

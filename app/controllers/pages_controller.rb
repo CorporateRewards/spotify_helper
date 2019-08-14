@@ -1,7 +1,5 @@
 class PagesController < ApplicationController
-  def index
-    @playlist = playlist
-  end
+  def index; end
 
   def show
     render template: "pages/#{params[:page]}"
@@ -13,16 +11,9 @@ class PagesController < ApplicationController
 
   def privacy_policy; end
 
-  def welcome
-    @user = current_user || User.find_by(email: current_admin.email)
-    @recommended = RSpotify::Recommendations.generate(limit: 8,
-                                                      seed_tracks: tracks_liked_by_user(@user).map(&:track_id)
-                                                     )
-    @recommendations = @recommended.tracks
-  end
+  def welcome; end
 
-  def tracks_liked_by_user(user)
-    user_votes = Vote.where(user_id: user).pluck(:track_id)
-    Track.find(user_votes).sample(5)
+  def auth
+    render :layout => false
   end
 end

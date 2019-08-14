@@ -1,35 +1,41 @@
 <div id="recommended-section">
   <div class="text-center">
     <h3>Recommended For You</h3>
-    <p>Based on the tracks you've liked so far, we think you will like these ones too.</p>
   </div>
 </div>
 <div>
-  <% @recommended.tracks.each do |track| %>
-    <div class="recommended col-sm-3 col-xs-6">
-      <%= link_to track.preview_url, rel: 'noreferrer', target: '_blank' do %>
-        <img class="album-image recommended-album" src="<%= track.album.images[0]['url'] %>" style="width:100px" />
-      <% end %>
-      <div class="add-track">
-        <%= link_to "I love it!",add_a_track_track_path(uid: track.id, vote: 1, uri: track.uri, id: track.id, track_id: track.id),class:"btn btn-color track", method: :post, remote: true %>
-      </div>
-      <div class="track-info" class="text-center">
-        <div id="artistname">
-          <strong>Artist(s): </strong>
-          <% track.artists.each do |artist| %>
-          <%= artist.name %>
+  <% if @recommended.present? %>
+    <div>
+      <% @recommended.tracks.each do |track| %>
+        <div class="recommended col-sm-3 col-xs-6">
+          <%= link_to track.preview_url, rel: 'noreferrer', target: '_blank' do %>
+            <img class="album-image recommended-album" src="<%= track.album.images[0]['url'] %>" style="width:100px" />
           <% end %>
+          <div class="add-track">
+            <%= link_to "I love it!",add_a_track_track_path(uid: track.id, vote: 1, uri: track.uri, id: track.id, track_id: track.id),class:"btn btn-color track", method: :post, remote: true %>
+          </div>
+          <div class="track-info" class="text-center">
+            <div id="artistname">
+              <strong>Artist(s): </strong>
+              <% track.artists.each do |artist| %>
+              <%= artist.name %>
+              <% end %>
+            </div>
+            <div id="trackname">
+              <strong>Track name: </strong>
+              <%= track.name %>
+            </div>
+            <div id="albumname">
+              <strong>Album name: </strong>
+              <%= track.album.name %>
+            </div>
+          </div>
         </div>
-        <div id="trackname">
-          <strong>Track name: </strong>
-          <%= track.name %>
-        </div>
-        <div id="albumname">
-          <strong>Album name: </strong>
-          <%= track.album.name %>
-        </div>
-      </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div>
+      <p>Whoops, you haven't liked any tracks yet, we'll show you recommendations here when you do.</p>
     </div>
   <% end %>
-  </div>
 </div>

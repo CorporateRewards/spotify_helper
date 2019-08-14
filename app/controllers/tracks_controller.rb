@@ -1,19 +1,6 @@
 class TracksController < ApplicationController
   before_action :refresh_access
 
-  def spotify_user
-    RSpotify::User.find('crtechteam')
-  end
-
-  def player
-    spotify_user.player
-  end
-
-  def user_auth
-    @user = SpotifyAuth.last
-    @user_auth = @user.sp_user_hash['credentials'].token
-  end
-
   def create
     @track = Track.create(track_params)
   end
@@ -22,25 +9,54 @@ class TracksController < ApplicationController
     @track = Track.new
   end
 
-  def spotify_track
-    RSpotify::Track.find([params[:uid]])
+  def index
+    @sorted_playlist = Track.sorted_by_most_votes
+    @votes = user.votes.where.not(track_id: nil)
+  end
+
+  def show; end
+
+  def destroy
+    track = RSpotify::Track.find([params[:uid]])
+    playlist.remove_tracks!(track)
+    redirect_to root_url
+  end
+
+  def track_details
+    @track = RSpotify::Track.find([params[:track]])
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def update_playlist
+    UpdatePlaylistWorker.perform_async
+  end
+
+  def find_track_on_spotify
+    @spotify_track = RSpotify::Track.find([params[:uid]])
   end
 
   def add_a_track
-    # Find the track on spotify
-    spotify_track
+    ActiveRecord::Base.transaction do
+      find_track_on_spotify
+      add_track_to_playlist(@spotify_track)
+      add_track_locally
+      add_vote(@track)
+    end
+  end
 
-    # See if track is in database
-    track = Track.find_or_initialize_by(track_id: spotify_track[0].id)
-    add_to_playlist(spotify_track)
-    track.update!(
-      name: spotify_track[0].name,
-      artist: spotify_track[0].artists[0].name,
-      track_id: spotify_track[0].id,
-      uri: spotify_track[0].uri,
-      metadata: spotify_track
+  def add_track_locally
+    @track = Track.find_or_initialize_by(track_id: @spotify_track[0].id)
+
+    @track.update!(
+      name: @spotify_track[0].name,
+      artist: @spotify_track[0].artists[0].name,
+      track_id: @spotify_track[0].id,
+      uri: @spotify_track[0].uri,
+      metadata: @spotify_track
     )
-    add_vote(track)
   end
 
   def add_vote(track)
@@ -53,54 +69,8 @@ class TracksController < ApplicationController
     end
   end
 
-  def add_to_playlist(track)
+  def add_track_to_playlist(track)
     playlist.add_tracks!(track)
-  end
-
-  def index
-    @sorted_playlist = Track.sorted_by_most_votes
-    @votes = user.votes.where.not(track_id: nil)
-  end
-
-  def show
-    @playlist = Track.sorted_by_most_votes
-    @volume = player.instance_variable_get(:@device).instance_variable_get(:@volume_percent)
-    @user_auth
-  end
-
-  def track_details
-    @track = RSpotify::Track.find([params[:track]])
-    respond_to do |format|
-      format.html
-      format.js
-    end
-  end
-
-  def update_playlist
-    @alltracks = Track.made_the_playlist
-    return if @alltracks.empty?
-
-    if @alltracks.length < 100
-      @playlist = RSpotify::Playlist.find('crtechteam', '5esgCdY5baXWpIrPHs5ZYp')
-      @playlist.replace_tracks!(@alltracks.flatten)
-    else
-      @first_100_tracks = @alltracks.first(100)
-      @playlist = RSpotify::Playlist.find('crtechteam', '5esgCdY5baXWpIrPHs5ZYp')
-      @playlist.replace_tracks!(@first_100_tracks.flatten)
-      length = @alltracks.length - 100
-      @additional = @alltracks.last(length)
-
-      @additional.each do |t|
-        @playlist.add_tracks!(t)
-      end
-    end
-    redirect_to root_url
-  end
-
-  def destroy
-    track = RSpotify::Track.find([params[:uid]])
-    playlist.remove_tracks!(track)
-    redirect_to root_url
   end
 
   def device_list
@@ -109,54 +79,19 @@ class TracksController < ApplicationController
       @urlstring_to_post.to_str,
       body: {
       },
-      headers: { 'Authorization' => "Authorization: Bearer #{user_auth}" }
+      headers: { 'Authorization' => "Authorization: Bearer #{spotify_access_token}" }
     )
   end
 
-  def play_tracks
-    player.play
-  end
-
-  def pause_tracks
-    player.pause
-  end
-
-  def play_individual_track
-    player.play_track(params[:track])
-  end
-
-  def navigate_track
-    @urlstring_to_post = "https://api.spotify.com/v1/me/player/#{params[:direction]}"
-    @result = HTTParty.post(
-      @urlstring_to_post.to_str,
-      body: {},
-      headers: { 'Authorization' => "Authorization: Bearer #{user_auth}" }
+  def assign_recommended_tracks
+    @recommended = RSpotify::Recommendations.generate(
+      limit: 8,
+      seed_tracks: tracks_liked_by_user(user).map(&:track_id)
     )
-    currently_playing
-    @votes = user.votes.where.not(track_id: nil)
-    @recommendations = recommended
-  end
-
-  def recommended
-    @user = current_user || User.find_by(email: current_admin.email)
-    @recommended = RSpotify::Recommendations.generate(limit: 8,
-                                                      seed_tracks: tracks_liked_by_user(@user).map(&:track_id)
-                                                     )
-    @recommendations = @recommended.tracks
   end
 
   def tracks_liked_by_user(user)
     user_votes = Vote.where(user_id: user).pluck(:track_id)
     Track.find(user_votes).sample(5)
-  end
-
-  def volume_control
-    volume = player.instance_variable_get(:@device).instance_variable_get(:@volume_percent).to_i
-    if params[:change] == '1'
-      volume += 10
-    else
-      volume -= 10
-    end
-    player.volume(volume)
   end
 end

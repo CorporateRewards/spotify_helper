@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<div>
+  <h1>Playlists</h1>
+
+  <h2><%= @playlist.name %></h2>
+  <p><%= link_to 'Play', player_control_path(playlist: @playlist.uri), remote: true %></p>
+</div>
+
+<div>
+  <table>
+    <tbody>
+      <thead>
+        <tr>
+          <th>Position</th>
+          <th>Track name</th>
+          <th>Album name</th>
+          <th>Artists</th>
+          <th>Track id</th>
+        </tr>
+      </thead>
+
+      <% @playlist.tracks_cache.each_with_index do |track, index| %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= track.name %></td>
+          <td><%= track.album.name %></td>
+          <td><%= track.artists.map(&:name).join(', ') %></td>
+          <td><%= track.id %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

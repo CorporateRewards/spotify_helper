@@ -1,0 +1,63 @@
+version: "3"
+services:
+  app:
+    # To use byebug, do this:
+    #   BYEBUG=1 docker-compose up
+    build: .
+    command: >
+      bash -c '
+        rm -f /app/tmp/pids/server.pid &&
+        bundle &&
+        if [ "$BYEBUG" -eq "1" ]; then
+          sleep infinity;
+        else
+          PUMA_WORKERS=$PUMA_WORKERS rails s;
+        fi
+      '
+    depends_on:
+      - db
+      - redis
+    expose:
+      - 3000
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - DB_HOST=db
+      - DB_USERNAME=root
+      - DB_PASSWORD
+      - TERM=xterm-256color
+    volumes:
+      - .:/app:cached
+    ports:
+      - "3000:3000"
+
+  db:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - 3306:3306
+
+  redis:
+    image: redis:3.0-alpine
+
+  sidekiq:
+    build: .
+    command: >
+      sh -c '
+        bundle &&
+        ./bin/rake tmp:clear tmp:pids:clear tmp:create &&
+        bundle exec sidekiq
+      '
+    depends_on:
+      - db
+      - redis
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - DB_HOST=db
+      - DB_USERNAME=root
+      - DB_PASSWORD
+    volumes:
+      - .:/app
+      - /app/tmp/
+      - ./tmp/letter_opener/:/app/tmp/letter_opener/
+      - /app/log/
