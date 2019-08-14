@@ -6,19 +6,14 @@
       <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body data-action="<%= action_name %>" data-controller="<%= controller_path.gsub('/', '__') %>">
     <%= render "layouts/navigation" %>
-
     <div class="container-fluid theme-showcase" role="main">
       <%= render "layouts/errors" %>
-      <% if current_user || current_admin %>
-      <% end %>
-
       <div class="row">
         <div class="col-md-12">
           <%= render "layouts/results" %>
@@ -26,8 +21,8 @@
         </div>
       </div>
     </div> <!-- /container -->
-</body>
-<div id="footer-container">
-  <%= render "layouts/footer" %>
-</div>
+  </body>
+  <div id="footer-container">
+    <%= render "layouts/footer" %>
+  </div>
 </html>

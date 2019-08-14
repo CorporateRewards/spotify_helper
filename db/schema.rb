@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20190726132916) do
 
-  create_table "admins", force: :cascade do |t|
+  create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -25,44 +25,44 @@ ActiveRecord::Schema.define(version: 20190726132916) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.index ["email"], name: "index_admins_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_admins_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
   end
 
-  create_table "banned_phrases", force: :cascade do |t|
+  create_table "banned_phrases", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string "phrase"
   end
 
-  create_table "nicknames", force: :cascade do |t|
+  create_table "nicknames", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string   "nickname"
     t.integer  "user_id"
     t.datetime "chosen_at"
     t.boolean  "hidden"
-    t.index ["user_id"], name: "index_nicknames_on_user_id"
+    t.index ["user_id"], name: "index_nicknames_on_user_id", using: :btree
   end
 
-  create_table "playlists", force: :cascade do |t|
+  create_table "playlists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "spotify_auths", force: :cascade do |t|
-    t.text     "sp_user_hash"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+  create_table "spotify_auths", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.text     "sp_user_hash", limit: 65535
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
-  create_table "tracks", force: :cascade do |t|
+  create_table "tracks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string   "name"
     t.string   "artist"
     t.string   "track_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.string   "uri"
-    t.text     "metadata"
+    t.text     "metadata",   limit: 65535
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -81,20 +81,20 @@ ActiveRecord::Schema.define(version: 20190726132916) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.integer  "nickname_id"
-    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["nickname_id"], name: "index_users_on_nickname_id"
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["nickname_id"], name: "index_users_on_nickname_id", using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  create_table "votes", force: :cascade do |t|
+  create_table "votes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.integer  "track_id"
     t.boolean  "vote"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
-    t.index ["track_id"], name: "index_votes_on_track_id"
-    t.index ["user_id"], name: "index_votes_on_user_id"
+    t.index ["track_id"], name: "index_votes_on_track_id", using: :btree
+    t.index ["user_id"], name: "index_votes_on_user_id", using: :btree
   end
 
 end
