@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!, :currently_playing
 
   def playlist
-    @playlist ||= RSpotify::Playlist.find('crtechteam', '5esgCdY5baXWpIrPHs5ZYp')
+    @playlist ||= RSpotify::Playlist.find(ENV['spotify_user'], ENV['spotify_playlist'])
   end
 
   def authenticate_user!(*args)
@@ -79,7 +79,7 @@ class ApplicationController < ActionController::Base
     assign_track_variables
     assign_user_votes
     assign_user_recommendations
-    
+
     respond_to do |format|
       format.html
       format.json { render json: @currently_playing }

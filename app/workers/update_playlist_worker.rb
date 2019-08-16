@@ -20,6 +20,6 @@ class UpdatePlaylistWorker
   end
 
   def initiate_playlist
-    @playlist = RSpotify::Playlist.find('crtechteam', '5esgCdY5baXWpIrPHs5ZYp')
+    @playlist = RSpotify::Playlist.find(ENV['spotify_user'], ENV['spotify_playlist'])
   end
 end

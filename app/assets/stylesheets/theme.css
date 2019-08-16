@@ -147,6 +147,10 @@ input {
   border-style: none;
 }
 
+.search-result td {
+  padding: 0 !important;
+}
+
 .profile-links {
   padding-top: 10px;
 }

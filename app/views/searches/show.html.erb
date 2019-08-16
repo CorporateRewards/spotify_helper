@@ -6,10 +6,10 @@
   <table class="table">
     <th>Track name</th><th>Artist</th><th>Actions</th>
       <% @tracks.each do |track| %>
-      <tr>
-        <td><%= track.name %></td>
-      <td><%= track.artists.map(&:name).join(', ') %></td>
-      <td><%= link_to "add",add_a_track_track_path(uid: track.id, vote: 1, uri: track.uri, id: track.id, track_id: track.id),class:"btn btn-default track", method: :post, remote: true %></td>
+      <tr class="search-result">
+        <td class="col-md-5"><%= track.name %></td>
+        <td class="col-md-5"><%= track.artists.map(&:name).join(', ') %></td>
+        <td class="col-md-2"><%= link_to "add",add_a_track_track_path(uid: track.id, vote: 1, uri: track.uri, id: track.id, track_id: track.id),class:"btn btn-default track", method: :post, remote: true %></td>
       </tr>
     <% end %>
   </table>

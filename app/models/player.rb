@@ -12,7 +12,7 @@ class Player
   end
 
   def get_status
-    @playlist ||= RSpotify::Playlist.find('crtechteam', '5esgCdY5baXWpIrPHs5ZYp')
+    @playlist ||= RSpotify::Playlist.find(ENV['spotify_user'], ENV['spotify_playlist'])
     current_track
     previous_track
     next_track
