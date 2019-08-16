@@ -1,1 +1,16 @@
-<%= @result %>
+<p>If there are no devices listed below, then you need to open Spotify and play something. Once you have done that check back here and make sure that you have a device listed below and that it is active. </p>
+
+<h3>My Devices</h3>
+
+<% @result['devices'].each do |r| %>
+  <div class="well">
+    <p>Device id: <%= r['id'] %></p>
+    <p>Active: <%= r['is_active'] %></p>
+    <p>Private: <%= r['is_private_session'] %></p>
+    <p>Restricted: <%= r['is_restricted'] %></p>
+    <p>Name: <%= r['name'] %></p>
+    <p>Type: <%= r['type'] %></p>
+    <p>Volume percent: <%= r['volume_percent'] %></p>
+    <p>Full response: <%= r %></p>
+  </div>
+<% end %>

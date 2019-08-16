@@ -4,10 +4,6 @@ phrases = BannedPhrases.create(
     ]
 )
 
-# Create admin user
-Admin.create(email: 'gill@createk.io', password: 'password')
-User.create(email: 'gill@createk.io', password: 'password', first_name: 'gill', last_name: 'manning')
-
 # Update tracks from current playlist
 playlist = RSpotify::Playlist.find(ENV['spotify_user'], ENV['spotify_playlist'])
 playlist.tracks_cache.each do |playlist_track|
