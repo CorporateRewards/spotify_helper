@@ -11,7 +11,7 @@ ruby '2.4.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
 # Use Puma as the app server
-gem 'puma', '~> 3.0'
+gem 'puma', '~> 3.12'
 gem 'httparty'
 gem 'clockwork', '~> 2.0'
 gem 'will_paginate'
